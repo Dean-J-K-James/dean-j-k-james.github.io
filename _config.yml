@@ -20,7 +20,7 @@ defaults:
   - scope:
       path: ""
     values:
-      layout: "default"
+      layout: "one-column"
 
 # Sets a permalink to prettify URLs
 permalink: /:title/
@@ -30,3 +30,23 @@ exclude:
   - Gemfile
   - Gemfile.lock
   - README.md
+
+category:
+  - cellular-automata
+  - algorithms
+  - software-patterns
+
+navigation:
+  - name: Home
+    link: /
+  - name: About
+    link: /about/
+
+destination         : application
+collections_dir     : src/
+includes_dir        : src/_includes
+layouts_dir         : src/_templates
+sass:
+  sass_dir: src/_sass
+
+disable_disk_cache: true
