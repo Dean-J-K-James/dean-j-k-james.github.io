@@ -1,14 +1,15 @@
 ---
 title: Home
 ---
-<h1>Latest Posts</h1>
+
+{% assign ordered_pages = site.pages | sort:"title" %}
 
 {% for c in site.category %}
     <h2>{{ c }}</h2>
     {% for a in site.blog %}
         {% if a.type == c %}
-        <div class="card-two-column article">
-            <img src="/content/{{ a.slug }}/thumbnail.png" alt="" style="height: 128px;">
+        <div class="card-two-column flex-row flex-04">
+            <img src="{{ a.thmb }}">
             <div class="card-two-column-details">
                 <h3>
                     {{ a.name }}

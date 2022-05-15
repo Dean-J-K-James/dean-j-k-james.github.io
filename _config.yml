@@ -1,9 +1,6 @@
 
 # Name of website
-title: My Website
-
-# Author name
-author: Dean James
+title: TheCodingDodo
 
 # Defines collections so that the pages are automatically generated
 collections:
@@ -20,7 +17,7 @@ defaults:
   - scope:
       path: ""
     values:
-      layout: "one-column"
+      layout: "page"
 
 # Sets a permalink to prettify URLs
 permalink: /:title/
@@ -32,9 +29,9 @@ exclude:
   - README.md
 
 category:
-  - cellular-automata
-  - algorithms
-  - software-patterns
+  - Cellular Automata
+  - Algorithms
+  - Software Patterns
 
 navigation:
   - name: Home
@@ -42,11 +39,10 @@ navigation:
   - name: About
     link: /about/
 
-destination         : application
-collections_dir     : src/
-includes_dir        : src/_includes
-layouts_dir         : src/_templates
+destination         : _application
+layouts_dir         : _src
+includes_dir        : _includes
 sass:
-  sass_dir: src/_sass
+  sass_dir: css/_sass
 
 disable_disk_cache: true

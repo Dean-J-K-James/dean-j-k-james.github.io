@@ -1,0 +1,33 @@
+.card-two-column {
+    border-radius : 02px;
+    position      : relative;
+}
+
+.card-two-column a {
+    position: absolute;
+    height  : 100%;
+    width   : 100%;
+    top     : 000%;
+    left    : 000%;
+    bottom  : 000%;
+    right   : 000%;
+}
+
+.card-two-column:hover {
+    background-color: $colour_highlight;
+}
+
+.card-two-column img {
+    object-fit: cover;
+    width     : 128px;
+    height    : 128px;
+}
+
+.card-two-column-details {
+    display        : flex;
+    flex           : 0001;
+    flex-direction : column;
+    gap            : 08px;
+    justify-content: space-around;
+    padding        : 08px;
+}

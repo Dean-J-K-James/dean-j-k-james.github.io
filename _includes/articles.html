@@ -1,0 +1,6 @@
+{% for a in site.blog %}
+<a href="{{ a.url }}" class="flex-col flex-04">
+    <p class="title">{{ a.title }}</p>
+    <p class="subtitle">{{ a.date | date: "%d-%m-%Y" }}</p>
+</a>
+{% endfor %}

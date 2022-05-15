@@ -3,7 +3,7 @@
 
 //Variable
 $colour_body            : rgb(241, 241, 241) !default;
-$colour_menu            : rgb(066, 121, 106) !default;
+$colour_menu            : rgb(066, 121, 206) !default;
 $colour_menu_text       : rgb(251, 251, 251) !default;
 $colour_menu_active     : rgb(096, 156, 236) !default;
 $colour_menu_active_text: rgb(251, 251, 251) !default;
@@ -47,20 +47,22 @@ Helvetica,
 sans-serif !default;
 
 //Internal
-//@import 'external/solarized-light';
-@import 'application';
-@import 'article';
-@import 'canvas';
-@import 'cards';
-@import 'cells';
-@import 'colours';
-@import 'foot';
-@import 'forms';
-@import 'highlight';
-@import 'images';
-@import 'menu';
-@import 'page';
-@import 'sides';
-@import 'tables';
-@import 'tags';
-@import 'text-and-fonts';
+@import 'external/solarized-light';
+@import 'styles/application';
+@import 'styles/article';
+@import 'styles/canvas';
+@import 'styles/cards';
+@import 'styles/cells';
+@import 'styles/colours';
+@import 'styles/flex';
+@import 'styles/foot';
+@import 'styles/forms';
+@import 'styles/headings';
+@import 'styles/highlight';
+@import 'styles/images';
+@import 'styles/menu';
+@import 'styles/page';
+@import 'styles/sides';
+@import 'styles/tables';
+@import 'styles/tags';
+@import 'styles/text-and-fonts';

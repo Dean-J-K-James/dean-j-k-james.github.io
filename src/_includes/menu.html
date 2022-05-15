@@ -1,7 +1,0 @@
-<nav id="menu">
-    <a href="/" class="logo">{{ site.title }}</a>
-    <div class="divider"></div>
-    {% for item in site.navigation %}
-    <a href="{{ item.link }}" {% if page.url==item.link %}class="current" {% endif %}>{{ item.name }}</a>
-    {% endfor %}
-</nav>
