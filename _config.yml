@@ -1,0 +1,32 @@
+
+# Name of website
+title: My Website
+
+# Author name
+author: Dean James
+
+# Defines collections so that the pages are automatically generated
+collections:
+  blog:
+    output: true
+
+# Sets default values and layouts for each type of page
+defaults:
+  - scope:
+      path: ""
+      type: "blog"
+    values:
+      layout: "blog"
+  - scope:
+      path: ""
+    values:
+      layout: "default"
+
+# Sets a permalink to prettify URLs
+permalink: /:title/
+
+# Exclude these files from production site
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
