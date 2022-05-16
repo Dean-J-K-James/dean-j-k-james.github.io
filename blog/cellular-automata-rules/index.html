@@ -1,0 +1,217 @@
+
+<!doctype html>
+
+<html lang="en">
+    <head>
+        <title>Cellular Automata Rules</title>
+<meta charset="utf-8">
+<meta name="viewport"            content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="title"               content="Cellular Automata Rules">
+<meta name="image"               content="https://thecodingdodo.com/application/blog/contents/cellular-automata-rules/thumbnail.png">
+<meta name="description"         content="Find out how rules are applied to one-dimensional ellular automata with step by step diagrams and explanations.">
+<meta property="og:title"        content="Cellular Automata Rules">
+<meta property="og:image"        content="https://thecodingdodo.com/application/blog/contents/cellular-automata-rules/thumbnail.png">
+<meta property="og:description"  content="Find out how rules are applied to one-dimensional ellular automata with step by step diagrams and explanations.">
+<meta name="twitter:card"        content="summary">
+<meta name="twitter:title"       content="Cellular Automata Rules">
+<meta name="twitter:image"       content="https://thecodingdodo.com/application/blog/contents/cellular-automata-rules/thumbnail.png">
+<meta name="twitter:description" content="Find out how rules are applied to one-dimensional ellular automata with step by step diagrams and explanations.">
+<meta name="robots"              content="index, follow">
+<link rel="canonical"            href="https://thecodingdodo.com/blog/cellular-automata-rules" />
+<link rel="icon"                 href="/application/blog/img/favicon.ico?v=1.3" type="image/x-icon">
+<link rel="stylesheet"           href="/application/blog/css/main.css?v=1.3">
+<link rel="stylesheet"           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"><script src="/src/js/jquery.min.js?v=1.3" defer></script><script src="/src/js/cookies.js?v=1.3" defer></script><script src="/src/js/highlight.min.js?v=1.3" defer></script><script src="/src/js/highlight_line_numbers.min.js?v=1.3" defer></script><script src="/src/js/highlight.js?v=1.3" defer></script><script>
+    const root = ""
+    const page = "blog"
+    const name = "cellular-automata-rules"
+</script>
+    </head>
+    <body>
+                <div id="menu">
+    <a href="/feed" class="logo">The Coding Dodo</a>
+    <div class="divider"></div>
+    <a href="/cookies" class="">Cookie Policy</a>
+<a href="/feed" class="">Blog</a>    </div>        <div id="page" class="two-column"><div class="cell-page">
+            <div class="cell title">
+<h1>Cellular Automata Rules</h1>
+<p class="subtitle">Last Updated: 2022-04-02</p>
+
+</div>
+            <div class="cell blog"><h2>Types of Cellular Automata</h2>
+<p>All cellular automata have a set of rules that are used to create new generations. How these rules are applied depends on the type of CA. There are three main types of cellular automata: elementary, totalistic, and outer-totalistic.</p>
+<p>Although the ideas investigated in this article can be applied to more complex CA, we are only going to look at one-dimensional cellular automata with range <code>r = 1</code> and possible states <code>m = 2</code>. <em>Figure 1</em> shows all eight possible neighbourhood configurations for such a CA.</p>
+<p><img src="/application/blog/contents/cellular-automata-rules/figure1.png" alt="All Eight Elementary Neighbourhood Configurations" /></p>
+<blockquote>
+<p><strong>Figure 1</strong> - All Eight Elementary Neighbourhood Configurations</p>
+</blockquote>
+<p>Processing a cellular automata is quite simple: for each cell, provide it's neighbourhood as input, and as output, a single cell state will be produced.</p>
+<h3>Elementary Cellular Automata</h3>
+<p>Let's start with the elementary rules. Elementary cellular automata use the state of each cell in a neighbourhood individually as input. For example, we could say that the input neighbourhood <code>{110}</code> produces an output state of 0. We could also say that the input neighbourhood <code>{011}</code> produces an output state of 1.</p>
+<p>In total, there are eight possible elementary inputs and outputs, shown in <em>Figure 2</em>.</p>
+<p><img src="/application/blog/contents/cellular-automata-rules/figure2.png" alt="All Eight Elementary Inputs and Outputs" /></p>
+<blockquote>
+<p><strong>Figure 2</strong> - All Eight Elementary Inputs and Outputs</p>
+</blockquote>
+<p><em>Figure 2</em> shows a common way for rules in a one-dimensional CA to be visualised. In each of the four diagrams, the top shows the three cell wide neighbourhood used as input; and the bottom shows the single cell state produced as output.</p>
+<p>If the ruleset is expanded into words, it will state:</p>
+<ul>
+<li>An input neighbourhood <code>{111}</code> will produce an output state of 1.</li>
+<li>An input neighbourhood <code>{110}</code> will produce an output state of 0.</li>
+<li>An input neighbourhood <code>{101}</code> will produce an output state of 1.</li>
+<li>An input neighbourhood <code>{100}</code> will produce an output state of 0.</li>
+<li>An input neighbourhood <code>{011}</code> will produce an output state of 1.</li>
+<li>An input neighbourhood <code>{010}</code> will produce an output state of 0.</li>
+<li>An input neighbourhood <code>{001}</code> will produce an output state of 1.</li>
+<li>An input neighbourhood <code>{000}</code> will produce an output state of 0.</li>
+</ul>
+<h3>Totalistic Cellular Automata</h3>
+<p>Totalistic cellular automata use the total state of a cell's neighbourhood as input for its rules. For example, we could say that the input neighbourhood <code>{010}</code>, which has a total neighbourhood state of <code>0 + 1 + 0 = 1</code>, produces an output state of 0. We could also say that the input neighbourhood <code>{110}</code>, which has a total neighbourhood state of <code>1 + 1 + 0 = 2</code>, produces an output state of 1. The actual neighbourhood configuration itself makes no difference when using totalistic CA, only the total state matters.</p>
+<p>In total, there are four possible totalistic inputs and outputs, shown in <em>Figure 3</em>.</p>
+<p><img src="/application/blog/contents/cellular-automata-rules/figure3.png" alt="All Four Totalistic Inputs and Outputs" /></p>
+<blockquote>
+<p><strong>Figure 3</strong> - All Four Totalistic Inputs and Outputs</p>
+</blockquote>
+<p>For the purpose of making the visualisation easier, a neighbourhood with total state of 3, achieved only with the neighbourhood configuration: <code>{111}</code>, is coloured black. A neighbourhood with total state of 2, achieved with the neighbourhood configurations: <code>{011}</code>, <code>{101}</code>, or <code>{110}</code>, is coloured dark grey. A neighbourhood with total state of 1, achieved with the neighbourhood configurations: <code>{001}</code>, <code>{010}</code>, or <code>{100}</code>, is coloured light grey. Finally, a neighbourhood state of 0, achieved only with a neighbourhood configuration <code>{000}</code>, is coloured white.</p>
+<p>If the ruleset is expanded into words, it will state:</p>
+<ul>
+<li>A total input neighbourhood state of 3 will produce an output state of 1.</li>
+<li>A total input neighbourhood state of 2 will produce an output state of 0.</li>
+<li>A total input neighbourhood state of 1 will produce an output state of 1.</li>
+<li>A total input neighbourhood state of 0 will produce an output state of 0.</li>
+</ul>
+<h3>Outer-Totalistic Cellular Automata</h3>
+<p>Outer-totalistic cellular automata use the total state of a cell's outer-neighbourhood, and the state of the cell itself, as input for it's rules. For example, we could say that the input outer-neighbourhood <code>{10}</code>, which has a total neighbourhood state of <code>1 + 0 = 1</code>, combined with a cell state of 1 produces an output state of 0. We could also say that the input outer-neighbourhood <code>{11}</code>, which has a total neighbourhood state of <code>1 + 1 = 2</code>, combined with a cell state of 0 produces an output state of 1. Like with totalistic CA, the configuration of the outer-neighbourhood makes no difference, only the total state matters.</p>
+<p>In total, there are six possible outer-totalistic inputs and outputs, shown in <em>Figure 4</em>.</p>
+<p><img src="/application/blog/contents/cellular-automata-rules/figure4.png" alt="All Four Outer-Totalistic Neighbourhood Inputs and Outputs" /></p>
+<blockquote>
+<p><strong>Figure 4</strong> - All Four Outer-Totalistic Inputs and Outputs</p>
+</blockquote>
+<p>As with totalistic CA, input neighbourhoods are coloured a shade of grey, indicating the total neighbourhood state. The small cell in the middle of the input indicates the state of the cell being evaluated.</p>
+<p>If the ruleset is expanded into words, it will state:</p>
+<ul>
+<li>A total input outer-neighbourhood state of 2 and input state of 1 will produce an output state of 0.</li>
+<li>A total input outer-neighbourhood state of 1 and input state of 1 will produce an output state of 0.</li>
+<li>A total input outer-neighbourhood state of 0 and input state of 1 will produce an output state of 1.</li>
+<li>A total input outer-neighbourhood state of 2 and input state of 0 will produce an output state of 1.</li>
+<li>A total input outer-neighbourhood state of 1 and input state of 0 will produce an output state of 0.</li>
+<li>A total input outer-neighbourhood state of 0 and input state of 0 will produce an output state of 0.</li>
+</ul>
+<h2>Applying the Rules</h2>
+<p>Now that we have explored the differences between the three main types of cellular automata, let's have a go at evaluating some cells and applying the rules. To create a new generation, each cell in a grid needs to be evaluated. It doesn't matter which order this is done in, but for convenience, lets evaluate each cell in order from left to right. <em>Figure 5</em> shows an example cellular automata.</p>
+<p><img src="/application/blog/contents/cellular-automata-rules/figure5.png" alt="Example Cellular Automata" /></p>
+<blockquote>
+<p><strong>Figure 5</strong> - Example Cellular Automata</p>
+</blockquote>
+<p>To evaluate a cell, we follow the following instructions:</p>
+<ol>
+<li>Identify the cell with index <code>i</code>, and it's neighbourhood.</li>
+<li>Compare the neighbourhood to the provided ruleset.</li>
+<li>Calculate the output state and store it in the new grid at position <code>i</code>.</li>
+</ol>
+<h3>Applying Elementary Rules</h3>
+<p>First, let's try applying the elementary ruleset shown in <em>Figure 6</em> to the CA in <em>Figure 5</em>.</p>
+<p><img src="/application/blog/contents/cellular-automata-rules/figure6.png" alt="Example Elementary Ruleset" /></p>
+<blockquote>
+<p><strong>Figure 6</strong> - Example Elementary Ruleset</p>
+</blockquote>
+<p>The cell with index <code>i = 0</code> has a neighbourhood configuration <code>{001}</code>. According to our ruleset, this produces an output state of 1, which we store in the new grid at index <code>i = 0</code>, as shown in <em>Figure 7</em>.</p>
+<p><img src="/application/blog/contents/cellular-automata-rules/figure7.png" alt="Evaluating Cell With Index i = 0" /></p>
+<blockquote>
+<p><strong>Figure 7</strong> - Evaluating Cell With Index <code>i = 0</code></p>
+</blockquote>
+<p>The cell with index <code>i = 1</code> has a neighbourhood configuration <code>{011}</code>. According to our ruleset, this produces an output state of 1, which we store in the new grid at index <code>i = 1</code>, as shown in <em>Figure 8</em>.</p>
+<p><img src="/application/blog/contents/cellular-automata-rules/figure8.png" alt="Evaluating Cell With Index i = 0" /></p>
+<blockquote>
+<p><strong>Figure 8</strong> - Evaluating Cell With Index <code>i = 1</code></p>
+</blockquote>
+<p>The cell with index <code>i = 2</code> has a neighbourhood configuration <code>{110}</code>. According to our ruleset, this produces an output state of 0, which we store in the new grid at index <code>i = 2</code>, as shown in <em>Figure 9</em>.</p>
+<p><img src="/application/blog/contents/cellular-automata-rules/figure9.png" alt="Evaluating Cell With Index i = 0" /></p>
+<blockquote>
+<p><strong>Figure 9</strong> - Evaluating Cell With Index <code>i = 2</code></p>
+</blockquote>
+<p>The cell with index <code>i = 3</code> has a neighbourhood configuration <code>{101}</code>. According to our ruleset, this produces an output state of 1, which we store in the new grid at index <code>i = 3</code>, as shown in <em>Figure 10</em>.</p>
+<p><img src="/application/blog/contents/cellular-automata-rules/figure10.png" alt="Evaluating Cell With Index i = 0" /></p>
+<blockquote>
+<p><strong>Figure 10</strong> - Evaluating Cell With Index <code>i = 3</code></p>
+</blockquote>
+<p>The rest of the grid will follow the same method.</p>
+<h3>Applying Totalistic Rules</h3>
+<p>Next, let's try applying the totalistic ruleset shown in <em>Figure 11</em> to the CA in <em>Figure 5</em>.</p>
+<p><img src="/application/blog/contents/cellular-automata-rules/figure11.png" alt="Example Totalistic Ruleset" /></p>
+<blockquote>
+<p><strong>Figure 11</strong> - Example Totalistic Ruleset</p>
+</blockquote>
+<p>The cell with index <code>i = 0</code> has a neighbourhood configuration <code>{001}</code>, producing a total neighbourhood state of 1. According to our ruleset, this produces an output state of 1, which we store in the new grid at index <code>i = 0</code>, as shown in <em>Figure 12</em>.</p>
+<p><img src="/application/blog/contents/cellular-automata-rules/figure12.png" alt="Evaluating Cell With Index i = 0" /></p>
+<blockquote>
+<p><strong>Figure 12</strong> - Evaluating Cell With Index <code>i = 0</code></p>
+</blockquote>
+<p>The cell with index <code>i = 1</code> has a neighbourhood configuration <code>{011}</code>, producing a total neighbourhood state of 2. According to our ruleset, this produces an output state of 0, which we store in the new grid at index <code>i = 1</code>, as shown in <em>Figure 13</em>.</p>
+<p><img src="/application/blog/contents/cellular-automata-rules/figure13.png" alt="Evaluating Cell With Index i = 0" /></p>
+<blockquote>
+<p><strong>Figure 13</strong> - Evaluating Cell With Index <code>i = 1</code></p>
+</blockquote>
+<p>The cell with index <code>i = 2</code> has a neighbourhood configuration <code>{110}</code>, producing a total neighbourhood state of 2. According to our ruleset, this produces an output state of 0, which we store in the new grid at index <code>i = 2</code>, as shown in <em>Figure 14</em>.</p>
+<p><img src="/application/blog/contents/cellular-automata-rules/figure14.png" alt="Evaluating Cell With Index i = 0" /></p>
+<blockquote>
+<p><strong>Figure 14</strong> - Evaluating Cell With Index <code>i = 2</code></p>
+</blockquote>
+<p>The cell with index <code>i = 3</code> has a neighbourhood configuration <code>{101}</code>, producing a total neighbourhood state of 2. According to our ruleset, this produces an output state of 0, which we store in the new grid at index <code>i = 3</code>, as shown in <em>Figure 15</em>.</p>
+<p><img src="/application/blog/contents/cellular-automata-rules/figure15.png" alt="Evaluating Cell With Index i = 0" /></p>
+<blockquote>
+<p><strong>Figure 15</strong> - Evaluating Cell With Index <code>i = 3</code></p>
+</blockquote>
+<p>The rest of the grid will follow the same method.</p>
+<h3>Applying Outer-Totalistic Rules</h3>
+<p>Finally, let's try applying the outer-totalistic ruleset shown in <em>Figure 16</em> to the CA in <em>Figure 5</em>.</p>
+<p><img src="/application/blog/contents/cellular-automata-rules/figure16.png" alt="Example Outer-Totalistic Ruleset" /></p>
+<blockquote>
+<p><strong>Figure 16</strong> - Example Outer-Totalistic Ruleset</p>
+</blockquote>
+<p>The cell with index <code>i = 0</code> has an outer-neighbourhood configuration <code>{01}</code>, producing a total neighbourhood state of 1, and a cell state of 0. According to our ruleset, this produces an output state of 0, which we store in the new grid at index <code>i = 0</code>, as shown in <em>Figure 17</em>.</p>
+<p><img src="/application/blog/contents/cellular-automata-rules/figure17.png" alt="Evaluating Cell With Index i = 0" /></p>
+<blockquote>
+<p><strong>Figure 17</strong> - Evaluating Cell With Index <code>i = 0</code></p>
+</blockquote>
+<p>The cell with index <code>i = 1</code> has an outer-neighbourhood configuration <code>{01}</code>, producing a total neighbourhood state of 1, and a cell state of 1. According to our ruleset, this produces an output state of 0, which we store in the new grid at index <code>i = 1</code>, as shown in <em>Figure 18</em>.</p>
+<p><img src="/application/blog/contents/cellular-automata-rules/figure18.png" alt="Evaluating Cell With Index i = 0" /></p>
+<blockquote>
+<p><strong>Figure 18</strong> - Evaluating Cell With Index <code>i = 1</code></p>
+</blockquote>
+<p>The cell with index <code>i = 2</code> has an outer-neighbourhood configuration <code>{10}</code>, producing a total neighbourhood state of 1, and a cell state of 1. According to our ruleset, this produces an output state of 0, which we store in the new grid at index <code>i = 2</code>, as shown in <em>Figure 19</em>.</p>
+<p><img src="/application/blog/contents/cellular-automata-rules/figure19.png" alt="Evaluating Cell With Index i = 0" /></p>
+<blockquote>
+<p><strong>Figure 19</strong> - Evaluating Cell With Index <code>i = 2</code></p>
+</blockquote>
+<p>The cell with index <code>i = 3</code> has an outer-neighbourhood configuration <code>{11}</code>, producing a total neighbourhood state of 2, and a cell state of 0. According to our ruleset, this produces an output state of 1, which we store in the new grid at index <code>i = 3</code>, as shown in <em>Figure 20</em>.</p>
+<p><img src="/application/blog/contents/cellular-automata-rules/figure20.png" alt="Evaluating Cell With Index i = 0" /></p>
+<blockquote>
+<p><strong>Figure 20</strong> - Evaluating Cell With Index <code>i = 3</code></p>
+</blockquote>
+<p>The rest of the grid will follow the same method.</p></div>
+            <div class="cell feedback"><h2>Questions or Feedback?</h2>
+<p>Thank you for reading this article!</p>
+<p>If you have any further questions or queries, then don't hesitate to contact me on Twitter or by Email.</p></div>
+    </div>
+
+<div class="cell-side">
+            <div class="cell articles">    <a href="/blog/cellular-automata-introduction" class=" form-group">
+        <p class="subtitle">2021-09-11</p>
+        <p class="title">Introduction to Cellular Automata</p>
+    </a>
+    <a href="/blog/cellular-automata-neighbourhoods" class=" form-group">
+        <p class="subtitle">2022-04-02</p>
+        <p class="title">Neighbourhoods in Cellular Automata</p>
+    </a>
+    <a href="/blog/cellular-automata-rules" class="active form-group">
+        <p class="subtitle">2022-04-02</p>
+        <p class="title">Cellular Automata Rules</p>
+    </a>
+</div>
+    </div></div>        <div id="foot"><a href="https://twitter.com/thecodingdodo" class="fa fa-twitter"></a>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="https://www.youtube.com/channel/UCLYv_FM6EbtTbfJpFuEzPbQ" class="fa fa-youtube"></a>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="mailto:dean.j.k.james@gmail.com" class="fa fa-envelope"></a></div>    </body>
+</html>
+
