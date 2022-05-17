@@ -1,0 +1,36 @@
+#foot {
+    background-color: $colour_foot;
+    border-top      : 01px solid $colour_border;
+    position        : relative;
+    right           : 00px;
+    left            : 00px;
+    flex-direction  : row;
+    justify-content : center;
+    display         : flex;
+    padding         : 32px;
+    grid-area       : foot;
+}
+
+#foot .fa,
+#foot .fas {
+    border-radius  : 050%;
+    color          : rgb(255, 255, 255);
+    width          : 14px;
+    height         : 14px;
+    font-size      : 13px;
+    text-align     : center;
+    text-decoration: none;
+    padding        : 08px;
+}
+
+.fa-twitter {
+    background-color: rgb(029, 161, 242);
+}
+
+.fa-youtube {
+    background-color: rgb(187, 000, 000);
+}
+
+.fa-envelope {
+    background-color: rgb(217, 048, 037);
+}
