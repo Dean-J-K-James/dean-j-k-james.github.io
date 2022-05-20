@@ -1,0 +1,185 @@
+
+<!doctype html>
+
+<html lang="en">
+    <head>
+        <title>Conway's Game of Life</title>
+<meta charset="utf-8">
+<meta name="viewport"            content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="title"               content="Conway's Game of Life">
+<meta name="image"               content="https://thecodingdodo.com/application/blog/contents/game-of-life/thumbnail.png">
+<meta name="description"         content="Create a two-dimensional cellular automaton with the rules of Conway's Game of Life.">
+<meta property="og:title"        content="Conway's Game of Life">
+<meta property="og:image"        content="https://thecodingdodo.com/application/blog/contents/game-of-life/thumbnail.png">
+<meta property="og:description"  content="Create a two-dimensional cellular automaton with the rules of Conway's Game of Life.">
+<meta name="twitter:card"        content="summary">
+<meta name="twitter:title"       content="Conway's Game of Life">
+<meta name="twitter:image"       content="https://thecodingdodo.com/application/blog/contents/game-of-life/thumbnail.png">
+<meta name="twitter:description" content="Create a two-dimensional cellular automaton with the rules of Conway's Game of Life.">
+<meta name="robots"              content="index, follow">
+<link rel="canonical"            href="https://thecodingdodo.com/blog/game-of-life">
+<link rel="icon"                 href="/assets/img/favicon.png" type="image/x-icon">
+<link rel="stylesheet"           href="/assets/css/main.css">
+<link rel="stylesheet"           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js" defer></script><script src="/assets/js/cookies.js" defer></script><script src="/assets/js/highlight.min.js" defer></script><script src="/assets/js/highlight_line_numbers.min.js" defer></script><script src="/assets/js/highlight.js" defer></script>    </head>
+    <body>
+        <div id="cook">
+    <p>This website uses cookies for tracking. By continuing to use this website, you agree to our use of cookies. Visit our cookie policy page to learn more.</p>
+    <div class="flex-fill"></div>
+    <a id="cookies-accept" class="p-08 py-0">Accept</a>
+</div>        <div id="menu" class="flex-row flex-08">
+    <a href="/feed" class="logo">The Coding Dodo</a>
+    <div class="flex-fill"></div>
+    <a href="/cookies" class="p-08 py-0 ">Cookies</a><a href="/feed" class="p-08 py-0 ">Blog</a>    </div>        <div id="page" class="two-column"><div class="cell-page flex-col flex-16">
+            <div class="cell flex-col flex-16 p-16 title">
+<h1>Conway's Game of Life</h1>
+<p class="subtitle">Last Updated: 2021-09-18</p>
+
+    <canvas id="application-container"></canvas>
+    <blockquote>
+        <p><strong>Demo</strong> - Click the demo to restart the animation. Click <a href="/assets/contents/game-of-life/main.js">here</a> to see the code.</p>
+    </blockquote>
+
+    
+    <script type="module" src="/assets/contents/game-of-life/main.js"></script>
+</div>
+            <div class="cell flex-col flex-16 p-16 blog"><h2>What is Conway's Game of Life?</h2>
+<p>Conway's game of life is a type of outer-totalistic cellular automata using square cells in a two-dimensional grid. Each cell can be in one of two states, defined as either "live" or "dead". It was created by John Conway in 1970, and provides a simulation of birth and death by underpopulation and overpopulation.</p>
+<p>Once the state of each cell is initialised, a set of rules are applied, causing the grid to evolve over several generations. The rules for Conway's game of life are as follows:</p>
+<ul>
+<li>A live cell with <code>&lt; 2</code> live neighbours dies.</li>
+<li>A live cell with <code>&gt; 3</code> live neighbours dies.</li>
+<li>A non-live (dead) cell with <code>= 3</code> live neighbours becomes live.</li>
+</ul>
+<p>If none of the above rules apply, the cell remains in it's current state. The game of life starts at generation 0. When the rules are applied to every cell once, the game is then in generation 1. Each time the rules are fully applied to every cell, the generation increases and the grid is rerendered.</p>
+<p><img src="/assets/contents/game-of-life/figure1.png" alt="Game of Life After 1000 Generations" /></p>
+<blockquote>
+<p><strong>Figure 1</strong> - Game of Life After 1000 Generations.</p>
+</blockquote>
+<p><em>Figure 1</em> shows generation 1000 of the game of life, when started from a random grid, with each cell having a 50% chance of being either dead or live. In other words, a grid whose initial state is entirely random, after having the rules applied 1000 times, looks like <em>Figure 1</em>.</p>
+<h2>Algorithm</h2>
+<pre><code>Randomise all cells in the grid
+Loop x times:
+    Loop all cells, C:
+        Set N to number of live neighbours of C.
+        If C is live and N &lt; 2:
+            Set C to dead
+        If C is live and N &gt; 3:
+            Set C to dead
+        If C is dead and N = 3:
+            Set C to live</code></pre>
+<h2>Implementation</h2>
+<p>The function <code>game_of_life</code> is the root of our algorithm. First, a two-dimensional array of size <code>sizex</code> , <code>sizey</code> is created using the <code>create_2d_array</code> function, setting each cell to <code>dead</code> by default. Depending on the language you are using, a two-dimensional array will have to be generated manually. After, the grid gets randomised.</p>
+<pre><code>function game_of_life() {
+    this.grid = create_2d_array(this.sizex, this.sizey, this.dead);
+    this.randomise_grid();
+
+    for (let i = 0; i &lt; 1000; i++) {
+        let buffer = this.generate();
+        this.apply_buffer(buffer);
+    }
+}</code></pre>
+<p>Once the grid is intialised to random values, we begin producing new generations. For this example, we produce 1000 generations. This gives the cellular automata enough time to settle into a pattern, or repeating state. Generating a new generation consists of two steps.</p>
+<ol>
+<li>A new array, called a <code>buffer</code>, containing the states of the next generation is produced.</li>
+<li>This <code>buffer</code> array is then applied to the main grid array.</li>
+</ol>
+<h2>Randomise Grid</h2>
+<p>The initial state of each cell can determine what sort of animation we get. We want a completely random animation, and so, the state of each cell is set to either dead or live, with a 50% chance of each. For this, we call the <code>randomise_grid</code> function.</p>
+<pre><code>randomise_grid() {
+
+    for (let x = 0; x &lt; this.sizex; x++) {
+        for (let y = 0; y &lt; this.sizey; y++) {
+
+            this.grid[x][y] = Math.random() &gt; 0.5 ? this.dead : this.live;
+        }
+    }
+}</code></pre>
+<p>It iterates over each cell in our grid, randomly setting it to either <code>live</code> or <code>dead</code> . This will produce a grid like in <em>Figure 2</em>.</p>
+<p><img src="/assets/contents/game-of-life/figure2.png" alt="Randomised Grid" /></p>
+<blockquote>
+<p><strong>Figure 2</strong> - Two-dimensional grid of cells in a random state.</p>
+</blockquote>
+<h2>Generate</h2>
+<p>The <code>generate</code> function is where most of the work is done. First, a new array, <code>buffer</code> is created. This will be equal in size to our main array, with each cell initialised to <code>this.dead</code> .</p>
+<p>It is important to remember that when a new state is calculated, it should not be stored in the array currently being evaluated, because this will pollute it with states for the current and next generation. Each time a state is calculated, it should be put into a seperate, empty "buffer" array so that it doesn't affect the other cells.</p>
+<pre><code>generate() {
+    let buffer = create_2d_array(this.sizex, this.sizey, this.dead);
+
+    for (let x = 0; x &lt; this.sizex; x++) {
+        for (let y = 0; y &lt; this.sizey; y++) {
+
+            let c = this.get_live_neighbours(x, y);
+
+            if (this.get_cell(x, y) == this.live &amp;&amp; c &lt;= 1) { buffer[x][y] = this.dead; }
+            if (this.get_cell(x, y) == this.live &amp;&amp; c &gt;= 4) { buffer[x][y] = this.dead; }
+            if (this.get_cell(x, y) == this.live &amp;&amp; c == 2) { buffer[x][y] = this.live; }
+            if (this.get_cell(x, y) == this.live &amp;&amp; c == 3) { buffer[x][y] = this.live; }
+            if (this.get_cell(x, y) == this.dead &amp;&amp; c == 3) { buffer[x][y] = this.live; }
+        }
+    }
+
+    return buffer;
+}</code></pre>
+<p>For each coordinate in the grid, <code>get_live_neighbours</code> is called. This counts the live neighbours of the cell at <code>x</code> , <code>y</code> and stores it in <code>c</code> . For the rules of the Game of Life, there are five possible combinations of live neighbours and cell state. Depending on the combination, either <code>dead</code> or <code>live</code> is set in the buffer.</p>
+<ol>
+<li>If the cell is <code>live</code>, and there are <code>&lt;= 1</code> live neighbours, this cell becomes <code>dead</code>.</li>
+<li>If the cell is <code>live</code>, and there are <code>&gt;= 4</code> live neighbours, this cell becomes <code>dead</code>.</li>
+<li>If the cell is <code>live</code>, and there are <code>== 2</code> live neighbours, this cell becomes <code>live</code>.</li>
+<li>If the cell is <code>live</code>, and there are <code>== 3</code> live neighbours, this cell becomes <code>live</code>.</li>
+<li>If the cell is <code>dead</code>, and there are <code>== 3</code> live neighbours, this cell becomes <code>live</code>.</li>
+</ol>
+<p>Once the buffer array is filled, it is returned.</p>
+<h2>Get Live Neighbours</h2>
+<p>The function, <code>get_live_neighbours</code> takes two parameters; an <code>x</code> and a <code>y</code> coordinate. It then gets the state of each of the eight neighbouring cells, incrementing <code>count</code> if the state is <code>live</code> . The number of live neighbours is then returned.</p>
+<pre><code>get_live_neighbours(x, y) {
+    let count = 0;
+
+    if (this.get_cell(x + 0, y - 1) == this.live) { count++; }
+    if (this.get_cell(x + 1, y - 1) == this.live) { count++; }
+    if (this.get_cell(x + 1, y + 0) == this.live) { count++; }
+    if (this.get_cell(x + 1, y + 1) == this.live) { count++; }
+    if (this.get_cell(x + 0, y + 1) == this.live) { count++; }
+    if (this.get_cell(x - 1, y + 1) == this.live) { count++; }
+    if (this.get_cell(x - 1, y + 0) == this.live) { count++; }
+    if (this.get_cell(x - 1, y - 1) == this.live) { count++; }
+
+    return count;
+}</code></pre>
+<p>In a square grid like the one we are using, there are 8 possible neighbouring cells. The function <code>get_cell</code> gets the state of the cell in the main array storing the state of cells in the current generation. It does not take the states from the buffer array, since that is not filled in.</p>
+<p>Consider the four examples in <em>Figure 3</em>.</p>
+<p><img src="/assets/contents/game-of-life/figure3.png" alt="Four Example Neighbourhoods" /></p>
+<blockquote>
+<p><strong>Figure 3</strong> - Four example cells and their neighbourhoods.</p>
+</blockquote>
+<p>In each of the four examples in <em>Figure 3</em>, the cell being evaluated is the central, blue cell. Cells with <code>state = 0</code> (dead) are black, and cells with <code>state = 1</code> (live) are white.</p>
+<ul>
+<li>In example 1,  <code>get_live_neighbours</code> would return 3 if the <code>x</code>,  <code>y</code> coordinates of the blue cell were passed.</li>
+<li>In example 2,  <code>get_live_neighbours</code> would return 2 if the <code>x</code>,  <code>y</code> coordinates of the blue cell were passed.</li>
+<li>In example 3,  <code>get_live_neighbours</code> would return 4 if the <code>x</code>,  <code>y</code> coordinates of the blue cell were passed.</li>
+<li>In example 4,  <code>get_live_neighbours</code> would return 5 if the <code>x</code>,  <code>y</code> coordinates of the blue cell were passed.</li>
+</ul>
+<h2>Apply Buffer</h2>
+<p>Once the states of every cell have been calculated, they need to be applied. Remember, each new state is stored in a seperate "buffer" array, so that the original doesn't get polluted. Now that every cell has been evaluated, the values in the "buffer" array can be set in the main array.</p>
+<pre><code>apply_buffer(buffer) {
+    for (let x = 0; x &lt; this.sizex; x++)
+        for (let y = 0; y &lt; this.sizey; y++) {
+            this.set_cell(x, y, buffer[x][y]); 
+        }
+}</code></pre>
+<p>The <code>apply_buffer</code> function iterates over each cell, copying the state stored in <code>buffer</code> to our main grid.</p></div>
+            <div class="cell flex-col flex-16 p-16 feedback"><h2>Questions or Feedback?</h2>
+<p>Thank you for reading this article!</p>
+<p>If you have any further questions or queries, then don't hesitate to contact me on Twitter or by Email.</p></div>
+    </div>
+
+<div class="cell-side flex-col flex-16">
+            <div class="cell flex-col flex-04 p-16 articles"><a href="/blog/depth-first-search-maze" class="card flex-col flex-04 p-08 "><p class="title">Depth First Search Maze</p><p class="subtitle">2021-06-27</p></a><a href="/blog/game-of-life" class="card flex-col flex-04 p-08 active"><p class="title">Conway's Game of Life</p><p class="subtitle">2021-09-18</p></a><a href="/blog/perlin-noise-terrain-generation" class="card flex-col flex-04 p-08 "><p class="title">Perlin Noise Terrain Generation</p><p class="subtitle">2021-07-04</p></a><a href="/blog/random-walk-dungeon-generation" class="card flex-col flex-04 p-08 "><p class="title">Random Walk Dungeon Generation</p><p class="subtitle">2021-06-20</p></a></div>
+    </div></div>        <div id="foot"><a href="https://twitter.com/thecodingdodo" class="fa fa-twitter"></a>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="https://www.youtube.com/channel/UCLYv_FM6EbtTbfJpFuEzPbQ" class="fa fa-youtube"></a>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="mailto:dean.j.k.james@gmail.com" class="fa fa-envelope"></a></div>    </body>
+</html>
+

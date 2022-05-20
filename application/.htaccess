@@ -1,0 +1,30 @@
+IndexIgnore *
+
+Order deny,allow
+Allow from *
+
+#Defines the file path to this project relative to the document root.
+RewriteEngine On
+RewriteRule .* - [E=PATH:]
+
+#Redirects the ajax requests to the correct file.
+RewriteRule ^ajax/(.*)$ %{ENV:PATH}/src/ajax.php?ajax=$1 [END]
+RewriteRule ^ajax       %{ENV:PATH}/src/ajax.php [END]
+
+#Allows the default page to load.
+RewriteRule ^src/index.php$ %{ENV:PATH}/src/index.php?page=home [END]
+
+#Redirects asset requests so the correct file can be found.
+RewriteRule ^assets/(.*)$ %{ENV:PATH}/src/asset.php?file=$1 [END]
+
+#Redirects the page requests to the correct file and converts user friendly URLs into query strings.
+RewriteRule ^([^/.]+)/?$          %{ENV:PATH}/src/index.php?page=$1 [END]
+RewriteRule ^([^/.]+)/([^/.]+)/?$ %{ENV:PATH}/src/index.php?page=$1&name=$2 [END]
+
+#Sets the 404 page.
+RewriteEngine On
+ErrorDocument 404 %{ENV:PATH}/src/index.php?page=error
+
+#Sets the default homepage.
+RewriteEngine On
+DirectoryIndex /src/index.php [END]

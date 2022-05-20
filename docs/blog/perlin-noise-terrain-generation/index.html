@@ -1,0 +1,213 @@
+
+<!doctype html>
+
+<html lang="en">
+    <head>
+        <title>Perlin Noise Terrain Generation</title>
+<meta charset="utf-8">
+<meta name="viewport"            content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="title"               content="Perlin Noise Terrain Generation">
+<meta name="image"               content="https://thecodingdodo.com/application/blog/contents/perlin-noise-terrain-generation/thumbnail.png">
+<meta name="description"         content="Use perlin noise to generate infinte, gradient based noise.">
+<meta property="og:title"        content="Perlin Noise Terrain Generation">
+<meta property="og:image"        content="https://thecodingdodo.com/application/blog/contents/perlin-noise-terrain-generation/thumbnail.png">
+<meta property="og:description"  content="Use perlin noise to generate infinte, gradient based noise.">
+<meta name="twitter:card"        content="summary">
+<meta name="twitter:title"       content="Perlin Noise Terrain Generation">
+<meta name="twitter:image"       content="https://thecodingdodo.com/application/blog/contents/perlin-noise-terrain-generation/thumbnail.png">
+<meta name="twitter:description" content="Use perlin noise to generate infinte, gradient based noise.">
+<meta name="robots"              content="index, follow">
+<link rel="canonical"            href="https://thecodingdodo.com/blog/perlin-noise-terrain-generation">
+<link rel="icon"                 href="/assets/img/favicon.png" type="image/x-icon">
+<link rel="stylesheet"           href="/assets/css/main.css">
+<link rel="stylesheet"           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js" defer></script><script src="/assets/js/cookies.js" defer></script><script src="/assets/js/highlight.min.js" defer></script><script src="/assets/js/highlight_line_numbers.min.js" defer></script><script src="/assets/js/highlight.js" defer></script>    </head>
+    <body>
+        <div id="cook">
+    <p>This website uses cookies for tracking. By continuing to use this website, you agree to our use of cookies. Visit our cookie policy page to learn more.</p>
+    <div class="flex-fill"></div>
+    <a id="cookies-accept" class="p-08 py-0">Accept</a>
+</div>        <div id="menu" class="flex-row flex-08">
+    <a href="/feed" class="logo">The Coding Dodo</a>
+    <div class="flex-fill"></div>
+    <a href="/cookies" class="p-08 py-0 ">Cookies</a><a href="/feed" class="p-08 py-0 ">Blog</a>    </div>        <div id="page" class="two-column"><div class="cell-page flex-col flex-16">
+            <div class="cell flex-col flex-16 p-16 title">
+<h1>Perlin Noise Terrain Generation</h1>
+<p class="subtitle">Last Updated: 2021-07-04</p>
+
+    <canvas id="application-container"></canvas>
+    <blockquote>
+        <p><strong>Demo</strong> - Click the demo to restart the animation. Click <a href="/assets/contents/perlin-noise-terrain-generation/main.js">here</a> to see the code.</p>
+    </blockquote>
+
+            <script src="/assets/js/noise.js" defer></script>
+    
+    <script type="module" src="/assets/contents/perlin-noise-terrain-generation/main.js"></script>
+</div>
+            <div class="cell flex-col flex-16 p-16 blog"><h2>What is Noise?</h2>
+<p>In computer science, noise is a set of procedurally generated numbers, usually generated for, and stored in, a two dimensional grid. A grid made up of individual noise values is known as a noise map. There are several types of noise, each with unique properties and purposes. Some are entirely random, such as static noise, and some are generated according to an algorithm, such as perlin noise.</p>
+<p>Noise values range between 0 and 1. This allows them to  be linearly interpolated into a greyscale colour, where they can be rendered to a texture like in <em>Figure 1</em>.</p>
+<p><img src="/assets/contents/perlin-noise-terrain-generation/figure1.png" alt="Example Noise Samples" /></p>
+<blockquote>
+<p><strong>Figure 1</strong> - Example static noise on a greyscale texture.</p>
+</blockquote>
+<p>When each noise value (a decimal between 0 and 1) is linearly interpolated to between 0 and 255, they represent one of the 256 shades of grey</p>
+<ul>
+<li>A noise value of 0.0 would generate an rgb value of <code>rgb(000, 000, 000)</code>.</li>
+<li>A noise value of 1.0 would generate an rgb value of <code>rgb(255, 255, 255)</code>.</li>
+<li>A noise value of 0.5 would generate an rgb value of <code>rgb(128, 128, 128)</code>.</li>
+</ul>
+<p>Linear interpolation can be achieved using the following function.</p>
+<pre><code>function lerp(a, b, v) {
+    return (1 - v) * a + v * b;
+}</code></pre>
+<p>The parameters, <code>a</code> and <code>b</code> , represent the minimum and maximum respectively (in this case 0 and 255), and <code>v</code> represents the value that needs interpolating (in this case, the noise value). </p>
+<tip>The implementation and rendering of a grid is not shown in this tutorial, but many tutorials exist for creating tilemaps in various languages and engines.</tip>
+<h2>Static Noise</h2>
+<p>Perhaps the most common example of noise is static noise (also called white noise), where each noise value is an unrelated, random number. Generating static noise is quite simple. Loop each coordinate in a grid, and assign it a random value between 0 and 1.</p>
+<pre><code>function generate_static() {
+    for (var x = 0; x &lt; sizex; x++) {
+        for (var y = 0; y &lt; sizey; y++) {
+            noise[x][y] = Math.random();
+        }
+    }
+}</code></pre>
+<p><em>Figure 1</em> visualises a static noise map.</p>
+<h2>Perlin Noise?</h2>
+<p>Static noise is entirely random. Whilst this has its uses, it is not appropriate for generating the continental style terrain that we want. Instead, perlin noise can be used. Perlin noise is deterministically generated by an algorithm, creating a smooth, gradient based noise map, like in <em>Figure 2</em>. You can clearly see it follows a pattern, producing waves.</p>
+<p><img src="/assets/contents/perlin-noise-terrain-generation/figure2.png" alt="Perlin Noise" /></p>
+<blockquote>
+<p><strong>Figure 2</strong> - Example perlin noise on a greyscale texture.</p>
+</blockquote>
+<p>Generating a noise map using perlin noise is very similar to generating a static noise map. Instead of creating a random number between 0 and 1, we call a function, <code>perlinNoise</code> , passing the <code>x</code> and <code>y</code> position.</p>
+<pre><code>function generate_perlin() {
+    for (var x = 0; x &lt; sizex; x++) {
+        for (var y = 0; y &lt; sizey; y++) {
+            noise[x][y] = perlinNoise(x * scale, y * scale);
+        }
+    }
+}</code></pre>
+<p>For each coordinate, we multiply the <code>x</code> and <code>y</code> by a variable, <code>scale</code>. This is used to adjust the "zoom" of our perlin noise map. By default, we use a value of 0.1 for <code>scale</code>.</p>
+<p><img src="/assets/contents/perlin-noise-terrain-generation/figure3.png" alt="Perlin Noise With Different Scale" /></p>
+<blockquote>
+<p><strong>Figure 3</strong> - A perlin noise map with scale 0.2.</p>
+</blockquote>
+<p>The image in <em>Figure 3</em> shows the same noise map as <em>Figure 2</em>, except with a scale of 0.2 instead of 0.1. A larger scale value creates noise maps that appear more "zoomed" out.</p>
+<tip>The perlin noise function itself will not be manually written for this tutorial, because there are lots of implementations for it in different languages and engines already (see end of page for some links). Replace `perlinNoise` with whatever implementation you use.</tip>
+<h2>Using Perlin Noise as Terrain</h2>
+<p>So far, all noise we have covered has been rendered as a greyscale texture, where each noise value is converted to a shade of grey using linear interpolation. This looks nothing like terrain.</p>
+<p>Instead of thinking of each noise value as noise, think of them as a height, or a density of terrain. Depending on the noise value, the cell becomes a different type of terrain. For example, any value below 0.5 gets classified as water, and any value above 0.5 gets classified as land, and so on...</p>
+<p><img src="/assets/contents/perlin-noise-terrain-generation/figure4.png" alt="Static Noise as Terrain" /></p>
+<blockquote>
+<p><strong>Figure 4</strong> - Static noise map rendered by terrain type.</p>
+</blockquote>
+<p><em>Figure 4</em> shows a static noise map rendered as terrain. The following code shows the classifications that were used.</p>
+<pre><code>set_cell_type(x, y, h) {
+    //Deep Water
+    if (h &lt; 0.40)
+        return this.set_cell(x, y, [21, 61, 181]);
+
+    //Shallow Water
+    if (h &lt; 0.50)
+        return this.set_cell(x, y, [81, 111, 241]);
+
+    //Sand
+    if (h &lt; 0.6)
+        return this.set_cell(x, y, [251, 211, 161]);
+
+    //Grass
+    if (h &lt; 0.9)
+        return this.set_cell(x, y, [31, 131, 31]);
+
+    //Mountain
+    if (h &lt; 1.0)
+        return this.set_cell(x, y, [51, 51, 51]);
+}</code></pre>
+<p>If the noise value is less than 0.40, then the cell is coloured a dark blue, if it is more than 0.40 and less than 0.50, then it is coloured light blue. The same classification of noise values when applied to a perlin noise map looks like <em>Figure 5</em>.</p>
+<p><img src="/assets/contents/perlin-noise-terrain-generation/figure5.png" alt="Perlin Noise as Terrain" /></p>
+<blockquote>
+<p><strong>Figure 5</strong> - Perlin noise map rendered by terrain type.</p>
+</blockquote>
+<p>This basic perlin noise creates a simple continental style terrain. The ranges for each terrain type can be adjusted to get more or less water, rock, grass, and more... Overall, the noise map generated by perlin noise so far is quite simple, and a bit too smooth. Fortunately, there are various methods to improve the terrain, making it more detailed and realistic.</p>
+<h2>Adding Detail Using Octaves</h2>
+<p>To improve the look of our terrain, we are going to generate the height of each cell several times, each with a different scale value. These noise values will then be stacked, and normalised. This will make the terrain more rough and organic. The function <code>genarate_terrain</code> generates more detailed and realistic noise values for each coordinate using octaves.</p>
+<pre><code>generate_terrain() {
+    let max_n = 0;
+    let min_n = 9;
+
+    for (let x = 0; x &lt; this.sizex; x++)
+        for (let y = 0; y &lt; this.sizey; y++) {
+
+            let scale = 0.05;
+            let value = 0.00;
+
+            for (let octave = 1; octave &lt;= 4; octave++) {
+                let ox = x * (scale * octave);
+                let oy = y * (scale * octave);
+
+                value += (this.perlin_noise(ox, oy)) * (1 / (octave + 1));
+            }
+
+            this.grid[x][y] = value;
+
+            max_n = Math.max(max_n, value);
+            min_n = Math.min(min_n, value);
+        }
+
+    this.normalise_and_apply_terrain(min_n, max_n);
+}</code></pre>
+<p>For each coordinate in the map, we produce noise for different scale values. The variable <code>octave</code> represents the current octave we are on. On each octave, we generate the x and y value, denoted by the variables, <code>ox</code> and <code>oy</code> . Instead of just multiplying them by the scale, we multiply them by the scale and the octave. This modifies the scale for each octave, zooming in and out the sampled noise map.</p>
+<p>For each of the four octaves, the scale value is:</p>
+<ol>
+<li><code>scale = 0.05</code> and <code>octave = 1</code> results in <code>x * 0.05</code></li>
+<li><code>scale = 0.05</code> and <code>octave = 2</code> results in <code>x * 0.10</code></li>
+<li><code>scale = 0.05</code> and <code>octave = 3</code> results in <code>x * 0.15</code></li>
+<li><code>scale = 0.05</code> and <code>octave = 4</code> results in <code>x * 0.20</code></li>
+</ol>
+<p>On each octave, the scale value we use increases, resulting in a more zoomed out sample. These then get added to a total noise <code>value</code> for that cell. When the octaves have finished, the noise value at <code>grid[x][y]</code> is set to the total of all values for each octave.</p>
+<p>Secondly, we also multiply the returned perlin value in the following formula: <code>(perlinNoise(ox, oy)) * (1 / (octave + 1))</code> . This reduces the strength of the noise value for each subsequent octave, meaning the more detailed values have less effect than the initial value.</p>
+<h2>Clamping the Values</h2>
+<p>Since we are adding multiple noise values together, the noise value for a single coordinate will no longer be in the range 0 to 1. To bring the values back within this range, we have to use the inverse of a linear interpolation. First though, we need to record the minimum and maximum noise values used.</p>
+<p>Each time we finish calculating the noise value for a coordinate, we check it against the current minimum and maximum, updating those if needed. In the <code>generate_terrain</code> function, <code>max_n</code> represents the max noise value on the noise map, and <code>min_n</code> represents the minimum noise value. Every time we store a new noise value in the array, we update <code>max_n</code> and <code>min_n</code> to ensure they keep track of the bounds.</p>
+<p>Once the noise value of each coordinate is set, we have to normalise them so that they all fall between the values 0 and 1. The function, <code>normalise_and_apply_terrain</code> is used for that.</p>
+<pre><code>normalise_and_apply_terrain(min_n, max_n) {
+    for (let x = 0; x &lt; this.sizex; x++) {
+        for (let y = 0; y &lt; this.sizey; y++) {
+            this.set_cell_type(x, y, inverse_lerp(min_n, max_n, this.grid[x][y]));
+        }
+    }
+}</code></pre>
+<p>For each coordinate, we call the <code>set_cell_type</code> function. This takes an x and y coordinate, along with a height which is uses to determine the terrain type. The height we pass is the value returned by the <code>inverse_lerp</code> function.</p>
+<pre><code>function inverse_lerp(a, b, v) {
+    return clamp(0, 1, (v - a) / (b - a));
+}
+
+function clamp(min, max, v) {
+    return Math.min(Math.max(v, min), max);
+}</code></pre>
+<p>Once we have applied the octaves and normalised the terrain, we generate something like in <em>Figure 6</em>.</p>
+<p><img src="/assets/contents/perlin-noise-terrain-generation/figure6.png" alt="Perlin Noise Terrain With Octaves" /></p>
+<blockquote>
+<p><strong>Figure 6</strong> - Perlin noise terrain with several octaves applied.</p>
+</blockquote>
+<p>In comparison to <em>Figure 5</em>, which has no octaves applied, <em>Figure 6</em> is far more detailed and organic, with less straight edges.</p>
+<h2>Further Reading</h2>
+<ul>
+<li>This YouTube playlist for Generating <a href="https://youtu.be/wbpMiKiSKm8">Procedural Terrain</a> in Unity is detailed and visualised well.</li>
+<li>An article explaining <a href="https://www.redblobgames.com/maps/terrain-from-noise/">Terrain From Noise</a>, and some of the theory behind it.</li>
+</ul></div>
+            <div class="cell flex-col flex-16 p-16 feedback"><h2>Questions or Feedback?</h2>
+<p>Thank you for reading this article!</p>
+<p>If you have any further questions or queries, then don't hesitate to contact me on Twitter or by Email.</p></div>
+    </div>
+
+<div class="cell-side flex-col flex-16">
+            <div class="cell flex-col flex-04 p-16 articles"><a href="/blog/depth-first-search-maze" class="card flex-col flex-04 p-08 "><p class="title">Depth First Search Maze</p><p class="subtitle">2021-06-27</p></a><a href="/blog/game-of-life" class="card flex-col flex-04 p-08 "><p class="title">Conway's Game of Life</p><p class="subtitle">2021-09-18</p></a><a href="/blog/perlin-noise-terrain-generation" class="card flex-col flex-04 p-08 active"><p class="title">Perlin Noise Terrain Generation</p><p class="subtitle">2021-07-04</p></a><a href="/blog/random-walk-dungeon-generation" class="card flex-col flex-04 p-08 "><p class="title">Random Walk Dungeon Generation</p><p class="subtitle">2021-06-20</p></a></div>
+    </div></div>        <div id="foot"><a href="https://twitter.com/thecodingdodo" class="fa fa-twitter"></a>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="https://www.youtube.com/channel/UCLYv_FM6EbtTbfJpFuEzPbQ" class="fa fa-youtube"></a>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="mailto:dean.j.k.james@gmail.com" class="fa fa-envelope"></a></div>    </body>
+</html>
+

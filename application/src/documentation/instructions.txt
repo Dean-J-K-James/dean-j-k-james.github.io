@@ -1,0 +1,39 @@
+--style compressed
+
+Do we really need modules?
+Just have for each brand an includes section in the database for extra includes like validate-login.
+
+Tilemap distances.
+https://iq.opengenus.org/euclidean-vs-manhattan-vs-chebyshev-distance/#:~:text=the%20distance%20between%20squares%20on,its%20diagonals%20as%20coordinate%20axes.
+
+-move index brand to applications folder.
+-have index as default brand in the page-setup file.
+
+-try to see of the logs table will work without the `` around each column name.
+-cant use the VERSION method because file_get_contents wont load the mark down files.
+-maybe LoadFile can minus the version part of the address, because files wont need it.
+-on the error page, have a link back to the homepage.
+
+-each evening, pick an article.
+-make a thumbnail for it and upload to Trello.
+-read through article and improve it.
+-update date and description for the article in the database.
+
+-keep the error page, but put it under the blog brand.
+
+-remove .htaccess from the git repository.
+-add the cookies page.
+-error and cookies are pages that aren't necessarily part of index, so should be in src. this allows brands to use them as though they were part of that brand.
+-should logout be part of index? maybe make it an actual page again that returns to the homepage after being run.
+-login/ logout maybe should be part of it's own brand? each brand could have a dependency on other brands as well.
+-this could allow them to share files, such as database-form without having those files in src.
+-regardless, the aim should be for src to have the absolute minimum code, and make sure it is all generic.
+-if files like error and cookies are in a generic index brand (that doesn't include the login stuff), then this brand could act as a dependency for blog.
+-since blog will still be the priority brand, it's styling will be used.
+-sort of a return to the modules system we had, but ad brands instead.
+-maybe as brands, in the database, there could be an option to mark them as a virtual brand, meaning it is there purely as a dependency for other brands.
+
+-there is an error on line 9 of page-setup if the page does not exist. check if it does before trying to get it's brand.
+
+-card class that highlights grey on hover. the article cards, and side links should have this class.
+-

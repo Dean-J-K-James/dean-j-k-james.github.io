@@ -1,0 +1,10 @@
+img {
+    max-width    : 100%;
+    overflow     : hidden;
+}
+
+.cell-page img {
+    display     : block;
+    margin-left : auto;
+    margin-right: auto;
+}

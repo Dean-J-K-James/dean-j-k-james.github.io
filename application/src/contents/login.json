@@ -1,0 +1,12 @@
+[
+    {
+        "lbl": "Username",
+        "typ": "text",
+        "nme": "username"
+    },
+    {
+        "lbl": "Password",
+        "typ": "password",
+        "nme": "password"
+    }
+]

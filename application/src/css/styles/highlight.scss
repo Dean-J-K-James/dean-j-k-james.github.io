@@ -1,0 +1,53 @@
+pre {
+    padding    : 00px;
+    white-space: pre-wrap;
+}
+
+pre * {
+    overflow-wrap: break-word;
+}
+
+pre code {
+    width: 100%;
+}
+
+code,
+code.hljs {
+    font-family  : Consolas, monaco, monospace;
+    font-size    : 14px;
+    font-weight  : normal;
+}
+
+code {
+    background-color: $colour_var;
+    color           : $colour_var_text;
+    padding         : 02px 04px;
+}
+
+code.hljs {
+    background-color: $colour_code;
+    padding         : 00px;
+}
+
+#page .hljs-ln-numbers {
+    background-color: $colour_code_numbers;
+    padding         : 00px 04px 00px 08px;
+    vertical-align  : text-top;
+}
+
+#page .hljs-ln-code {
+    width  : 100%;
+    padding: 00px 08px 00px 08px;
+}
+
+#page .hljs tr:first-child .hljs-ln-line {
+    padding-top: 08px;
+}
+
+#page .hljs tr:last-child .hljs-ln-line {
+    padding-bottom: 08px;
+}
+
+#page .hljs-ln-n:after {
+    content: ".";
+}
