@@ -1,6 +1,4 @@
-#menu,
-#cook {
-    //height        : 32px;
+.toolbar {
     left          : 00px;
     right         : 00px;
     padding       : 08px 020%;
@@ -17,16 +15,20 @@
     grid-area       : cook;
 }
 
-#cook p {
-    color: $colour_cook_text;
-}
-
-#menu>a,
-#cook>a {
+.toolbar>span {
     background-color: transparent;
     width           : auto;
-    height          : 32px;
-    color           : $colour_menu_text;
+    color           : $colour_menu_foreground;
+    font-size       : 12px;
+    font-weight     : bold;
+    text-decoration : none;
+    line-height     : 32px;
+}
+
+.toolbar>a {
+    background-color: transparent;
+    width           : auto;
+    color           : $colour_menu_foreground;
     font-size       : 12px;
     font-weight     : bold;
     text-decoration : none;
@@ -35,30 +37,26 @@
     white-space     : nowrap;
 }
 
-#menu>a.active,
-#menu>a:hover,
-#cook>a:hover {
+.toolbar>a.active,
+.toolbar>a:hover {
     background-color: $colour_menu_active;
-    color           : $colour_menu_active_text;
+    color           : $colour_menu_foreground;
 }
 
 #menu a.logo {
-    background-color: $colour_logo;
-    color           : $colour_logo_text;
-    font-family     : $font_logo;
+    background-color: $colour_menu_foreground;
+    color           : $colour_menu;
     padding         : 00px 08px;
     font-size       : 16px;
 }
 
 #menu a.logo:hover {
-    background-color: $colour_logo_active;
-    color           : $colour_logo_active_text;
+    background-color: $colour_menu_active;
+    color           : $colour_menu_foreground;
 }
 
 @media screen and (max-width: 1024px) {
-
-    #menu,
-    #cook {
+    .toolbar {
         padding: 08px 16px;
     }
 }

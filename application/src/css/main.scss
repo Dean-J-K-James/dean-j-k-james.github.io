@@ -2,15 +2,9 @@
 //Variable
 $colour_body            : rgb(241, 241, 241) !default;
 $colour_menu            : rgb(066, 121, 106) !default;
-$colour_menu_text       : rgb(251, 251, 251) !default;
-$colour_menu_active     : rgb(096, 156, 236) !default;
-$colour_menu_active_text: rgb(251, 251, 251) !default;
-$colour_logo            : rgb(251, 251, 251) !default;
-$colour_logo_text       : rgb(066, 121, 206) !default;
-$colour_logo_active     : rgb(096, 156, 236) !default;
-$colour_logo_active_text: rgb(251, 251, 251) !default;
+$colour_menu_active     : rgb(116, 171, 156) !default;
+$colour_menu_foreground : rgb(241, 241, 241) !default;
 $colour_cook            : rgb(051, 051, 051) !default;
-$colour_cook_text       : rgb(221, 221, 221) !default;
 $colour_foot            : rgb(255, 255, 255) !default;
 $colour_cell            : rgb(255, 255, 255) !default;
 $colour_border          : rgb(231, 231, 231) !default;
@@ -40,9 +34,6 @@ $colour_input           : rgb(246, 246, 246) !default;
 $colour_input_text      : rgb(051, 051, 051) !default;
 $colour_table           : rgb(066, 121, 106) !default;
 $colour_table_accent    : rgb(166, 221, 206) !default;
-$font_logo              : Arial,
-Helvetica,
-sans-serif !default;
 
 //Internal
 @import 'external/solarized-light';
