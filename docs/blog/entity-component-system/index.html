@@ -1,0 +1,167 @@
+
+<!doctype html>
+
+<html lang="en">
+    <head>
+        <title>Entity Component System</title>
+<meta charset="utf-8">
+<meta name="viewport"            content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="title"               content="Entity Component System">
+<meta name="image"               content="https://thecodingdodo.com/application/blog/contents/entity-component-system/thumbnail.png">
+<meta name="description"         content="">
+<meta property="og:title"        content="Entity Component System">
+<meta property="og:image"        content="https://thecodingdodo.com/application/blog/contents/entity-component-system/thumbnail.png">
+<meta property="og:description"  content="">
+<meta name="twitter:card"        content="summary">
+<meta name="twitter:title"       content="Entity Component System">
+<meta name="twitter:image"       content="https://thecodingdodo.com/application/blog/contents/entity-component-system/thumbnail.png">
+<meta name="twitter:description" content="">
+<meta name="robots"              content="index, follow">
+<link rel="canonical"            href="https://thecodingdodo.com/blog/entity-component-system">
+<link rel="icon"                 href="/assets/img/favicon.png" type="image/x-icon">
+<link rel="stylesheet"           href="/assets/css/main.css">
+<link rel="stylesheet"           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js" defer></script><script src="/assets/js/cookies.js" defer></script><script src="/assets/js/highlight.min.js" defer></script><script src="/assets/js/highlight_line_numbers.min.js" defer></script><script src="/assets/js/highlight.js" defer></script>    </head>
+    <body>
+        <div id="cook">
+    <p>This website uses cookies for tracking. By continuing to use this website, you agree to our use of cookies. Visit our cookie policy page to learn more.</p>
+    <div class="flex-fill"></div>
+    <a id="cookies-accept" class="p-08 py-0">Accept</a>
+</div>        <div id="menu" class="flex-row flex-08">
+    <a href="/feed" class="logo">The Coding Dodo</a>
+    <div class="flex-fill"></div>
+    <a href="/cookies" class="p-08 py-0 ">Cookies</a><a href="/feed" class="p-08 py-0 ">Blog</a>    </div>        <div id="page" class="two-column"><div class="cell-page flex-col flex-16">
+            <div class="cell flex-col flex-16 p-16 title">
+<h1>Entity Component System</h1>
+<p class="subtitle">Last Updated: 2021-06-20</p>
+
+</div>
+            <div class="cell flex-col flex-16 p-16 blog"><h2>What is Entity Component System?</h2>
+<p>Entity Component System (ECS) is a software pattern commonly used in game development. It is designed to take full advantage of a computer’s hardware to maximize performance, whilst also providing the programmer with a structured, modular, and reusable environment.</p>
+<p>ECS, as it's name suggests, comprises three parts: entities, components, and systems. Each of these three parts have their own purpose and responsibilities within an ECS framework, and interact with each other in their own ways.</p>
+<p><img src="/assets/contents/entity-component-system/figure1.png" alt="ECS Parts" /></p>
+<blockquote>
+<p><strong>Figure 1</strong> - ECS Parts</p>
+</blockquote>
+<h2>Example</h2>
+<p>ECS is often used as an alternative to the traditional object oriented approach to software development. Although both ECS and OOP can be used together, let's have a look at an example where we use and compare both methods as alternatives. Consider a 2D platformer with the following features:</p>
+<ul>
+<li>A player controlled by a mouse and keyboard.</li>
+<li>A static tree.</li>
+<li>Two zombies controlled by AI.</li>
+</ul>
+<h3>What Would this Look Like in OOP?</h3>
+<p>In object oriented programming, data and functionality are kept tightly encapsulated within classes, promoting inheritance like in the following diagram:</p>
+<p><img src="/assets/contents/entity-component-system/figure2.png" alt="Our Example Game Using OOP" /></p>
+<blockquote>
+<p><strong>Figure 1</strong> - Our Example Game Using OOP</p>
+</blockquote>
+<p>We define a class, <code>GameObject</code> which contains all the functionality and data that is common between our features. This class could look something like this:</p>
+<pre><code>class GameObject
+{
+    public Sprite sprite;
+    public float  x;
+    public float  y;
+
+    public void Render()
+    {
+        ...
+    }
+}</code></pre>
+<p>All of our features, the player, a tree, and the zombies, require an x and y position, and a sprite to visualise them; as well as a function used to render the object to the screen. Since our tree object would not require any additional data or functionality, we could instantiate the <code>GameObject</code> class to represent the tree object.</p>
+<p>The remaining player and zombie features would need some extra functionality. For this, we would define a class for each. The player would be represented by the <code>Player</code> class.</p>
+<pre><code>class Player : GameObject
+{
+    public int health;
+
+    public void OnInput()
+    {
+        ...
+    }
+}</code></pre>
+<p>The player would inherit the position and sprite properties from it's parent class, and then define the additional data and functionality it needs in it's own class. The player in our game would be represented by an instance of the <code>Player</code> class.</p>
+<p>The two zombies would be similar, each being represented by an instance of the <code>Zombie</code> class.</p>
+<pre><code>class Zombie : GameObject
+{
+    public void OnUpdate()
+    {
+        ...
+    }
+}</code></pre>
+<p>is a and has a relationships.</p>
+<p>Inheritance diagram for some classes
+Here, a parent GameObject class contains all common data and functionality. Different classes would inherit and override this.</p>
+<p>What Would this Look Like in ECS?
+ECS doesn’t keep data and functionality coupled together in classes, nor does it use inheritance. Instead, it seperates them like in the diagram below:</p>
+<p>Three parts to ECS
+All data is seperated into small, specialised components, and all functionality and logic is kept in specialised systems. The entity is an identifier that binds everything together.</p>
+<p>Following is a more detailed description of the three concepts of ECS.</p>
+<p>Entity
+An entity is an individual object in the world. The following diagram shows the four entities in our game:</p>
+<p>The four entities in our game
+In a program using ECS, each entity is represented by a unique integer id. The entity itself contains no data or functionality; it is just an integer.</p>
+<p>Components
+All the data associated with an entity is seperated into small, generic, and reusable components.</p>
+<p>Below are eight example components:</p>
+<p>Some example components
+Each component is specific, independent, and usually contains only primitive data types like integers or floats.</p>
+<p>For example, the following code represents the Position component:</p>
+<ol>
+<li>public struct Position</li>
+<li>{</li>
+<li>public float x;</li>
+<li>public float y;</li>
+<li>}
+Components are lightweight data containers that define the attributes and state of an entity. They contain no functionality, just data.</li>
+</ol>
+<p>The following diagram shows the four entities in our game alongside the components attached to them.</p>
+<p>Each entity and their components
+All four entities have a Position and Render component. Entity 0, 1, and 2 have a Physics component, but entity 3 does not. Entity 0 has a PlayeInput component and entity 1 and 2 have an AI component.</p>
+<p>Components on there own just store data. They do not contain any methods and do not have any functionality. How the variables in a component are interpreted is not the concern of the component.</p>
+<p>Component Array
+As mentioned, entities are just integers that don’t need to be stored anywhere. Components, however, do need to be stored in memory and are usually stored in arrays like in the following diagram:</p>
+<p>Components array for Position and Render
+Each component type will have its own one dimensional array with each instance of a component being stored contiguous to the next.</p>
+<p>The relationship between the entity id and the component array depends heavily on how the ECS is implemented. Often, the entity id maps either directly or indirectly to the index of the array that the entity’s component is located.</p>
+<p>For example the Position component attached to entity 35 will be at index 35 in the Position components array.</p>
+<p>Systems
+Systems bring the game to life. They operate on the components attached to an entity to produce changes in the world.</p>
+<p>The following diagram shows four example systems:</p>
+<p>Example systems
+Each system is updated once per frame. During this, a set of entities, which are selected according to some filter, are iterated, and their attached components are modified.</p>
+<p>Take the GravitySystem for example. Its requirements are that an entity has an attached Position and Physics component. The following code demonstrates what the update loop could look like:</p>
+<ol>
+<li>foreach (int e in GetEntities&lt;Position, Physics&gt;())</li>
+<li>{</li>
+<li>Physics  phy = physics[e];</li>
+<li>Position pos = position[e];</li>
+<li>
+</li>
+<li>phy.velocity_y -= 9.81f;</li>
+<li>pos.y += phy.velocity_y;</li>
+<li>}
+(This code is for demonstration purposes and will not compile)</li>
+</ol>
+<p>Line 1 iterates over every entity that has the required Position and Physics components.
+Line 3 and 4 grabs the instances of each component belonging to the current entity from the relevant component arrays.
+Line 6 and 7 modify the component instances.
+The GravitySystem will only work on entities that have the required components, which in our game, is entity 0, 1, and 2. Entity 3 does not have an attached Physics component and so is not used by the GravitySystem.</p>
+<p>Like components, systems are specific. The GravitySystem applies gravity. A RenderSystem renders entities with a Position and Render component. A HealthRegenSystem regenerates the health of entities with a Health component.</p>
+<p>Conclusion
+Hopefully, this article has successfully introduced the basic concepts of ECS.</p>
+<p>Actually implementing an ECS can be a challenge. Fortunately, there are lots of resources online that can help with this. Below are some that I used.</p></div>
+            <div class="cell flex-col flex-16 p-16 feedback"><h2>Questions or Feedback?</h2>
+<p>Thank you for reading this article!</p>
+<p>If you have any further questions or queries, then don't hesitate to contact me on Twitter or by Email.</p></div>
+    </div>
+
+<div class="cell-side flex-col flex-16">
+            <div class="cell flex-col flex-04 p-16 articles"><a href="/blog/entity-component-system" class="card flex-col flex-04 p-08 active"><p class="title">Entity Component System</p><p class="subtitle">2021-06-20</p></a></div>
+    </div></div>        <div id="foot"><a href="https://twitter.com/thecodingdodo" class="fa fa-twitter"></a>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="https://www.youtube.com/channel/UCLYv_FM6EbtTbfJpFuEzPbQ" class="fa fa-youtube"></a>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="mailto:dean.j.k.james@gmail.com" class="fa fa-envelope"></a></div>    </body>
+</html>
+
