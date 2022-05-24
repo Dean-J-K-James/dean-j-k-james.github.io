@@ -12,7 +12,7 @@ class HTML
     public static function menu_link($link, $name)
     {
         echo ''
-        . '<a href="' . create_link($link) . '" class="p-08 py-0 ' . (strpos(get_link(), create_link($link)) !== false ? 'active' : '') . '">' . $name . '</a>';
+        . '<a href="' . create_link($link) . '" class="p-08 py-0' . (strpos(get_link(), create_link($link)) !== false ? ' active' : '') . '">' . $name . '</a>';
     }
 
     /**
@@ -21,7 +21,7 @@ class HTML
     public static function side_link($link, $name, $subtitle)
     {
         echo ''
-        . '<a href="' . create_link($link) . '" class="card flex-col flex-04 p-08 ' . (create_link($link) == get_link() ? 'active' : '') . '">'
+        . '<a href="' . create_link($link) . '" class="card flex-col flex-04 p-08' . (create_link($link) == get_link() ? ' active' : '') . '">'
         . '<p class="title">' . $name . '</p>'
         . '<p class="subtitle">' . $subtitle . '</p>'
         . '</a>';

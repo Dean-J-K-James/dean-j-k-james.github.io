@@ -1,15 +1,3 @@
-.form-group {
-    display       : flex;
-    flex-direction: column-reverse;
-    gap           : 08px;
-    margin        : 00px;
-    padding       : 00px;
-}
-
-.form-group.form-hidden {
-    display: none;
-}
-
 .form-group input,
 .form-group select,
 .form-group textarea {
@@ -22,9 +10,9 @@
 
 button,
 #submit-button {
-    background-color: rgb(221, 231, 251);
-    border          : 01px solid rgb(096, 156, 236);
-    color           : rgb(096, 156, 236);
+    background-color: $colour_btn;
+    border          : 01px solid $colour_btn_text;
+    color           : $colour_btn_text;
     text-align      : center;
     font-size       : 13px;
     font-weight     : bold;

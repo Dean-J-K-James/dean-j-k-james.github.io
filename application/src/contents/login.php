@@ -15,5 +15,5 @@ if ($login)
 }
 
 #Redirect to the login page.
-header('Location: ' . create_link("login"));
+header('Location: ' . create_link('login'));
 exit;

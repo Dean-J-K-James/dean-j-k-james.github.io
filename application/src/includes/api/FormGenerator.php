@@ -32,7 +32,7 @@ class FormGenerator
 
         $value = isset($data) ? htmlspecialchars(isset($data[$nme]) ? $data[$nme] : $val) : $val;
 
-        echo '<div class="form-group">';
+        echo '<div class="form-group flex-col flex-08">';
 
         switch ($typ)
         {
@@ -66,8 +66,8 @@ class FormGenerator
     private static function generateInput($lbl, $nme, $typ, $cls, $opt, $val, $atr, $value)
     {
         echo ''
-        . '<input type="' . $typ . '" id="' . $nme . '" name="' . $nme . '" value="' . $value . '" ' . $atr . '>'
-        . '<label for="' . $nme . '">' . $lbl . '</label>';
+        . '<label for="' . $nme . '">' . $lbl . '</label>'
+        . '<input type="' . $typ . '" id="' . $nme . '" name="' . $nme . '" value="' . $value . '" ' . $atr . '>';
     }
 
     /**
@@ -76,6 +76,7 @@ class FormGenerator
     private static function generateSelect($lbl, $nme, $typ, $cls, $opt, $val, $atr, $value)
     {
         echo ''
+        . '<label for="' . $nme . '">' . $lbl . '</label>'
         . '<select id="' . $nme . '" name="' . $nme . '">';
 
         for ($i = 0; $i < count($opt); $i++)
@@ -85,8 +86,7 @@ class FormGenerator
         }
 
         echo ''
-        . '</select>'
-        . '<label for="' . $nme . '">' . $lbl . '</label>';
+        . '</select>';
     }
 
     /**
@@ -95,8 +95,8 @@ class FormGenerator
     private static function generateTextArea($lbl, $nme, $typ, $cls, $opt, $val, $atr, $value)
     {
         echo ''
-        . '<textarea id="' . $nme . '" name="' . $nme . '" class="tinymce" ' . $atr . ' rows="16">' . $value . '</textarea>'
-        . '<label for="' . $nme . '">' . $lbl . '</label>';
+        . '<label for="' . $nme . '">' . $lbl . '</label>'
+        . '<textarea id="' . $nme . '" name="' . $nme . '" class="tinymce" ' . $atr . ' rows="16">' . $value . '</textarea>';
     }
 
     /**
@@ -113,7 +113,7 @@ class FormGenerator
      */
     private static function generateTip($lbl, $nme, $typ, $cls, $opt, $val, $atr, $value)
     {
-        echo '<tip> ' . $lbl . '</tip>';
+        echo '<div class="tip"> ' . $lbl . '</div>';
     }
 
 }
