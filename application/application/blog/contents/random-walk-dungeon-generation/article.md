@@ -7,7 +7,7 @@ Procedural cave and dungeon generation is a fundamental aspect of many games and
 
 The random walk algorithm is a simple method that can be used to quickly create fully connected, random looking caves of varying size and shape. It works by repeatedly traversing a grid in random directions, turning cells that are passed into a path. Once the random walk is done, the results will look similar to those in *Figure 1*.
 
-<tip>The implementation and rendering of a grid is not shown in this tutorial, but many tutorials exist for creating tilemaps in various languages and engines.</tip>
+<div class="tip">The implementation and rendering of a grid is not shown in this tutorial, but many tutorials exist for creating tilemaps in various languages and engines.</div>
 
 ## Algorithm
 
@@ -36,7 +36,7 @@ The rest of the algorithm needs to be repeated a fixed number of times, so we ar
 
 On each iteration, we call the `iterate_random_walk` function. This creates a path, and chooses the next active cell.
 
-<tip>The term "active" cell is simply a label we are giving to the cell that is currently being evaluated. There is nothing special or different about the cell itself.</tip>
+<div class="tip">The term "active" cell is simply a label we are giving to the cell that is currently being evaluated. There is nothing special or different about the cell itself.</div>
 
 ## Initialise
 

@@ -1,21 +1,20 @@
-.form-group input,
-.form-group select,
-.form-group textarea {
-    background-color: $colour_input;
-    border          : 01px solid $colour_border;
-    color           : $colour_input_text;
-    font-size       : 13px;
-    padding         : 04px;
-}
-
-button,
 #submit-button {
-    background-color: $colour_btn;
-    border          : 01px solid $colour_btn_text;
-    color           : $colour_btn_text;
+    background-color: $colour_primary;
+    border          : 01px solid $colour_primary_text;
+    color           : $colour_primary_text;
     text-align      : center;
     font-size       : 13px;
     font-weight     : bold;
     padding         : 04px;
     cursor          : pointer;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    background-color: $colour_accent;
+    border          : 01px solid $colour_border;
+    color           : $colour_text;
+    font-size       : 13px;
+    padding         : 04px;
 }

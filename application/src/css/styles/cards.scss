@@ -1,4 +1,8 @@
 .card:hover,
 .card.active {
-    background-color: $colour_highlight;
+    background-color: $colour_accent;
+}
+
+.card.active .title {
+    color: $colour_link_hover;
 }

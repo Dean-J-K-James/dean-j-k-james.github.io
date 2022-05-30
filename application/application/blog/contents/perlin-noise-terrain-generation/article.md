@@ -22,7 +22,7 @@ Linear interpolation can be achieved using the following function.
 
 The parameters, `a` and `b` , represent the minimum and maximum respectively (in this case 0 and 255), and `v` represents the value that needs interpolating (in this case, the noise value). 
 
-<tip>The implementation and rendering of a grid is not shown in this tutorial, but many tutorials exist for creating tilemaps in various languages and engines.</tip>
+<div class="tip">The implementation and rendering of a grid is not shown in this tutorial, but many tutorials exist for creating tilemaps in various languages and engines.</div>
 
 ## Static Noise
 
@@ -64,7 +64,7 @@ For each coordinate, we multiply the `x` and `y` by a variable, `scale`. This is
 
 The image in *Figure 3* shows the same noise map as *Figure 2*, except with a scale of 0.2 instead of 0.1. A larger scale value creates noise maps that appear more "zoomed" out.
 
-<tip>The perlin noise function itself will not be manually written for this tutorial, because there are lots of implementations for it in different languages and engines already (see end of page for some links). Replace `perlinNoise` with whatever implementation you use.</tip>
+<div class="tip">The perlin noise function itself will not be manually written for this tutorial, because there are lots of implementations for it in different languages and engines already (see end of page for some links). Replace `perlinNoise` with whatever implementation you use.</div>
 
 ## Using Perlin Noise as Terrain
 

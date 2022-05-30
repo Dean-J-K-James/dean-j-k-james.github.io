@@ -22,9 +22,14 @@ class HTML
     {
         echo ''
         . '<a href="' . create_link($link) . '" class="card flex-col flex-04 p-08' . (create_link($link) == get_link() ? ' active' : '') . '">'
-        . '<p class="title">' . $name . '</p>'
-        . '<p class="subtitle">' . $subtitle . '</p>'
-        . '</a>';
+        . '<p class="title">' . $name . '</p>';
+
+        if ($subtitle !== null)
+        {
+            echo '<p class="subtitle">' . $subtitle . '</p>';
+        }
+
+        echo '</a>';
     }
 
     /**
@@ -36,14 +41,23 @@ class HTML
         . '<div class="card flex-row flex-04">'
         . '<img src="' . $image . '" alt="' . $name . '" style="height: 128px">'
         . '<div class="flex-col flex-fill flex-08 p-08">'
-        . '<h3>' . $name . '</h3>'
-        . '<p class="subtitle">' . $subtitle . '</p>'
+        . '<h3>' . $name . '</h3>';
+
+        if ($subtitle !== null)
+        {
+            echo '<p class="subtitle">' . $subtitle . '</p>';
+        }
+
+        echo ''
         . '<p>' . $desc . '</p>'
         . '<div class="flex-row flex-04">';
 
         foreach ($tags as $tag)
         {
-            echo '<div class="tag">' . ucwords(str_replace('-', ' ', $tag)) . '</div>';
+            if ($tag != '')
+            {
+                echo '<div class="tag">' . ucwords(str_replace('-', ' ', $tag)) . '</div>';
+            }
         }
 
         echo ''

@@ -1,24 +1,12 @@
-.cell {
-    background   : $colour_cell;
-    border       : 01px solid $colour_border;
-    position     : relative;
-}
-
-.cell.blog,
-.cell.cookies {
-    gap: 32px;
-}
-
-.cell-page {
+#cell-page {
     grid-area: page;
 }
 
-.cell-side {
+#cell-side {
     grid-area: side;
 }
 
-#ajax-target {
-    width    : 0;
-    min-width: 100%;
-    word-wrap: break-word;
+.cell {
+    background-color: $colour_cell;
+    border          : 01px solid $colour_border;
 }

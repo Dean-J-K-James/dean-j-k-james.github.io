@@ -1,7 +1,6 @@
 #page {
     display  : grid;
     grid-area: body;
-    gap      : 16px;
 }
 
 #page.one-column {
@@ -17,7 +16,6 @@
 }
 
 @media screen and (max-width: 1024px) {
-
     #page.one-column,
     #page.two-column {
         margin: 16px;
@@ -25,7 +23,6 @@
 }
 
 @media screen and (max-width: 640px) {
-
     #page.one-column,
     #page.two-column {
         grid-template-columns: 01fr;

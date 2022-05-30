@@ -24,7 +24,7 @@ $file = load_file('contents/' . (($form['name'] == 1) ? $name : $page) . '.json'
         ?>
 
         <?php if ($form['ajax'] != NULL): ?>
-            <div id="submit-button" class="search"><?= $form['button'] ?></div>
+            <a id="submit-button"><?= $form['button'] ?></a>
         <?php endif; ?>
     </form>
 <?php endif; ?>

@@ -4,7 +4,7 @@ $filt = $_REQUEST['filters'];
 $json = json_decode(file_get_contents(load_file('contents/' . $page . '-table.json')), true);
 ?>
 
-<table class="table-database">
+<table>
     <tr>
         <?php foreach ($json['frm'] as $col): ?>
             <th><?= $col['th'] ?></th>

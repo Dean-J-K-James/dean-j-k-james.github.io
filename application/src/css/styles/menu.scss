@@ -1,62 +1,26 @@
-.toolbar {
-    left          : 00px;
-    right         : 00px;
-    padding       : 08px 020%;
-}
-
 #menu {
     background-color: $colour_menu;
     grid-area       : menu;
 }
 
-#cook {
-    background-color: $colour_cook;
-    display         : none;
-    grid-area       : cook;
+#menu>* {
+    color: $colour_menu_text;
 }
 
-.toolbar>span {
-    background-color: transparent;
-    width           : auto;
-    color           : $colour_menu_foreground;
-    font-size       : 12px;
-    font-weight     : bold;
-    text-decoration : none;
-    line-height     : 32px;
-}
-
-.toolbar>a {
-    background-color: transparent;
-    width           : auto;
-    color           : $colour_menu_foreground;
-    font-size       : 12px;
-    font-weight     : bold;
-    text-decoration : none;
-    line-height     : 32px;
-    cursor          : pointer;
-    white-space     : nowrap;
-}
-
-.toolbar>a.active,
-.toolbar>a:hover {
-    background-color: $colour_menu_active;
-    color           : $colour_menu_foreground;
+#menu>a.active,
+#menu>a:hover {
+    background-color: $colour_menu_accent;
+    color           : $colour_menu_text;
 }
 
 #menu a.logo {
-    background-color: $colour_menu_foreground;
+    background-color: $colour_menu_text;
     color           : $colour_menu;
     padding         : 00px 08px;
     font-size       : 16px;
 }
 
 #menu a.logo:hover {
-    background-color: $colour_menu_active;
-    color           : $colour_menu_foreground;
-}
-
-@media screen and (max-width: 1024px) {
-    .toolbar {
-        padding: 08px 16px;
-    }
+    background-color: $colour_menu_accent;
+    color           : $colour_menu_text;
 }

@@ -1,0 +1,25 @@
+.toolbar {
+    left          : 00px;
+    right         : 00px;
+    padding       : 08px 020%;
+}
+
+.toolbar>* {
+    background-color: transparent;
+    width           : auto;
+    font-size       : 12px;
+    font-weight     : bold;
+    text-decoration : none;
+    line-height     : 32px;
+}
+
+.toolbar>a {
+    cursor          : pointer;
+    white-space     : nowrap;
+}
+
+@media screen and (max-width: 1024px) {
+    .toolbar {
+        padding: 08px 16px;
+    }
+}

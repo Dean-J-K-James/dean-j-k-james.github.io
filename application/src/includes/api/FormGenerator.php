@@ -43,9 +43,6 @@ class FormGenerator
             case 'file':
                 self::generateInput($lbl, $nme, $typ, $cls, $opt, $val, $atr, $value);
                 break;
-            case 'button':
-                self::generateButton($lbl, $nme, $typ, $cls, $opt, $val, $atr, $value);
-                break;
             case 'select':
                 self::generateSelect($lbl, $nme, $typ, $cls, $opt, $val, $atr, $value);
                 break;
@@ -83,7 +80,7 @@ class FormGenerator
         {
             $sel = ($value == $opt[$i]["val"] ? 'selected' : '');
             echo '<option value="' . $opt[$i]["val"] . '" ' . $sel . '>' . $opt[$i]["lbl"] . '</option>';
-        }
+        }#
 
         echo ''
         . '</select>';
@@ -97,15 +94,6 @@ class FormGenerator
         echo ''
         . '<label for="' . $nme . '">' . $lbl . '</label>'
         . '<textarea id="' . $nme . '" name="' . $nme . '" class="tinymce" ' . $atr . ' rows="16">' . $value . '</textarea>';
-    }
-
-    /**
-     * 
-     */
-    private static function generateButton($lbl, $nme, $typ, $cls, $opt, $val, $atr, $value)
-    {
-        echo ''
-        . '<div id="submit-button" class="' . $cls . '" name="' . $nme . '" value="' . $val . '">' . $lbl . '</div>';
     }
 
     /**

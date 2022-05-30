@@ -1,1 +1,1 @@
-<div id="page" class="<?= $_SESSION['page']['body'] ?>"><?php require_once 'pages/body/' . $_SESSION['page']['body'] . '.php' ?></div>
+<div id="page" class="flex-16 <?= $_SESSION['page']['body'] ?>"><?php require_once 'pages/body/' . $_SESSION['page']['body'] . '.php' ?></div>

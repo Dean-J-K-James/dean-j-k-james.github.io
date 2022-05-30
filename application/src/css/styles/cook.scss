@@ -1,0 +1,15 @@
+#cook {
+    background-color: $colour_cook;
+    display         : none;
+    grid-area       : cook;
+}
+
+#cook>* {
+    color: $colour_cook_text;
+}
+
+#cook>a.active,
+#cook>a:hover {
+    background-color: $colour_cook_accent;
+    color           : $colour_cook_text;
+}

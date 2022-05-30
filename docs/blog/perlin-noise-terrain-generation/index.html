@@ -31,7 +31,7 @@
 </div>        <div id="menu" class="toolbar flex-row flex-08">
     <a href="/feed" class="logo">The Coding Dodo</a>
     <div class="flex-fill"></div>
-    <a href="/cookies" class="p-08 py-0">Cookies</a><a href="/feed" class="p-08 py-0">Blog</a>    </div>        <div id="page" class="two-column"><div class="cell-page flex-col flex-16">
+    <a href="/feed" class="p-08 py-0">Blog</a>    </div>        <div id="page" class="flex-16 two-column"><div id="cell-page" class="flex-col flex-16">
             <div class="cell flex-col flex-16 p-16 title">
 <h1>Perlin Noise Terrain Generation</h1>
 <p class="subtitle">Last Updated: 2021-07-04</p>
@@ -45,7 +45,8 @@
     
     <script type="module" src="/assets/contents/perlin-noise-terrain-generation/main.js"></script>
 </div>
-            <div class="cell flex-col flex-16 p-16 blog"><h2>What is Noise?</h2>
+            <div class="cell flex-col flex-16 p-16 blog"><div class="flex-col flex-32">
+    <h2>What is Noise?</h2>
 <p>In computer science, noise is a set of procedurally generated numbers, usually generated for, and stored in, a two dimensional grid. A grid made up of individual noise values is known as a noise map. There are several types of noise, each with unique properties and purposes. Some are entirely random, such as static noise, and some are generated according to an algorithm, such as perlin noise.</p>
 <p>Noise values range between 0 and 1. This allows them to  be linearly interpolated into a greyscale colour, where they can be rendered to a texture like in <em>Figure 1</em>.</p>
 <p><img src="/assets/contents/perlin-noise-terrain-generation/figure1.png" alt="Example Noise Samples" /></p>
@@ -63,7 +64,7 @@
     return (1 - v) * a + v * b;
 }</code></pre>
 <p>The parameters, <code>a</code> and <code>b</code> , represent the minimum and maximum respectively (in this case 0 and 255), and <code>v</code> represents the value that needs interpolating (in this case, the noise value). </p>
-<tip>The implementation and rendering of a grid is not shown in this tutorial, but many tutorials exist for creating tilemaps in various languages and engines.</tip>
+<div class="tip">The implementation and rendering of a grid is not shown in this tutorial, but many tutorials exist for creating tilemaps in various languages and engines.</div>
 <h2>Static Noise</h2>
 <p>Perhaps the most common example of noise is static noise (also called white noise), where each noise value is an unrelated, random number. Generating static noise is quite simple. Loop each coordinate in a grid, and assign it a random value between 0 and 1.</p>
 <pre><code>function generate_static() {
@@ -94,7 +95,7 @@
 <p><strong>Figure 3</strong> - A perlin noise map with scale 0.2.</p>
 </blockquote>
 <p>The image in <em>Figure 3</em> shows the same noise map as <em>Figure 2</em>, except with a scale of 0.2 instead of 0.1. A larger scale value creates noise maps that appear more "zoomed" out.</p>
-<tip>The perlin noise function itself will not be manually written for this tutorial, because there are lots of implementations for it in different languages and engines already (see end of page for some links). Replace `perlinNoise` with whatever implementation you use.</tip>
+<div class="tip">The perlin noise function itself will not be manually written for this tutorial, because there are lots of implementations for it in different languages and engines already (see end of page for some links). Replace `perlinNoise` with whatever implementation you use.</div>
 <h2>Using Perlin Noise as Terrain</h2>
 <p>So far, all noise we have covered has been rendered as a greyscale texture, where each noise value is converted to a shade of grey using linear interpolation. This looks nothing like terrain.</p>
 <p>Instead of thinking of each noise value as noise, think of them as a height, or a density of terrain. Depending on the noise value, the cell becomes a different type of terrain. For example, any value below 0.5 gets classified as water, and any value above 0.5 gets classified as land, and so on...</p>
@@ -196,18 +197,18 @@ function clamp(min, max, v) {
 <ul>
 <li>This YouTube playlist for Generating <a href="https://youtu.be/wbpMiKiSKm8">Procedural Terrain</a> in Unity is detailed and visualised well.</li>
 <li>An article explaining <a href="https://www.redblobgames.com/maps/terrain-from-noise/">Terrain From Noise</a>, and some of the theory behind it.</li>
-</ul></div>
+</ul></div></div>
             <div class="cell flex-col flex-16 p-16 feedback"><h2>Questions or Feedback?</h2>
 <p>Thank you for reading this article!</p>
 <p>If you have any further questions or queries, then don't hesitate to contact me on Twitter or by Email.</p></div>
     </div>
 
-<div class="cell-side flex-col flex-16">
-            <div class="cell flex-col flex-04 p-16 articles"><a href="/blog/depth-first-search-maze" class="card flex-col flex-04 p-08"><p class="title">Depth First Search Maze</p><p class="subtitle">2021-06-27</p></a><a href="/blog/game-of-life" class="card flex-col flex-04 p-08"><p class="title">Conway's Game of Life</p><p class="subtitle">2021-09-18</p></a><a href="/blog/perlin-noise-terrain-generation" class="card flex-col flex-04 p-08 active"><p class="title">Perlin Noise Terrain Generation</p><p class="subtitle">2021-07-04</p></a><a href="/blog/random-walk-dungeon-generation" class="card flex-col flex-04 p-08"><p class="title">Random Walk Dungeon Generation</p><p class="subtitle">2021-06-20</p></a></div>
-    </div></div>        <div id="foot"><a href="https://twitter.com/thecodingdodo" class="fa fa-twitter"></a>
-&nbsp;&nbsp;&nbsp;&nbsp;
+<div id="cell-side" class="flex-col flex-16">
+            <div class="cell flex-col flex-16 p-16 articles"><a href="/blog/depth-first-search-maze" class="card flex-col flex-04 p-08"><p class="title">Depth First Search Maze</p><p class="subtitle">2021-06-27</p></a><a href="/blog/game-of-life" class="card flex-col flex-04 p-08"><p class="title">Conway's Game of Life</p><p class="subtitle">2021-09-18</p></a><a href="/blog/perlin-noise-terrain-generation" class="card flex-col flex-04 p-08 active"><p class="title">Perlin Noise Terrain Generation</p><p class="subtitle">2021-07-04</p></a><a href="/blog/random-walk-dungeon-generation" class="card flex-col flex-04 p-08"><p class="title">Random Walk Dungeon Generation</p><p class="subtitle">2021-06-20</p></a></div>
+    </div></div>        <div id="foot" class="toolbar flex-row flex-08"><a href="/cookies" class="p-08 py-0">Cookie Policy</a>
+<div class="flex-fill"></div>
+<a href="https://twitter.com/thecodingdodo" class="fa fa-twitter"></a>
 <a href="https://www.youtube.com/channel/UCLYv_FM6EbtTbfJpFuEzPbQ" class="fa fa-youtube"></a>
-&nbsp;&nbsp;&nbsp;&nbsp;
 <a href="mailto:dean.j.k.james@gmail.com" class="fa fa-envelope"></a></div>    </body>
 </html>
 

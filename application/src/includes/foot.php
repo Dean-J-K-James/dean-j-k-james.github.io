@@ -1,1 +1,1 @@
-<div id="foot"><?php require_once 'pages/foot/brand.php' ?></div>
+<div id="foot" class="toolbar flex-row flex-08"><?php require_once 'pages/foot/brand.php' ?></div>

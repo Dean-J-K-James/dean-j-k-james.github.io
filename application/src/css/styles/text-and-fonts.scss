@@ -1,8 +1,8 @@
 h1 {
     color      : $colour_h1;
     font-size  : 32px;
-    line-height: 40px;
     font-weight: bold;
+    line-height: 40px;
 }
 
 h2 {
@@ -33,7 +33,7 @@ li {
 label,
 th,
 .title {
-    color      : $colour_label;
+    color      : $colour_p;
     font-size  : 12px;
     font-weight: bold;
     line-height: 16px;
@@ -67,5 +67,5 @@ ol {
 
 hr {
     border    : none;
-    border-top: 1px solid $colour_border;
+    border-top: 01px solid $colour_border;
 }
