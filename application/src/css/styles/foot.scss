@@ -6,12 +6,12 @@
     padding-bottom  : 32px;
 }
 
-#foot>* {
+#foot * {
     color: $colour_foot_text;
 }
 
-#foot>a.active,
-#foot>a:hover {
+#foot a.active,
+#foot a:hover {
     background-color: $colour_foot_accent;
     color           : $colour_foot_text;
 }

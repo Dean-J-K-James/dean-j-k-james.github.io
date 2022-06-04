@@ -1,15 +1,15 @@
 .flex-col {
-    display: flex;
+    display       : flex;
     flex-direction: column;
 }
 
 .flex-row {
-    display: flex;
+    display       : flex;
     flex-direction: row;
 }
 
 .flex-fill {
-    flex: 001;
+    flex: 0001;
 }
 
 .flex-32 {
@@ -26,4 +26,21 @@
 
 .flex-04 {
     gap: 04px;
+}
+
+.album-2 {
+    display       : flex;
+    flex-direction: row;
+    flex-wrap     : wrap;
+}
+
+.album-2>* {
+    min-width: 045%;
+    flex     : 0001;
+}
+
+@media screen and (max-width: 768px) {
+    .album-2>* {
+        min-width: 080%;
+    }
 }

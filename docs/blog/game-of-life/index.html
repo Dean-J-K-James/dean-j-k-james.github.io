@@ -31,20 +31,22 @@
 </div>        <div id="menu" class="toolbar flex-row flex-08">
     <a href="/feed" class="logo">The Coding Dodo</a>
     <div class="flex-fill"></div>
-    <a href="/feed" class="p-08 py-0">Blog</a>    </div>        <div id="page" class="flex-16 two-column"><div id="cell-page" class="flex-col flex-16">
-            <div class="cell flex-col flex-16 p-16 title">
-<h1>Conway's Game of Life</h1>
-<p class="subtitle">Last Updated: 2021-09-18</p>
-
-    <canvas id="application-container"></canvas>
+    <nav class="flex-row flex-08">
+        <a href="/feed" class="p-08 py-0">Blog</a>    </nav>
+    </div>        <div id="page" class="flex-16 two-column"><div id="cell-page" class="flex-col flex-16">
+            <div class="cell flex-col flex-16 p-16 blog">
+<article class="flex-col flex-32">
+    <header class="flex-col flex-08">
+    <h1>Conway's Game of Life</h1>
+    <p class="subtitle">Last Updated: 2021-09-18</p>
+</header>    <canvas id="application-container"></canvas>
     <blockquote>
         <p><strong>Demo</strong> - Click the demo to restart the animation. Click <a href="/assets/contents/game-of-life/main.js">here</a> to see the code.</p>
     </blockquote>
 
     
     <script type="module" src="/assets/contents/game-of-life/main.js"></script>
-</div>
-            <div class="cell flex-col flex-16 p-16 blog"><div class="flex-col flex-32">
+<main class="flex-col flex-32">
     <h2>What is Conway's Game of Life?</h2>
 <p>Conway's game of life is a type of outer-totalistic cellular automata using square cells in a two-dimensional grid. Each cell can be in one of two states, defined as either "live" or "dead". It was created by John Conway in 1970, and provides a simulation of birth and death by underpopulation and overpopulation.</p>
 <p>Once the state of each cell is initialised, a set of rules are applied, causing the grid to evolve over several generations. The rules for Conway's game of life are as follows:</p>
@@ -169,17 +171,18 @@ Loop x times:
             this.set_cell(x, y, buffer[x][y]); 
         }
 }</code></pre>
-<p>The <code>apply_buffer</code> function iterates over each cell, copying the state stored in <code>buffer</code> to our main grid.</p></div></div>
-            <div class="cell flex-col flex-16 p-16 feedback"><h2>Questions or Feedback?</h2>
-<p>Thank you for reading this article!</p>
-<p>If you have any further questions or queries, then don't hesitate to contact me on Twitter or by Email.</p></div>
+<p>The <code>apply_buffer</code> function iterates over each cell, copying the state stored in <code>buffer</code> to our main grid.</p></main></article></div>
     </div>
 
 <div id="cell-side" class="flex-col flex-16">
-            <div class="cell flex-col flex-16 p-16 articles"><a href="/blog/depth-first-search-maze" class="card flex-col flex-04 p-08"><p class="title">Depth First Search Maze</p><p class="subtitle">2021-06-27</p></a><a href="/blog/game-of-life" class="card flex-col flex-04 p-08 active"><p class="title">Conway's Game of Life</p><p class="subtitle">2021-09-18</p></a><a href="/blog/perlin-noise-terrain-generation" class="card flex-col flex-04 p-08"><p class="title">Perlin Noise Terrain Generation</p><p class="subtitle">2021-07-04</p></a><a href="/blog/random-walk-dungeon-generation" class="card flex-col flex-04 p-08"><p class="title">Random Walk Dungeon Generation</p><p class="subtitle">2021-06-20</p></a></div>
-    </div></div>        <div id="foot" class="toolbar flex-row flex-08"><a href="/cookies" class="p-08 py-0">Cookie Policy</a>
-<div class="flex-fill"></div>
-<a href="https://twitter.com/thecodingdodo" class="fa fa-twitter"></a>
+            <div class="cell flex-col flex-16 p-16 articles">
+<div class="flex-col flex-04">
+    <a href="/blog/depth-first-search-maze" class="card flex-col flex-04 p-08"><p class="title">Depth First Search Maze</p><p class="subtitle">2021-06-27</p></a><a href="/blog/game-of-life" class="card flex-col flex-04 p-08 active"><p class="title">Conway's Game of Life</p><p class="subtitle">2021-09-18</p></a><a href="/blog/perlin-noise-terrain-generation" class="card flex-col flex-04 p-08"><p class="title">Perlin Noise Terrain Generation</p><p class="subtitle">2021-07-04</p></a><a href="/blog/random-walk-dungeon-generation" class="card flex-col flex-04 p-08"><p class="title">Random Walk Dungeon Generation</p><p class="subtitle">2021-06-20</p></a></div></div>
+    </div></div>        <div id="foot" class="toolbar flex-row flex-08">
+    <nav class="flex-row flex-08">
+        <a href="/cookies" class="p-08 py-0">Cookie Policy</a>    </nav>
+    <div class="flex-fill"></div>
+    <a href="https://twitter.com/thecodingdodo" class="fa fa-twitter"></a>
 <a href="https://www.youtube.com/channel/UCLYv_FM6EbtTbfJpFuEzPbQ" class="fa fa-youtube"></a>
 <a href="mailto:dean.j.k.james@gmail.com" class="fa fa-envelope"></a></div>    </body>
 </html>

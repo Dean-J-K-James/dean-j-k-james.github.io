@@ -1,15 +1,3 @@
-<?php
-$data = DefinitionBySlug::selectDB($_GET['name']);
-
-$_SESSION['page']['name']        = $data['name'];
-$_SESSION['page']['description'] = $data['description'];
-$_SESSION['page']['thumbnail']   = "https://thecodingdodo.com/assets/contents/" . $data['slug'] . "/thumbnail.png";
-$_SESSION['page']['canonical']   = "https://thecodingdodo.com/blog/" . $data['slug'];
-?>
-
-<h1><?= $data['name'] ?></h1>
-<p class="subtitle">Last Updated: <?= $data['date'] ?></p>
-
 <?php if ($data['demo']): ?>
     <canvas id="application-container"></canvas>
     <blockquote>

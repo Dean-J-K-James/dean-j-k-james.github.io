@@ -28,10 +28,10 @@ initialise(class extends Grid {
      * 
      */
     initialise() {
+        this.set_all_cells(this.wall);
+
         this.x = Math.floor(this.sizex / 2);
         this.y = Math.floor(this.sizey / 2);
-
-        this.set_all_cells(this.wall);
     }
 
     /**

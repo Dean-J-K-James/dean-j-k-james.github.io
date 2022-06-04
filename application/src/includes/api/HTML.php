@@ -39,8 +39,8 @@ class HTML
     {
         echo ''
         . '<div class="card flex-row flex-04">'
-        . '<img src="' . $image . '" alt="' . $name . '" style="height: 128px">'
-        . '<div class="flex-col flex-fill flex-08 p-08">'
+        . '<img src="' . $image . '" alt="' . $name . '" style="height:128px;">'
+        . '<div class="flex-col flex-fill flex-08 p-08" style="height:112px;overflow:hidden;">'
         . '<h3>' . $name . '</h3>';
 
         if ($subtitle !== null)
@@ -62,7 +62,6 @@ class HTML
 
         echo ''
         . '</div>'
-        . '<div class="flex-fill"></div>'
         . '</div>'
         . '<a class="stretch" href="' . create_link($link) . '"></a>'
         . '</div>';

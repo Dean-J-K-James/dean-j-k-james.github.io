@@ -102,11 +102,11 @@ Below are some example components:
 
 Where possible, components should only contain primitive data types like integers or floats. For example, the following code represents the Position component:
 
-    public struct Position
-    {
-        public float x;
-        public float y;
-    }
+1.   public struct Position
+2.   {
+3.       public float x;
+4.       public float y;
+5.   }
 
 Components are lightweight data containers that define the attributes and state of an entity. They contain no functionality, just data. Considering the four entities in our game, they would have the following components:
 

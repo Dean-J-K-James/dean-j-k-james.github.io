@@ -3,12 +3,12 @@
     grid-area       : menu;
 }
 
-#menu>* {
+#menu * {
     color: $colour_menu_text;
 }
 
-#menu>a.active,
-#menu>a:hover {
+#menu a.active,
+#menu a:hover {
     background-color: $colour_menu_accent;
     color           : $colour_menu_text;
 }

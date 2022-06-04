@@ -4,7 +4,7 @@
     padding       : 08px 020%;
 }
 
-.toolbar>* {
+.toolbar * {
     background-color: transparent;
     width           : auto;
     font-size       : 12px;
@@ -13,7 +13,7 @@
     line-height     : 32px;
 }
 
-.toolbar>a {
+.toolbar a {
     cursor          : pointer;
     white-space     : nowrap;
 }
