@@ -28,8 +28,8 @@ Merely posting a link will result in a boring text-based URL. Most potential vis
 
 These tags form part of the open graph protocol (notice the "og" property) and provide pieces of information that can be used by social media sites to make your links more visually appealing. By placing these meta tags in the `<head>` section of a HTML document, your links will get formatted on social media, like in *Figure X*.
 
-![Twitter Summary Card](%CNTNT%/figure1.png)
-> **Figure 1** - Twitter Summary Card
+![Twitter Summary Card](%CNTNT%/figure2.png)
+> **Figure 2** - Twitter Summary Card
 
 Open graph protocol meta tags are the most popular, and will work on Facebook, Twitter, and LinkedIn. There are, however, some Twitter specific alternatives that should be considered.
 

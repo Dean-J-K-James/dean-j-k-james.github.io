@@ -1,0 +1,161 @@
+
+<!doctype html>
+
+<html lang="en">
+    <head>
+        <title>Using the CSS Grid System to Structure a Page</title>
+<meta charset="utf-8">
+<meta name="viewport"            content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="title"               content="Using the CSS Grid System to Structure a Page">
+<meta name="image"               content="https://thecodingdodo.com/assets/contents/using-the-css-grid-system-to-structure-a-page/thumbnail.png">
+<meta name="description"         content="">
+<meta property="og:title"        content="Using the CSS Grid System to Structure a Page">
+<meta property="og:image"        content="https://thecodingdodo.com/assets/contents/using-the-css-grid-system-to-structure-a-page/thumbnail.png">
+<meta property="og:description"  content="">
+<meta name="twitter:card"        content="summary">
+<meta name="twitter:title"       content="Using the CSS Grid System to Structure a Page">
+<meta name="twitter:image"       content="https://thecodingdodo.com/assets/contents/using-the-css-grid-system-to-structure-a-page/thumbnail.png">
+<meta name="twitter:description" content="">
+<meta name="robots"              content="index, follow">
+<link rel="canonical"            href="https://thecodingdodo.com/blog/using-the-css-grid-system-to-structure-a-page">
+<link rel="icon"                 href="/assets/img/favicon.png" type="image/x-icon">
+<link rel="stylesheet"           href="/assets/css/main.css">
+<link rel="stylesheet"           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js" defer></script><script src="/assets/js/cookies.js" defer></script><script src="/assets/js/highlight.min.js" defer></script><script src="/assets/js/highlight_line_numbers.min.js" defer></script><script src="/assets/js/highlight.js" defer></script>    </head>
+    <body>
+        <div id="cook" class="toolbar flex-row flex-08">
+    <span>This website uses cookies for tracking. By continuing to use this website, you agree to our use of cookies. Visit our cookie policy page to learn more.</span>
+    <div class="flex-fill"></div>
+    <a id="cookies-accept" class="p-08 py-0">Accept</a>
+</div>        <div id="menu" class="toolbar flex-row flex-08">
+    <a href="/" class="logo">The Coding Dodo</a>
+    <div class="flex-fill"></div>
+    <nav class="flex-row flex-08">
+        <a href="/" class="p-08 py-0 active">Blog</a>    </nav>
+    </div>        <div id="page" class="flex-16 two-column"><div id="cell-page" class="flex-col flex-16">
+            <div class="cell flex-col flex-16 p-16 blog">
+<article class="flex-col flex-32">
+    <header class="flex-col flex-08">
+    <h1>Using the CSS Grid System to Structure a Page</h1>
+    <p class="subtitle">Last Updated: 2021-09-18</p>
+</header><main class="flex-col flex-32">
+    <!---------------------------------------------------------->
+<!-- Dean James - Pangean Flying Cactus - The Coding Dodo -->
+<!---------------------------------------------------------->
+<h2>Using HTML and CSS to Structure a Page</h2>
+<p>One of the great aspects of web development is there are always multiple ways of achieving the same goal. This is especially the case when it comes to structuring a page using HTML and CSS. Over the years, different techniques have been used for creating a page layout, and as requirements and tendencies have changed, new methods have been introduced. Most recently, there has been a shift towards pages that adapt to different screen sizes. A web page now needs to look good both on large desktop screens, and on small mobile displays.</p>
+<p><img src="/assets/contents/using-the-css-grid-system-to-structure-a-page/figure1.png" alt="Some Example Page Layouts" /></p>
+<blockquote>
+<p><strong>Figure 1</strong> - Some example page layouts on a desktop screen.</p>
+</blockquote>
+<p>Some of the popular techniques currently used for structuring a page include:</p>
+<ul>
+<li>Using absolute positioning. This is often the go to method for people who are just starting to develop a webpage. It is quick and makes use of familiar CSS properties. Unfortunately it can require alot of CSS rules for even the simplest layouts, and can get out of hand when there are lots of elements that need to be dynamically placed.</li>
+<li>Using a table. Tables are naturally suitable for structuring a page because of the rows and columns they automatically use. This method requires less code than absolute positioning, but still suffers from being difficult to adapt to a mobile view. A complex page that doesn't naturally divide into rows and columns can also become quite messy when using a table.</li>
+<li>A more modern approach to page structure is the flex system. The flex system is great for dynamically positioning cards and boxes on a single axis, but can be awkward for structuring an entire page.</li>
+</ul>
+<h2>The Grid System</h2>
+<p>A more recent innovation in web development is the CSS grid system. This makes use of a new set of rules that provide an intuitive, efficient and easy to manage method of structuring pages that need to be accessible across a range of screen sizes.</p>
+<p>Consider the following HTML code:</p>
+<pre><code>&lt;body&gt;
+    &lt;div class="menu"&gt;...&lt;/div&gt;
+    &lt;div class="page"&gt;...&lt;/div&gt;
+    &lt;div class="side"&gt;...&lt;/div&gt;
+    &lt;div class="foot"&gt;...&lt;/div&gt;
+&lt;/body&gt;</code></pre>
+<p>This is the typical structure for an average webpage. We want a menu bar that stretches across the top of the page, a foot bar that stretches across the bottom of a page, and two columns in the middle, like in <em>Figure 2</em>.</p>
+<p><img src="/assets/contents/using-the-css-grid-system-to-structure-a-page/figure2.png" alt="Two Column Layout" /></p>
+<blockquote>
+<p><strong>Figure 2</strong> - An example two column layout.</p>
+</blockquote>
+<p>Let us see how we can use the grid system to implement this structure.</p>
+<h2>Elements of the Grid System</h2>
+<p>The CSS grid system structures elements based on their <code>grid-area</code> value. This acts as an identifier for each element, a bit like the <code>id</code> and <code>class</code> attributes in HTML. Every element that needs structuring must have this attribute with a unique value. Based on our page, the following CSS code shows this rule being used.</p>
+<pre><code>.menu {
+    grid-area: menu;
+}
+
+.page {
+    grid-area: page;
+}
+
+.side {
+    grid-area: side;
+}
+
+.foot {
+    grid-area: foot;
+}</code></pre>
+<p>Note that for consistency, our <code>grid-area</code> values are the same as the class name. This is not required though (may even be considered bad practice).</p>
+<h2>Grid System Container</h2>
+<p>Now that we have added the <code>grid-area</code> attribute to each individual element of our website, we need to setup the container element. In our example page structure, each of the four elements that need structuring are children of the <code>body</code> element. Therefore, all of the grid system CSS rules that control our structure need to be assigned to the <code>body</code> .</p>
+<p>The following CSS rules are used for our design:</p>
+<pre><code>body {
+    display              : grid;
+    grid-template-columns: 1fr 256px;
+    grid-template-rows   : 48px 1fr 128px;
+    grid-gap             : 16px;
+    grid-template-areas  : 
+        "menu menu"
+        "page side"
+        "foot foot";
+}</code></pre>
+<p>Let's go through each rule in turn.</p>
+<ul>
+<li><code>display</code></li>
+</ul>
+<p>First, the parent must have the <code>display: grid</code> property. This tells the browser that we are using the grid system and that any children of this element should follow those rules. This is similar to using the <code>display: flex</code> rule when using flexbox.</p>
+<ul>
+<li><code>grid-template-columns</code></li>
+</ul>
+<p>The second property is the <code>grid-template-columns</code> property. This is used to specify how the columns should be structured. Our design has two columns, meaning this rule needs two parts, seperated with a space. We have the value <code>1fr 256px</code> , giving the first column a value of <code>1fr</code> , and the second column a value of <code>256px</code> . The unit <code>fr</code> is a fractional unit and is used to dynamically size elements so that they fill available space in the grid. The value of <code>256px</code> gives the second column a fixed size of 256 pixels. This means as the width of a page is changed, the second column remains a fixed 256 pixels wide, and the first column gets dynamically resized to fill the remaining width.</p>
+<ul>
+<li><code>grid-template-rows</code></li>
+</ul>
+<p>Thirdly, we have the <code>grid-template-rows</code> property. This is similar to the <code>grid-template-columns</code> property, except it applies to the rows rather than the columns. Our page has three rows, so the property has three parts, each seperated by a space. The first row (the menu) has a height of 48 pixels, the second row (containing both the page and side elements) is dynamically sized to fill remaining space, and the third row (the foot) has a height of 128 pixels.</p>
+<ul>
+<li><code>grid-gap</code></li>
+</ul>
+<p>The next property is <code>grid-gap</code> . This property defines the gap between our columns and rows. In our design the gap is kept as 16 pixels.</p>
+<ul>
+<li><code>grid-template-areas</code></li>
+</ul>
+<p>The final property is <code>grid-template-areas</code> . This is where the positioning and ordering of the elements is defined. You will notice that within the value for this property, the words, <code>menu</code> , <code>page</code> , <code>side</code> , and <code>foot</code> are used. These do not refer to the class or id of each element, but refer to the <code>grid-area</code> property that was specified in the CSS style for these elements.</p>
+<p>Our grid uses two columns and three rows as specified in the <code>grid-template-columns</code> and <code>grid-template-rows</code> properties. Therefore, there must be two columns and three rows of identifiers in this property. Each row is a seperate string, and each column is seperated by a space.</p>
+<ul>
+<li>The value for the first row is <code>"menu menu"</code>. This means the grid element with identifier <code>menu</code> should take up two columns of space.</li>
+<li>The value for the second row is <code>"page side"</code>. This means the grid element with identifier <code>page</code> is the first column (with size <code>1fr</code>) and the grid element with identifier <code>side</code> is the second column (with size <code>256px</code>).</li>
+<li>The value for the third row is <code>"foot foot"</code>. Like with the first row, this means the grid element with identifier <code>foot</code> will take up two columns of space.</li>
+</ul>
+<p><img src="/assets/contents/using-the-css-grid-system-to-structure-a-page/figure3.png" alt="Two Column Layout In Desktop and Mobile Views" /></p>
+<blockquote>
+<p><strong>Figure 3</strong> - Our two column layout in both a desktop and mobile view.</p>
+</blockquote>
+<p>The great thing about the CSS grid system is it is really easy to adapt our structure to different screen sizes. We want a rule where if the browser screen size drops below 640 px, instead of having our middle two elements next to each other in columns, we want to stack them, like in <em>Figure 3</em>.</p>
+<pre><code>@media screen and (max-width: 640px) {
+    body {
+        grid-template-columns: 1fr;
+        grid-template-areas  : 
+            "menu"
+            "page"
+            "side"
+            "foot";
+    }
+}</code></pre>
+<p>To do this, we add a media query to our CSS. In this query, we overwrite the <code>grid-template-columns</code> rule for the <code>body</code> element, stating there should only be one column that stretches the width of the screen. We also redefine the <code>grid-template-areas</code> rule to stack our elements.</p></main></article></div>
+    </div>
+
+<div id="cell-side" class="flex-col flex-16">
+            <div class="cell flex-col flex-16 p-16 articles">
+<div class="flex-col flex-04">
+    <a href="/blog/guide-to-search-engine-optimisation" class="card flex-col flex-04 p-08"><p class="title">Guide to Search Engine Optimisation (SEO)</p><p class="subtitle">2021-09-18</p></a><a href="/blog/placing-script-tags-in-html" class="card flex-col flex-04 p-08"><p class="title">Placing Script Tags in HTML</p><p class="subtitle">2021-09-18</p></a><a href="/blog/using-markdown-in-php" class="card flex-col flex-04 p-08"><p class="title">Using Markdown in PHP</p><p class="subtitle">2021-09-18</p></a><a href="/blog/using-the-css-grid-system-to-structure-a-page" class="card flex-col flex-04 p-08 active"><p class="title">Using the CSS Grid System to Structure a Page</p><p class="subtitle">2021-09-18</p></a></div></div>
+    </div></div>        <div id="foot" class="toolbar flex-row flex-08">
+    <nav class="flex-row flex-08">
+        <a href="/cookies" class="p-08 py-0">Cookie Policy</a>    </nav>
+    <div class="flex-fill"></div>
+    <a href="https://twitter.com/thecodingdodo" class="fa fa-twitter"></a>
+<a href="https://www.youtube.com/channel/UCLYv_FM6EbtTbfJpFuEzPbQ" class="fa fa-youtube"></a>
+<a href="mailto:dean.j.k.james@gmail.com" class="fa fa-envelope"></a></div>    </body>
+</html>
+

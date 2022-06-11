@@ -1,0 +1,170 @@
+
+<!doctype html>
+
+<html lang="en">
+    <head>
+        <title>Placing Script Tags in HTML</title>
+<meta charset="utf-8">
+<meta name="viewport"            content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="title"               content="Placing Script Tags in HTML">
+<meta name="image"               content="https://thecodingdodo.com/assets/contents/placing-script-tags-in-html/thumbnail.png">
+<meta name="description"         content="">
+<meta property="og:title"        content="Placing Script Tags in HTML">
+<meta property="og:image"        content="https://thecodingdodo.com/assets/contents/placing-script-tags-in-html/thumbnail.png">
+<meta property="og:description"  content="">
+<meta name="twitter:card"        content="summary">
+<meta name="twitter:title"       content="Placing Script Tags in HTML">
+<meta name="twitter:image"       content="https://thecodingdodo.com/assets/contents/placing-script-tags-in-html/thumbnail.png">
+<meta name="twitter:description" content="">
+<meta name="robots"              content="index, follow">
+<link rel="canonical"            href="https://thecodingdodo.com/blog/placing-script-tags-in-html">
+<link rel="icon"                 href="/assets/img/favicon.png" type="image/x-icon">
+<link rel="stylesheet"           href="/assets/css/main.css">
+<link rel="stylesheet"           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js" defer></script><script src="/assets/js/cookies.js" defer></script><script src="/assets/js/highlight.min.js" defer></script><script src="/assets/js/highlight_line_numbers.min.js" defer></script><script src="/assets/js/highlight.js" defer></script>    </head>
+    <body>
+        <div id="cook" class="toolbar flex-row flex-08">
+    <span>This website uses cookies for tracking. By continuing to use this website, you agree to our use of cookies. Visit our cookie policy page to learn more.</span>
+    <div class="flex-fill"></div>
+    <a id="cookies-accept" class="p-08 py-0">Accept</a>
+</div>        <div id="menu" class="toolbar flex-row flex-08">
+    <a href="/" class="logo">The Coding Dodo</a>
+    <div class="flex-fill"></div>
+    <nav class="flex-row flex-08">
+        <a href="/" class="p-08 py-0 active">Blog</a>    </nav>
+    </div>        <div id="page" class="flex-16 two-column"><div id="cell-page" class="flex-col flex-16">
+            <div class="cell flex-col flex-16 p-16 blog">
+<article class="flex-col flex-32">
+    <header class="flex-col flex-08">
+    <h1>Placing Script Tags in HTML</h1>
+    <p class="subtitle">Last Updated: 2021-09-18</p>
+</header><main class="flex-col flex-32">
+    <!---------------------------------------------------------->
+<!-- Dean James - Pangean Flying Cactus - The Coding Dodo -->
+<!---------------------------------------------------------->
+<h2>Scripts Tags</h2>
+<p>Script tags are used in HTML to provide additional functionality using JavaScript. With a few exceptions, JavaScript is client side, meaning your browser is responsible for executing it. A typical HTML document will look something like this.</p>
+<pre><code>&lt;html&gt;
+    &lt;head&gt;
+        ...
+    &lt;/head&gt;
+    &lt;body&gt;
+        ...
+    &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+<p>There are two main sections to this. The <code>&lt;head&gt;</code> is where alot of the meta data goes, and the <code>&lt;body&gt;</code> is where alot of the page structure and content goes. A common question in web development is where to put <code>&lt;script&gt;</code> tags. The two most common solutions are:</p>
+<ul>
+<li>Between the <code>&lt;head&gt;</code> tags.</li>
+<li>At the end of body, before the <code>&lt;/body&gt;</code> tag.</li>
+</ul>
+<p>Both of these solutions have their advantages, however, they also have significant disadvantages.</p>
+<h2>Placing Scripts Between Head Tags</h2>
+<p>Putting <code>&lt;script&gt;</code> tags in the <code>&lt;head&gt;</code> is most common. Usually, script tags load an external JavaScript file found at the URL or path specified in the <code>src</code> attribute.</p>
+<pre><code>&lt;html&gt;
+    &lt;head&gt;
+        &lt;script src="..."&gt;&lt;/script&gt;
+        ...
+    &lt;/head&gt;
+    &lt;body&gt;
+        ...
+    &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+<p>The problem here, is that any JavaScript code will be executed before the contents of the page have even started to load. Typically, a browser will receive a HTML document from a server in chunks. These chunks will be loaded, and each pair of opening and closing tags, with their contents will be loaded in order. This means that the browser will load the <code>&lt;head&gt;</code> tags and anything inside of them, before the <code>&lt;body&gt;</code> tags.</p>
+<p>Consider the following JavaScript code. It adds an onclick event to an element with id "button". When the button is clicked, a message is output to the console.</p>
+<pre><code>$("#button").click(function () {
+    console.log("Button was clicked!");
+});</code></pre>
+<p>What would be the problem if this code was included between the <code>&lt;head&gt;</code> tags?</p>
+<p>The problem is that any <code>&lt;script&gt;</code> tags within <code>&lt;head&gt;</code> will be loaded and executed before the <code>&lt;body&gt;</code> tags get loaded in. Since our element with id "button" is between the <code>&lt;body&gt;</code> tags, it wouldn't have loaded yet. Our jQuery selector will return no element, and so the event will not have been applied.</p>
+<h2>Placing Scripts Between Body Tags</h2>
+<p>A solution to this problem is to instead load any scripts after the body has been created. For this, we can put the <code>&lt;script&gt;</code> tags right at the end of the body.</p>
+<pre><code>&lt;html&gt;
+    &lt;head&gt;
+        ...
+    &lt;/head&gt;
+    &lt;body&gt;
+        ...
+        &lt;script src="..."&gt;&lt;/script&gt;
+    &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+<p>This gives each element on the page a chance to initialise first, before the script gets loaded and executed. If the onclick event were to be added here, it would work because the element with id "button" will have created before the script gets run. Loading scripts at the end of the body lets other elements load first.</p>
+<h2>Defer and Async</h2>
+<p>When a browser is parsing a HTML document, and finds a script tag, it stops rendering and parsing the document. It then requests the script file from the server, waits for it to download, immediately executes it, and only then continues parsing the rest of the document. This is inefficient and wasteful, because whilst the browser is waiting for the script tags to download, it doesn't do anything.</p>
+<p>Fortunately, there is a way to solve this problem; using the attributes <code>async</code> and <code>defer</code> . Either of these two attributes can be added to a script tag when placed in the head, like this:</p>
+<pre><code>&lt;html&gt;
+    &lt;head&gt;
+        &lt;script src="..." async&gt;&lt;/script&gt;
+        &lt;script src="..." defer&gt;&lt;/script&gt;
+        ...
+    &lt;/head&gt;
+    &lt;body&gt;
+        ...
+    &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+<p>By putting either of these attributes into a script tag, the script will be downloaded asynchronously from the server. This means, that when the browser requests the files, it continues parsing the HTML document rather than waiting. In both cases, HTML parsing still gets paused whilst the script gets executed. The difference between these attributes is what happens when the file has finished downloading.</p>
+<p><img src="/assets/contents/placing-script-tags-in-html/figure5.png" alt="Diagram Key" /></p>
+<p><img src="/assets/contents/placing-script-tags-in-html/figure1.png" alt="Script Download and Execution Normally" /></p>
+<blockquote>
+<p><strong>Figure 1</strong> - Script download and execution normally.</p>
+</blockquote>
+<p><em>Figure 1</em> outlines what the browser does when it needs to download and execute a JavaScript file.</p>
+<ul>
+<li>The browser begins by parsing the HTML code normally.</li>
+<li>As soon as a <code>&lt;script&gt;</code> tag with the <code>async</code> attribute is found, the browser requests this file. This is an synchronous request, meaning whilst the file downloads, the browser is paused and does nothing.</li>
+<li>When the <code>&lt;script&gt;</code> is fully downloaded, the browser executes it immediately.</li>
+</ul>
+<h2>Defer</h2>
+<p>If the <code>defer</code> attribute is used, the scripts do not execute as soon as they have finished downloading. Instead, the execution gets deferred until the HTML document has finished being parsed completely. Scripts using <code>defer</code> will execute right at the end, and in the same order that the script tag for them was specified.</p>
+<p><img src="/assets/contents/placing-script-tags-in-html/figure5.png" alt="Diagram Key" /></p>
+<p><img src="/assets/contents/placing-script-tags-in-html/figure2.png" alt="Script Download and Execution When Using Defer" /></p>
+<blockquote>
+<p><strong>Figure 2</strong> - Script download and execution when using defer.</p>
+</blockquote>
+<p><em>Figure 2</em> shows what happens when the <code>defer</code> attribute is used in a <code>&lt;script&gt;</code> tag.</p>
+<ul>
+<li>The browser begins by parsing the HTML code normally.</li>
+<li>As soon as a <code>&lt;script&gt;</code> tag with the <code>defer</code> attribute is found, the browser requests this file. This is an asynchronous request, meaning whilst the file downloads, the browser continues parsing the document.</li>
+<li>When the <code>&lt;script&gt;</code> is fully downloaded, the browser continues parsing the HTMl as usual.</li>
+<li>As soon as the entire HTML document has finished being parsed, the <code>&lt;script&gt;</code> tags are executed in the same order that their downloads were started.</li>
+</ul>
+<h2>Async</h2>
+<p>If <code>async</code> was used, the script file will be executed as soon as it is downloaded. If multiple scripts are downloaded using async, each will be executed once it has finished downloading. If the download finishes whilst another script is being executed, the new script will execute immediately after. They will not necessarily execute in the same order as the download starts. If the first script to load using async is significantly larger than the second, it is possible that the second will finish downloading first and therefore will be executed first.</p>
+<p><img src="/assets/contents/placing-script-tags-in-html/figure5.png" alt="Diagram Key" /></p>
+<p><img src="/assets/contents/placing-script-tags-in-html/figure3.png" alt="Script Download and Execution When Using Async" /></p>
+<blockquote>
+<p><strong>Figure 3</strong> - Script download and execution when using async.</p>
+</blockquote>
+<p><em>Figure 3</em> shows what happens when the <code>async</code> attribute is used in a <code>&lt;script&gt;</code> tag.</p>
+<ul>
+<li>The browser begins by parsing the HTML code normally.</li>
+<li>As soon as a <code>&lt;script&gt;</code> tag with the <code>async</code> attribute is found, the browser requests this file. This is an asynchronous request, meaning whilst the file downloads, the browser continues parsing the document.</li>
+<li>When the <code>&lt;script&gt;</code> is fully downloaded, the browser stops parsing the HTML, and begins executing the <code>&lt;script&gt;</code> immediately. If another script is currently being executed when a download finishes, then the browser will wait until that has finished.</li>
+</ul>
+<h2>Comparison Between Defer and Async</h2>
+<p>Both <code>async</code> and <code>defer</code> are similar in how they work. The main similarities and differences include:</p>
+<ul>
+<li>Both download files asynchronously, meaning they don't block the browser from parsing the HTML.</li>
+<li>In both cases, the browser stops parsing the HTML when it executes the the scripts.</li>
+<li>Scripts using <code>defer</code> will execute in the same order they are written, whereas scripts using <code>async</code> will execute in the order their downloads complete.</li>
+</ul>
+<h2>Further Reading</h2>
+<ul>
+<li>The page: <a href="https://javascript.info/script-async-defer">Scripts: async, defer</a> explains the difference between the defer and async attributes.</li>
+<li>StackOverflow has lots of questions about the defer and async attributes. This <a href="https://stackoverflow.com/a/39711009">answer</a> has a good diagram showing the differences.</li>
+</ul></main></article></div>
+    </div>
+
+<div id="cell-side" class="flex-col flex-16">
+            <div class="cell flex-col flex-16 p-16 articles">
+<div class="flex-col flex-04">
+    <a href="/blog/guide-to-search-engine-optimisation" class="card flex-col flex-04 p-08"><p class="title">Guide to Search Engine Optimisation (SEO)</p><p class="subtitle">2021-09-18</p></a><a href="/blog/placing-script-tags-in-html" class="card flex-col flex-04 p-08 active"><p class="title">Placing Script Tags in HTML</p><p class="subtitle">2021-09-18</p></a><a href="/blog/using-markdown-in-php" class="card flex-col flex-04 p-08"><p class="title">Using Markdown in PHP</p><p class="subtitle">2021-09-18</p></a><a href="/blog/using-the-css-grid-system-to-structure-a-page" class="card flex-col flex-04 p-08"><p class="title">Using the CSS Grid System to Structure a Page</p><p class="subtitle">2021-09-18</p></a></div></div>
+    </div></div>        <div id="foot" class="toolbar flex-row flex-08">
+    <nav class="flex-row flex-08">
+        <a href="/cookies" class="p-08 py-0">Cookie Policy</a>    </nav>
+    <div class="flex-fill"></div>
+    <a href="https://twitter.com/thecodingdodo" class="fa fa-twitter"></a>
+<a href="https://www.youtube.com/channel/UCLYv_FM6EbtTbfJpFuEzPbQ" class="fa fa-youtube"></a>
+<a href="mailto:dean.j.k.james@gmail.com" class="fa fa-envelope"></a></div>    </body>
+</html>
+

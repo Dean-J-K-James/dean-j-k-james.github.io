@@ -80,7 +80,7 @@ class FormGenerator
         {
             $sel = ($value == $opt[$i]["val"] ? 'selected' : '');
             echo '<option value="' . $opt[$i]["val"] . '" ' . $sel . '>' . $opt[$i]["lbl"] . '</option>';
-        }#
+        }
 
         echo ''
         . '</select>';

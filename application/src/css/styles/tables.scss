@@ -1,14 +1,15 @@
 table {
     width          : 100%;
     border-collapse: collapse;
-    table-layout   : auto;
+    table-layout   : fixed;
 }
 
 table td,
 table th {
-    border    : 1px solid $colour_border;
-    text-align: left;
-    padding   : 08px;
+    border       : 1px solid $colour_border;
+    text-align   : left;
+    padding      : 08px;
+    overflow-wrap: break-word;
 }
 
 table th {

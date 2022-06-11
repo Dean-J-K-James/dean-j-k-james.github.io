@@ -22,17 +22,19 @@
 <link rel="stylesheet"           href="/assets/css/main.css">
 <link rel="stylesheet"           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" defer></script>
-<script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js" defer></script><script src="/assets/js/cookies.js" defer></script><script src="/assets/js/highlight.min.js" defer></script><script src="/assets/js/highlight_line_numbers.min.js" defer></script><script src="/assets/js/highlight.js" defer></script>    </head>
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js" defer></script><script src="/assets/js/cookies.js" defer></script><br />
+<b>Warning</b>:  foreach() argument must be of type array|object, null given in <b>C:\Users\deanj\Documents\xampp\htdocs\DodoWebEngine\application\src\includes\scripts-loader.php</b> on line <b>7</b><br />
+    </head>
     <body>
         <div id="cook" class="toolbar flex-row flex-08">
     <span>This website uses cookies for tracking. By continuing to use this website, you agree to our use of cookies. Visit our cookie policy page to learn more.</span>
     <div class="flex-fill"></div>
     <a id="cookies-accept" class="p-08 py-0">Accept</a>
 </div>        <div id="menu" class="toolbar flex-row flex-08">
-    <a href="/feed" class="logo">The Coding Dodo</a>
+    <a href="/" class="logo">The Coding Dodo</a>
     <div class="flex-fill"></div>
     <nav class="flex-row flex-08">
-        <a href="/feed" class="p-08 py-0">Blog</a>    </nav>
+        <a href="/" class="p-08 py-0 active">Blog</a>    </nav>
     </div>        <div id="page" class="flex-16 two-column"><div id="cell-page" class="flex-col flex-16">
             <div class="cell flex-col flex-16 p-16 blog">
 <article class="flex-col flex-32">
@@ -42,12 +44,11 @@
 </header><main class="flex-col flex-32">
     <h2>What is Entity Component System?</h2>
 <p>Entity Component System (ECS) is a software pattern commonly used in game development. It is designed to take full advantage of a computer’s hardware to maximize performance, whilst also providing the programmer with a structured, modular, and reusable environment.</p>
-<p>ECS, as it's name suggests, comprises three parts: entities, components, and systems. Each of these three parts have their own purpose and responsibilities within an ECS framework, and interact with each other in their own ways.</p>
 <p><img src="/assets/contents/entity-component-system/figure1.png" alt="ECS Parts" /></p>
 <blockquote>
 <p><strong>Figure 1</strong> - ECS Parts</p>
 </blockquote>
-<p><em>Figure 1</em> visualises the three components.</p>
+<p>ECS, as it's name suggests, comprises three parts: entities, components, and systems. Each of these three parts have their own purpose and responsibilities within an ECS framework, and interact with each other in their own ways.</p>
 <h2>Example</h2>
 <p>ECS is often used as an alternative to the traditional object oriented approach to software development. Although both ECS and OOP can be used alongside each other, let's have a look at an example where we use and compare both methods as alternatives. Consider a 2D platformer with the following features:</p>
 <ul>
@@ -61,7 +62,7 @@
 <blockquote>
 <p><strong>Figure 2</strong> - Our Example Game Using OOP</p>
 </blockquote>
-<p>We define a class, <code>GameObject</code> which contains all the functionality and data that is common between our features. This class could look something like this:</p>
+<p>Let's implement this inheritence diagram using OOP. We define a class, <code>GameObject</code> which contains all the functionality and data that is common between our features. This class could look something like this:</p>
 <pre><code>class GameObject
 {
     public Sprite sprite;
@@ -73,36 +74,34 @@
         ...
     }
 }</code></pre>
-<p>All of our features, the player, a tree, and the zombies, require an x and y position, and a sprite to visualise them; as well as a function used to render the object to the screen. Since our tree object would not require any additional data or functionality, we could instantiate the <code>GameObject</code> class to represent the tree.</p>
-<p>The remaining player and zombie features would need some extra functionality. For this, we would define a class for each. The player would be represented by the <code>Player</code> class.</p>
-<pre><code>class Player : GameObject
+<p>All of our features: the player, a tree, and the zombies, require an x and y position, and a sprite to visualise them; as well as a function used to render the object to the screen. Since our tree object would not require any additional data or functionality, we could instantiate the <code>GameObject</code> class to represent the tree.</p>
+<p>The remaining player and zombie features would need some extra functionality, some common and some unique to each. We define another class, <code>Character</code> that contains all common data and logic.</p>
+<pre><code>class Character : GameObject
 {
+    public int velocity;
     public int health;
 
-    public void OnInput()
+    public void TakeDamage()
     {
         ...
     }
 }</code></pre>
-<p>The player would inherit the position and sprite properties from it's parent class, and then define the additional data and functionality it needs in it's own class. The player in our game would be represented by an instance of the <code>Player</code> class.</p>
-<p>The two zombies would be similar, each being represented by an instance of the <code>Zombie</code> class.</p>
-<pre><code>class Zombie : GameObject
+<p>In our example, both players and zombies have some health, have a velocity, and are able to take and deal damage. This functionality can be kept in the <code>Character</code> class.</p>
+<p>Any data unique to each would be put in their own class. The player would be represented by the <code>Player</code> class.</p>
+<pre><code>class Player : Character
 {
+    public int potions;
     public int xp;
-
-    public void OnUpdate()
-    {
-        ...
-    }
+}</code></pre>
+<p>The player would inherit the position and sprite properties from <code>GameObject</code>, inherit velocity and health from <code>Character</code>, and then define the additional data and functionality it needs in it's own class. The player in our game would be represented by an instance of the <code>Player</code> class.</p>
+<p>The two zombies would be similar, each being represented by an instance of the <code>Zombie</code> class.</p>
+<pre><code>class Zombie : Character
+{
+    public int xpDropped;
 }</code></pre>
 <p>Any data specific to a zombie, such as xp earned when killed, will be in the <code>Zombie</code> class. Object oriented programming promotes inheritence, which uses an "is-a" relationship between classes.</p>
 <h3>What Would this Look Like in ECS?</h3>
 <p>Entity component systems take a slightly different approach to defining objects. Whereas OOP keeps data and logic together in classes, ECS seperates data into small, reusable components, and logic into small, reusable systems.</p>
-<p><em>Figure 3</em> shows how our game will be structured in ECS.</p>
-<p><img src="/assets/contents/entity-component-system/figure3.png" alt="Our Example Game Using ECS" /></p>
-<blockquote>
-<p><strong>Figure 2</strong> - Our Example Game Using ECS</p>
-</blockquote>
 <h3>Entities</h3>
 <p>An entity is an individual object in the world. Whereas in OOP, objects are instances of a class, in ECS, an entity is just a unique integer. The purpose of this integer is simply to distinguish between entities. The four entities in our game would be:</p>
 <ul>
@@ -111,51 +110,51 @@
 <li><code>entity = 2</code> represents the first zombie.</li>
 <li><code>entity = 3</code> represents the second zombie.</li>
 </ul>
-<p>The entity itself contains no data or functionality; it is just an integer used as identification.</p>
+<p>The entity itself contains no data or functionality; it is just an integer used for identification.</p>
 <h3>Components</h3>
-<p>All the data associated with an entity is seperated into small, generic, and reusable components.</p>
-<p>Below are some example components:</p>
+<p>All the data associated with an entity is seperated into small, generic, and reusable components. Below are some example components:</p>
 <ul>
-<li>Position</li>
-<li>Sprite</li>
-<li>Health</li>
-<li>AI</li>
-<li>PlayerInput</li>
+<li><code>Position</code></li>
+<li><code>Sprite</code></li>
+<li><code>Health</code></li>
+<li><code>AI</code></li>
+<li><code>PlayerInput</code></li>
 </ul>
 <p>Where possible, components should only contain primitive data types like integers or floats. For example, the following code represents the Position component:</p>
-<ol>
-<li>public struct Position</li>
-<li>{</li>
-<li>public float x;</li>
-<li>public float y;</li>
-<li>}</li>
-</ol>
-<p>Components are lightweight data containers that define the attributes and state of an entity. They contain no functionality, just data. Considering the four entities in our game, they would have the following components:</p>
+<pre><code>public struct Position
+{
+    public float x;
+    public float y;
+}</code></pre>
+<p>Components are lightweight data containers that define the attributes and state of an entity. They contain no functionality, just data. <em>Figure 3</em> shows some example components.</p>
+<p><img src="/assets/contents/entity-component-system/figure3.png" alt="Example Components" /></p>
+<blockquote>
+<p><strong>Figure 3</strong> - Example Components</p>
+</blockquote>
+<p>Considering the four entities in our game, they could have the following components:</p>
 <ul>
-<li><code>entity = 0</code> would have the Position, Sprite, Health, and PlayerInput components.</li>
-<li><code>entity = 1</code> would have the Position, and Sprite components.</li>
-<li><code>entity = 2</code> would have the Position, Sprite, and AI components.</li>
-<li><code>entity = 3</code> would have the Position, Sprite, and AI components.</li>
+<li><code>entity = 0</code> would have the <code>Position</code>, <code>Render</code>, <code>Health</code>, <code>Physics</code>, and <code>PlayerInput</code> components.</li>
+<li><code>entity = 1</code> would have the <code>Position</code>, and <code>Render</code> components.</li>
+<li><code>entity = 2</code> would have the <code>Position</code>, <code>Render</code>, <code>Physics</code>, and <code>AI</code> components.</li>
+<li><code>entity = 3</code> would have the <code>Position</code>, <code>Render</code>, <code>Physics</code>, and <code>AI</code> components.</li>
 </ul>
 <p>By having primitive values, components can be stored and iterated over extremely efficiently by being contigous in memory.</p>
 <h3>Systems</h3>
 <p>Systems bring the game to life. They operate on the components attached to an entity to produce changes in the world. Some example systems could be:</p>
 <ul>
-<li>RenderSystem - Uses the Position and Sprite components.</li>
-<li>HealthSystem - Uses the Health component.</li>
-<li>PlayerMovementSystem - Uses the Position and PlayerInput components.</li>
+<li><code>RenderSystem</code> - Uses the <code>Position</code> and <code>Render</code> components.</li>
+<li><code>HealthSystem</code> - Uses the <code>Health</code> component.</li>
+<li><code>PlayerMovementSystem</code> - Uses the <code>Position</code> and <code>PlayerInput</code> components.</li>
 </ul>
 <p>In a typical program using an ECS, each system will run once per frame. The following code example shows what the RenderSystem update function could look like:</p>
-<pre><code>foreach (int e in GetEntities&lt;Position, Sprite&gt;())
+<pre><code>foreach (int e in GetEntities&lt;Position, Render&gt;())
 {
     var p = GetComponent&lt;Position&gt;(e);
     var s = GetComponent&lt;Sprite&gt;(e);
 
     render(s.sprite, p.x, p.y);
 }</code></pre>
-<p>The foreach loop would iterate over all entities that have both the Posiiton, and Sprite components. In our game, all features have these. The components are then requested, and the data is then used.</p>
-<h2>Conclusion</h2>
-<p>Hopefully, this article has successfully introduced the basic concepts of ECS.</p></main></article></div>
+<p>In OOP, each object that needs rendering would be rendered by calling the <code>Render</code> function in the <code>GameObject</code> class. In ECS, the <code>RenderSystem</code> iterates over each entity with the <code>Position</code> and <code>Render</code> components, rendering them.</p></main></article></div>
     </div>
 
 <div id="cell-side" class="flex-col flex-16">

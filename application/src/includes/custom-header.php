@@ -12,6 +12,6 @@ session_start();
 #Turns on error reporting for easier debugging.
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
-ini_set("log_errors", 1);
-ini_set("error_log", "error.log");
+ini_set('log_errors', 1);
+ini_set('error_log', 'error.log');
 error_reporting(E_ALL);
