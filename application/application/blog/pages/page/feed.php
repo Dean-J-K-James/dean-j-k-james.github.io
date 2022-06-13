@@ -8,7 +8,7 @@
             HTML::card_two_column(
                     APPPATH . '/assets/contents/' . $definition['slug'] . '/thumbnail.png',
                     $definition['name'],
-                    substr($definition['description'], 0, 50) . '...',
+                    $definition['description'],
                     'Last Updated: ' . $definition['date'],
                     [$cat],
                     "blog/" . $definition['slug']);
