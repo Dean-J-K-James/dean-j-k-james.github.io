@@ -23,4 +23,18 @@ class Login
         return $sth->fetch(PDO::FETCH_ASSOC);
     }
 
+    /**
+     * 
+     */
+    public static function selectDBByID($id)
+    {
+        global $dbh;
+
+        $sth = $dbh->prepare('SELECT * FROM users WHERE id = :id');
+        $sth->bindParam(':id', $id, PDO::PARAM_STR);
+        $sth->execute();
+
+        return $sth->fetch(PDO::FETCH_ASSOC);
+    }
+
 }

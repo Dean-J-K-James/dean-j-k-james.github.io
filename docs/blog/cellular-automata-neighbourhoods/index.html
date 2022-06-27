@@ -25,11 +25,13 @@
 <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js" defer></script><!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-7K6R0WJX31"></script>
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
 
-  gtag('config', 'G-7K6R0WJX31');
+    gtag('config', 'G-7K6R0WJX31');
 </script><script src="/assets/js/cookies.js" defer></script><script src="/assets/js/highlight.min.js" defer></script><script src="/assets/js/highlight.js" defer></script>    </head>
     <body>
         <div id="cook" class="toolbar flex-row flex-08">
@@ -37,25 +39,51 @@
     <div class="flex-fill"></div>
     <a id="cookies-accept" class="p-08 py-0">Accept</a>
 </div>        <div id="menu" class="toolbar flex-row flex-08">
-    <a href="/" class="logo">The Coding Dodo</a>
+    <a href="/feed" class="logo">The Coding Dodo</a>
     <div class="flex-fill"></div>
     <nav class="flex-row flex-08">
-        <a href="/" class="p-08 py-0 active">Blog</a>    </nav>
+        <a href="/feed" class="p-08 py-0">Blog</a><a href="/product" class="p-08 py-0">Products</a>    </nav>
     </div>        <div id="page" class="flex-16 two-column"><div id="cell-page" class="flex-col flex-16">
             <div class="cell flex-col flex-16 p-16 blog">
 <article class="flex-col flex-32">
-    <header class="flex-col flex-08">
+    <header class="flex-col flex-16">
+    <div class="flex-row flex-08">
+        <img src="/assets/contents/avatar.png" style="width:32px;border-radius:02px;">
+        <div class="flex-col p-08 py-0">
+            <div class="flex-fill"></div>
+            <p class="title">TheCodingDodo</p>
+            <div class="flex-fill"></div>
+        </div>
+        <div class="flex-fill"></div>
+        <a href="https://twitter.com/thecodingdodo" class="fa fa-twitter"></a>
+        <a href="https://www.youtube.com/channel/UCLYv_FM6EbtTbfJpFuEzPbQ" class="fa fa-youtube"></a>
+        <a href="mailto:dean.j.k.james@gmail.com" class="fa fa-envelope"></a>
+    </div>
     <h1>Neighbourhoods in Cellular Automata</h1>
-    <p class="subtitle">Last Updated: 2022-04-02</p>
-</header><main class="flex-col flex-32">
-    <h2>Neighbourhood</h2>
+    <p class="subtitle">2022-04-02</p>
+    <p>Find out how neighbourhoods are calculated in one-dimensional and two-dimensional cellular automata, including the von Neumann and Moore neighbourhoods.</p>
+</header>    <img src="/assets/contents/cellular-automata-neighbourhoods/banner.png">
+
+<h2>Table of Contents</h2>
+<ul>
+<li><a href="#Neighbourhood">Neighbourhood</a></li>
+<li><a href="#Neighbourhoods+in+One+Dimension">Neighbourhoods in One Dimension</a></li>
+<li><a href="#Neighbourhoods+in+Two+Dimensions">Neighbourhoods in Two Dimensions</a><ul>
+<li><a href="#von+Neumann+Neighborhood">von Neumann Neighborhood</a></li>
+<li><a href="#Moore+Neighborhood">Moore Neighborhood</a></li>
+</ul>
+</li>
+<li><a href="#Further+Reading">Further Reading</a></li>
+</ul>
+<main class="article flex-col flex-32">
+    <h2 id="Neighbourhood" name="Neighbourhood">Neighbourhood</h2>
 <p>The neighbourhood of a cell refers to the set of cells that are in some way relevant to that cell in respect to the rules of a given cellular automaton. When the rules of a cellular automaton are applied to a cell, it's neighbourhood is used when calculating it's new state.</p>
 <p><img src="/assets/contents/cellular-automata-neighbourhoods/figure1.png" alt="Cell Neighbourhood Examples" /></p>
 <blockquote>
 <p><strong>Figure 1</strong> - Cell Neighbourhood Examples</p>
 </blockquote>
 <p><em>Figure 1</em> shows some example neighbourhoods in a two-dimensional CA. Each 5x5 grid consists of a cell, coloured blue, it's neighbourhood, coloured yellow, and other cells not in it's neighbourhood, coloured white.</p>
-<h2>Neighbourhoods in One Dimension</h2>
+<h2 id="Neighbourhoods+in+One+Dimension" name="Neighbourhoods+in+One+Dimension">Neighbourhoods in One Dimension</h2>
 <p>One dimensional CA consist of a set of cells kept together in a row. Each cell has two neighbours. One to the left, and one to the right. Cells on the edge of the row will only have one neighbour.</p>
 <p><img src="/assets/contents/cellular-automata-neighbourhoods/figure2.png" alt="Cell Neighbourhood in One Dimension" /></p>
 <blockquote>
@@ -75,13 +103,13 @@
 <li>The cell at index <code>i + 1</code>. </li>
 </ol>
 <p>Cells at the end of a row will obviously have one of their neighbours missing. In this case, a placeholder cell with a default state of 0 is often used. Sometimes, a cell is not considered part of it's own neighbourhood. Neighbourhoods that do not contain the cell itself are called outer-neighbourhoods and are often used in outer-totalistic cellular automata.</p>
-<h2>Neighbourhoods in Two Dimensions</h2>
+<h2 id="Neighbourhoods+in+Two+Dimensions" name="Neighbourhoods+in+Two+Dimensions">Neighbourhoods in Two Dimensions</h2>
 <p>Similarly to one-dimensional CA, the neighbourhood of a two-dimensional CA also consists of any bordering cells. There are two main types of neighbourhood in two dimensional CA, each using a different measure of distance:</p>
 <ul>
 <li>von Neumann Neighbourhood</li>
 <li>Moore Neighbourhood</li>
 </ul>
-<h3>von Neumann Neighborhood</h3>
+<h3 id="von+Neumann+Neighborhood" name="von+Neumann+Neighborhood">von Neumann Neighborhood</h3>
 <p>The first of the two most common two-dimensional neighbourhoods is the von Neumann neighbourhood. Named after the famous computer scientist and mathmatician John von Neumann, the von Neumann neighbourhood of a cell in a two dimensional cellular automata comprises the set of cells within a Manhattan distance of <code>r</code> of the cell in question. The variable <code>r</code> refers to the range, and by default is assigned a value of 1.</p>
 <p>When using <code>r = 1</code>, the von Neumann neighbourhood of a cell consists of it's four directly adjacent cells: one from the north, east, south and west of the cell, and the cell itself.</p>
 <p><img src="/assets/contents/cellular-automata-neighbourhoods/figure4.png" alt="von Neumann Cell Neighbourhood" /></p>
@@ -104,7 +132,7 @@
 <li>Cells with distance of <code>2</code> are coloured orange.</li>
 </ul>
 <p>A typical von Neumann neighbourhood with <code>r = 1</code> will consist of 5 cells.</p>
-<h3>Moore Neighborhood</h3>
+<h3 id="Moore+Neighborhood" name="Moore+Neighborhood">Moore Neighborhood</h3>
 <p>The second main type of neighbourhood used in two-dimensional cellular automata is the Moore neighbourhood, named after the computer scientist and mathmatician Edward Moore. The Moore neighbourhood of a cell comprises the cells within a Chebyshev distance of <code>r</code>. Arguably, this is the most common type of neighbourhood, and is used by the most popular cellular automaton, Conway's Game of Life.</p>
 <p>The Moore neighbourhood of a cell when using <code>r = 1</code> will consist of it's eight neighbouring cells (including the diagonals), and the cell itself, for a total of 9 cells.</p>
 <p><img src="/assets/contents/cellular-automata-neighbourhoods/figure6.png" alt="Moore Cell Neighbourhood" /></p>
@@ -126,22 +154,21 @@
 <li>Cells with distance of <code>2</code> are coloured orange.</li>
 </ul>
 <p>A typical Moore neighbourhood with <code>r = 1</code> will consist of 9 cells.</p>
-<h2>Further Reading</h2>
+<h2 id="Further+Reading" name="Further+Reading">Further Reading</h2>
 <ul>
 <li>LifeWiki has a page for each type of two-dimensional neighbourhood: <a href="https://conwaylife.com/wiki/Von_Neumann_neighbourhood">von Neumann Neighbourhood</a> and <a href="https://conwaylife.com/wiki/Moore_neighbourhood">Moore Neighbourhood</a>.</li>
 </ul></main></article></div>
     </div>
 
 <div id="cell-side" class="flex-col flex-16">
-            <div class="cell flex-col flex-16 p-16 articles">
+            <div class="cell flex-col flex-08 p-16 articles">
 <div class="flex-col flex-04">
     <a href="/blog/cellular-automata-introduction" class="card flex-col flex-04 p-08"><p class="title">Introduction to Cellular Automata</p><p class="subtitle">2021-09-11</p></a><a href="/blog/cellular-automata-neighbourhoods" class="card flex-col flex-04 p-08 active"><p class="title">Neighbourhoods in Cellular Automata</p><p class="subtitle">2022-04-02</p></a><a href="/blog/cellular-automata-rules" class="card flex-col flex-04 p-08"><p class="title">Cellular Automata Rules</p><p class="subtitle">2022-04-02</p></a></div></div>
     </div></div>        <div id="foot" class="toolbar flex-row flex-08">
+    <div class="flex-fill"></div>
     <nav class="flex-row flex-08">
         <a href="/cookies" class="p-08 py-0">Cookie Policy</a>    </nav>
     <div class="flex-fill"></div>
-    <a href="https://twitter.com/thecodingdodo" class="fa fa-twitter"></a>
-<a href="https://www.youtube.com/channel/UCLYv_FM6EbtTbfJpFuEzPbQ" class="fa fa-youtube"></a>
-<a href="mailto:dean.j.k.james@gmail.com" class="fa fa-envelope"></a></div>    </body>
+</div>    </body>
 </html>
 

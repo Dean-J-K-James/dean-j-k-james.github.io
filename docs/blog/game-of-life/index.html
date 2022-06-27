@@ -25,11 +25,13 @@
 <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js" defer></script><!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-7K6R0WJX31"></script>
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
 
-  gtag('config', 'G-7K6R0WJX31');
+    gtag('config', 'G-7K6R0WJX31');
 </script><script src="/assets/js/cookies.js" defer></script><script src="/assets/js/highlight.min.js" defer></script><script src="/assets/js/highlight.js" defer></script>    </head>
     <body>
         <div id="cook" class="toolbar flex-row flex-08">
@@ -37,16 +39,29 @@
     <div class="flex-fill"></div>
     <a id="cookies-accept" class="p-08 py-0">Accept</a>
 </div>        <div id="menu" class="toolbar flex-row flex-08">
-    <a href="/" class="logo">The Coding Dodo</a>
+    <a href="/feed" class="logo">The Coding Dodo</a>
     <div class="flex-fill"></div>
     <nav class="flex-row flex-08">
-        <a href="/" class="p-08 py-0 active">Blog</a>    </nav>
+        <a href="/feed" class="p-08 py-0">Blog</a><a href="/product" class="p-08 py-0">Products</a>    </nav>
     </div>        <div id="page" class="flex-16 two-column"><div id="cell-page" class="flex-col flex-16">
             <div class="cell flex-col flex-16 p-16 blog">
 <article class="flex-col flex-32">
-    <header class="flex-col flex-08">
+    <header class="flex-col flex-16">
+    <div class="flex-row flex-08">
+        <img src="/assets/img/avatar.png" style="width:32px;border-radius:02px;">
+        <div class="flex-col p-08 py-0">
+            <div class="flex-fill"></div>
+            <p class="title">TheCodingDodo</p>
+            <div class="flex-fill"></div>
+        </div>
+        <div class="flex-fill"></div>
+        <a href="https://twitter.com/thecodingdodo" class="fa fa-twitter"></a>
+        <a href="https://www.youtube.com/channel/UCLYv_FM6EbtTbfJpFuEzPbQ" class="fa fa-youtube"></a>
+        <a href="mailto:dean.j.k.james@gmail.com" class="fa fa-envelope"></a>
+    </div>
     <h1>Conway's Game of Life</h1>
-    <p class="subtitle">Last Updated: 2021-09-18</p>
+    <p class="subtitle">2021-09-18</p>
+    <p>Create a two-dimensional cellular automaton with the rules of Conway's Game of Life.</p>
 </header>    <canvas id="application-container"></canvas>
     <blockquote>
         <p><strong>Demo</strong> - Click the demo to restart the animation. Click <a href="/assets/contents/game-of-life/main.js">here</a> to see the code.</p>
@@ -54,8 +69,19 @@
 
     
     <script type="module" src="/assets/contents/game-of-life/main.js"></script>
-<main class="flex-col flex-32">
-    <h2>What is Conway's Game of Life?</h2>
+
+<h2>Table of Contents</h2>
+<ul>
+<li><a href="#What+is+Conway%27s+Game+of+Life%3F">What is Conway's Game of Life?</a></li>
+<li><a href="#Algorithm">Algorithm</a></li>
+<li><a href="#Implementation">Implementation</a></li>
+<li><a href="#Randomise+Grid">Randomise Grid</a></li>
+<li><a href="#Generate">Generate</a></li>
+<li><a href="#Get+Live+Neighbours">Get Live Neighbours</a></li>
+<li><a href="#Apply+Buffer">Apply Buffer</a></li>
+</ul>
+<main class="article flex-col flex-32">
+    <h2 id="What+is+Conway%27s+Game+of+Life%3F" name="What+is+Conway%27s+Game+of+Life%3F">What is Conway's Game of Life?</h2>
 <p>Conway's game of life is a type of outer-totalistic cellular automata using square cells in a two-dimensional grid. Each cell can be in one of two states, defined as either "live" or "dead". It was created by John Conway in 1970, and provides a simulation of birth and death by underpopulation and overpopulation.</p>
 <p>Once the state of each cell is initialised, a set of rules are applied, causing the grid to evolve over several generations. The rules for Conway's game of life are as follows:</p>
 <ul>
@@ -69,7 +95,7 @@
 <p><strong>Figure 1</strong> - Game of Life After 1000 Generations.</p>
 </blockquote>
 <p><em>Figure 1</em> shows generation 1000 of the game of life, when started from a random grid, with each cell having a 50% chance of being either dead or live. In other words, a grid whose initial state is entirely random, after having the rules applied 1000 times, looks like <em>Figure 1</em>.</p>
-<h2>Algorithm</h2>
+<h2 id="Algorithm" name="Algorithm">Algorithm</h2>
 <pre><code>Randomise all cells in the grid
 Loop x times:
     Loop all cells, C:
@@ -80,7 +106,7 @@ Loop x times:
             Set C to dead
         If C is dead and N = 3:
             Set C to live</code></pre>
-<h2>Implementation</h2>
+<h2 id="Implementation" name="Implementation">Implementation</h2>
 <p>The function <code>game_of_life</code> is the root of our algorithm. First, a two-dimensional array of size <code>sizex</code> , <code>sizey</code> is created using the <code>create_2d_array</code> function, setting each cell to <code>dead</code> by default. Depending on the language you are using, a two-dimensional array will have to be generated manually. After, the grid gets randomised.</p>
 <pre><code>function game_of_life() {
     this.grid = create_2d_array(this.sizex, this.sizey, this.dead);
@@ -96,7 +122,7 @@ Loop x times:
 <li>A new array, called a <code>buffer</code>, containing the states of the next generation is produced.</li>
 <li>This <code>buffer</code> array is then applied to the main grid array.</li>
 </ol>
-<h2>Randomise Grid</h2>
+<h2 id="Randomise+Grid" name="Randomise+Grid">Randomise Grid</h2>
 <p>The initial state of each cell can determine what sort of animation we get. We want a completely random animation, and so, the state of each cell is set to either dead or live, with a 50% chance of each. For this, we call the <code>randomise_grid</code> function.</p>
 <pre><code>randomise_grid() {
 
@@ -112,7 +138,7 @@ Loop x times:
 <blockquote>
 <p><strong>Figure 2</strong> - Two-dimensional grid of cells in a random state.</p>
 </blockquote>
-<h2>Generate</h2>
+<h2 id="Generate" name="Generate">Generate</h2>
 <p>The <code>generate</code> function is where most of the work is done. First, a new array, <code>buffer</code> is created. This will be equal in size to our main array, with each cell initialised to <code>this.dead</code> .</p>
 <p>It is important to remember that when a new state is calculated, it should not be stored in the array currently being evaluated, because this will pollute it with states for the current and next generation. Each time a state is calculated, it should be put into a seperate, empty "buffer" array so that it doesn't affect the other cells.</p>
 <pre><code>generate() {
@@ -142,7 +168,7 @@ Loop x times:
 <li>If the cell is <code>dead</code>, and there are <code>== 3</code> live neighbours, this cell becomes <code>live</code>.</li>
 </ol>
 <p>Once the buffer array is filled, it is returned.</p>
-<h2>Get Live Neighbours</h2>
+<h2 id="Get+Live+Neighbours" name="Get+Live+Neighbours">Get Live Neighbours</h2>
 <p>The function, <code>get_live_neighbours</code> takes two parameters; an <code>x</code> and a <code>y</code> coordinate. It then gets the state of each of the eight neighbouring cells, incrementing <code>count</code> if the state is <code>live</code> . The number of live neighbours is then returned.</p>
 <pre><code>get_live_neighbours(x, y) {
     let count = 0;
@@ -171,7 +197,7 @@ Loop x times:
 <li>In example 3,  <code>get_live_neighbours</code> would return 4 if the <code>x</code>,  <code>y</code> coordinates of the blue cell were passed.</li>
 <li>In example 4,  <code>get_live_neighbours</code> would return 5 if the <code>x</code>,  <code>y</code> coordinates of the blue cell were passed.</li>
 </ul>
-<h2>Apply Buffer</h2>
+<h2 id="Apply+Buffer" name="Apply+Buffer">Apply Buffer</h2>
 <p>Once the states of every cell have been calculated, they need to be applied. Remember, each new state is stored in a seperate "buffer" array, so that the original doesn't get polluted. Now that every cell has been evaluated, the values in the "buffer" array can be set in the main array.</p>
 <pre><code>apply_buffer(buffer) {
     for (let x = 0; x &lt; this.sizex; x++)
@@ -183,15 +209,14 @@ Loop x times:
     </div>
 
 <div id="cell-side" class="flex-col flex-16">
-            <div class="cell flex-col flex-16 p-16 articles">
+            <div class="cell flex-col flex-08 p-16 articles">
 <div class="flex-col flex-04">
     <a href="/blog/random-walk-dungeon-generation" class="card flex-col flex-04 p-08"><p class="title">Random Walk Dungeon Generation</p><p class="subtitle">2021-06-20</p></a><a href="/blog/depth-first-search-maze" class="card flex-col flex-04 p-08"><p class="title">Depth First Search Maze</p><p class="subtitle">2021-06-27</p></a><a href="/blog/perlin-noise-terrain-generation" class="card flex-col flex-04 p-08"><p class="title">Perlin Noise Terrain Generation</p><p class="subtitle">2021-07-04</p></a><a href="/blog/game-of-life" class="card flex-col flex-04 p-08 active"><p class="title">Conway's Game of Life</p><p class="subtitle">2021-09-18</p></a></div></div>
     </div></div>        <div id="foot" class="toolbar flex-row flex-08">
+    <div class="flex-fill"></div>
     <nav class="flex-row flex-08">
         <a href="/cookies" class="p-08 py-0">Cookie Policy</a>    </nav>
     <div class="flex-fill"></div>
-    <a href="https://twitter.com/thecodingdodo" class="fa fa-twitter"></a>
-<a href="https://www.youtube.com/channel/UCLYv_FM6EbtTbfJpFuEzPbQ" class="fa fa-youtube"></a>
-<a href="mailto:dean.j.k.james@gmail.com" class="fa fa-envelope"></a></div>    </body>
+</div>    </body>
 </html>
 

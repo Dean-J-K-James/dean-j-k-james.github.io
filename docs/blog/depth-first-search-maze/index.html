@@ -39,16 +39,29 @@
     <div class="flex-fill"></div>
     <a id="cookies-accept" class="p-08 py-0">Accept</a>
 </div>        <div id="menu" class="toolbar flex-row flex-08">
-    <a href="/" class="logo">The Coding Dodo</a>
+    <a href="/feed" class="logo">The Coding Dodo</a>
     <div class="flex-fill"></div>
     <nav class="flex-row flex-08">
-        <a href="/" class="p-08 py-0 active">Blog</a>    </nav>
+        <a href="/feed" class="p-08 py-0">Blog</a><a href="/product" class="p-08 py-0">Products</a>    </nav>
     </div>        <div id="page" class="flex-16 two-column"><div id="cell-page" class="flex-col flex-16">
             <div class="cell flex-col flex-16 p-16 blog">
 <article class="flex-col flex-32">
-    <header class="flex-col flex-08">
+    <header class="flex-col flex-16">
+    <div class="flex-row flex-08">
+        <img src="/assets/img/avatar.png" style="width:32px;border-radius:02px;">
+        <div class="flex-col p-08 py-0">
+            <div class="flex-fill"></div>
+            <p class="title">TheCodingDodo</p>
+            <div class="flex-fill"></div>
+        </div>
+        <div class="flex-fill"></div>
+        <a href="https://twitter.com/thecodingdodo" class="fa fa-twitter"></a>
+        <a href="https://www.youtube.com/channel/UCLYv_FM6EbtTbfJpFuEzPbQ" class="fa fa-youtube"></a>
+        <a href="mailto:dean.j.k.james@gmail.com" class="fa fa-envelope"></a>
+    </div>
     <h1>Depth First Search Maze</h1>
-    <p class="subtitle">Last Updated: 2021-06-27</p>
+    <p class="subtitle">2021-06-27</p>
+    <p>Use a randomised variation of the depth first search algorithm to generate a fully connected maze.</p>
 </header>    <canvas id="application-container"></canvas>
     <blockquote>
         <p><strong>Demo</strong> - Click the demo to restart the animation. Click <a href="/assets/contents/depth-first-search-maze/main.js">here</a> to see the code.</p>
@@ -56,15 +69,30 @@
 
     
     <script type="module" src="/assets/contents/depth-first-search-maze/main.js"></script>
-<main class="flex-col flex-32">
-    <h2>Introduction to Depth First Search</h2>
+
+<h2>Table of Contents</h2>
+<ul>
+<li><a href="#Introduction+to+Depth+First+Search">Introduction to Depth First Search</a></li>
+<li><a href="#Algorithm">Algorithm</a></li>
+<li><a href="#Implementation">Implementation</a><ul>
+<li><a href="#Initialise">Initialise</a></li>
+<li><a href="#Evaluate+Cell">Evaluate Cell</a></li>
+<li><a href="#Draw+Path">Draw Path</a></li>
+<li><a href="#Add+Cell+Neighbours">Add Cell Neighbours</a></li>
+<li><a href="#Get+Random+Neighbours">Get Random Neighbours</a></li>
+</ul>
+</li>
+<li><a href="#Further+Reading">Further Reading</a></li>
+</ul>
+<main class="article flex-col flex-32">
+    <h2 id="Introduction+to+Depth+First+Search" name="Introduction+to+Depth+First+Search">Introduction to Depth First Search</h2>
 <p>Depth first search (DFS) is an algorithm most commonly used to traverse a graph, exploring the full length of each branch, one at a time, until a goal is found. By randomising the algorithm, and removing the termination condition, it can be used to generate a maze in a 2D grid.</p>
 <p><img src="/assets/contents/depth-first-search-maze/figure1.png" alt="Example Maze Generated Using a Randomised Depth First Search" /></p>
 <blockquote>
 <p><strong>Figure 1</strong> - Example Maze Generated Using a Randomised Depth First Search</p>
 </blockquote>
 <p>A maze generated using DFS will be fully connected, and look similar to <em>Figure 1</em>.</p>
-<h2>Algorithm</h2>
+<h2 id="Algorithm" name="Algorithm">Algorithm</h2>
 <p>Typically, there are two versions of a DFS. One uses recursion, and the other uses a stack. We will be using a stack for ours.</p>
 <pre><code>Set all cells to a wall
 Push centre cell onto a stack, S
@@ -74,7 +102,7 @@ While S is not empty:
         Set C to a path
         Push each neighbour of C onto S in a random order</code></pre>
 <p>The key difference with our DFS algorithm when compared to a standard DFS, is the order nodes (cells) are added to the stack. Usually, new nodes will be added based on travel cost, but here, they are added in a completely random order.</p>
-<h2>Implementation</h2>
+<h2 id="Implementation" name="Implementation">Implementation</h2>
 <div class="tip">All code shown in this tutorial is pseudo code, however, it should be relatively easy to translate into another language. Click the link under the interactive demo to see a JavaScript implementation of the code.</div>
 <p>The starting function in our implementation is the <code>dfs_maze</code> function.</p>
 <pre><code>function dfs_maze() {
@@ -84,7 +112,7 @@ While S is not empty:
     }
 }</code></pre>
 <p>First, everything is setup in the <code>initialise</code> function, whichs sets up the stack and creates the initial path. Then, we repeatedly call <code>evaluate_cell</code> until the stack is empty, creating a new path for as long as there is room in the grid.</p>
-<h3>Initialise</h3>
+<h3 id="Initialise" name="Initialise">Initialise</h3>
 <p>The first task is to pick a starting cell, which will be the cell from which the maze is created. We use <code>x</code> and <code>y</code> to represent the starting cell's position, which will be the centre of the grid.</p>
 <pre><code>initialise() {
     x = floor(sizex / 2);
@@ -105,7 +133,7 @@ While S is not empty:
 <li><code>next_y</code> refers to the y coordinate of the cell this path is moving to.</li>
 </ul>
 <div class="tip">It may seem confusing at first why each element added to the stack has four values. This will be explained later in the article. The starting cell doesn't have an original position, so both coordinates are set to the same values.</div>
-<h3>Evaluate Cell</h3>
+<h3 id="Evaluate+Cell" name="Evaluate+Cell">Evaluate Cell</h3>
 <p>For as long as the stack is not empty, we keep calling <code>evaluate_cell</code>.</p>
 <pre><code>function evaluate_cell() {
     cell = this.stack.pop();
@@ -126,7 +154,7 @@ While S is not empty:
 </ul>
 <p>If the cell's next position is within the bounds of the grid and is a wall, meaning it hasn't been visited yet, then a path is drawn to it from the cell's last position using the function <code>draw_path</code>.</p>
 <p>Finally, the <code>add_cell_neighbours</code> function is called. This adds the neighbours of the passed cell onto the stack.</p>
-<h3>Draw Path</h3>
+<h3 id="Draw+Path" name="Draw+Path">Draw Path</h3>
 <p>The <code>draw_path</code> function is where the four values for each cell in the stack become useful.</p>
 <p><img src="/assets/contents/depth-first-search-maze/figure2.png" alt="Example Maze Generated Using a Randomised Depth First Search" /></p>
 <blockquote>
@@ -149,7 +177,7 @@ While S is not empty:
     }
 }</code></pre>
 <p>Since our for-loops iterate from lowest to highest values, we extract the two coordinates, and then loop from the minimum to the maximum on each axis. The function <code>set_cell</code> sets the cell located at <code>i</code> , <code>j</code> to a <code>path</code> .</p>
-<h3>Add Cell Neighbours</h3>
+<h3 id="Add+Cell+Neighbours" name="Add+Cell+Neighbours">Add Cell Neighbours</h3>
 <p>The function <code>add_cell_neighbours</code> adds the neighbours of the passed cell in a randomised order to the stack, allowing the DFS algorithm to continue.</p>
 <p>It first calls the function, <code>get_random_neighbours</code>. This returns each of the four neighbouring cells in a random order. The four neighbours will be the cells to the north, east, south, and west of the passed coordinates. Each of the returned neighbours are two cells away from the current.</p>
 <pre><code>function add_cell_neighbours(cell) {
@@ -171,7 +199,7 @@ While S is not empty:
 </ul>
 <p>A stack is a last in first out data structure. The order each cell is added is important because it will determine how good the maze looks. The cells added are done so in a random order, so that the first element "popped" off the stack is not always in the same direction. For example, if we added cells in the order: north, east, south, and west all the time, then the west cell will always be picked and evaluated first. This will cause our maze to just head straight to the west border of the grid.</p>
 <p>Each time a cell is evaluated and set to a path, four new cells will be added to the stack. As soon as there are no new cells to evaluate, the stack will begin shrinking. Eventually, it will empty and so the while loop will terminate.</p>
-<h3>Get Random Neighbours</h3>
+<h3 id="Get+Random+Neighbours" name="Get+Random+Neighbours">Get Random Neighbours</h3>
 <p>The <code>get_random_neighbours</code> function creates an array of arrays. Each of the smaller arrays contain two elements: an x, and a y coordinate. These coordinates are relative to the passed <code>x</code> and <code>y</code> parameters, and represent each of the four directions.</p>
 <pre><code>function get_random_neighbours(x, y) {
     return shuffle([[x, y - 2], [x + 2, y], [x, y + 2], [x - 2, y]]);
@@ -184,7 +212,7 @@ While S is not empty:
 <li><code>[x - 2, y]</code> represents the west neighbour.</li>
 </ul>
 <p>Before being returned, the array is shuffled so that the directions are randomised.</p>
-<h2>Further Reading</h2>
+<h2 id="Further+Reading" name="Further+Reading">Further Reading</h2>
 <ul>
 <li>The Wikipedia page on <a href="https://en.wikipedia.org/wiki/Depth-first_search">Depth First Search</a> has some nice pseudo code for a DFS.</li>
 <li>Another wikipedia page exploring various <a href="https://en.wikipedia.org/wiki/Maze_generation_algorithm">Maze Generation</a> algorithms also has some good pseudo code.</li>
@@ -192,15 +220,14 @@ While S is not empty:
     </div>
 
 <div id="cell-side" class="flex-col flex-16">
-            <div class="cell flex-col flex-16 p-16 articles">
+            <div class="cell flex-col flex-08 p-16 articles">
 <div class="flex-col flex-04">
     <a href="/blog/random-walk-dungeon-generation" class="card flex-col flex-04 p-08"><p class="title">Random Walk Dungeon Generation</p><p class="subtitle">2021-06-20</p></a><a href="/blog/depth-first-search-maze" class="card flex-col flex-04 p-08 active"><p class="title">Depth First Search Maze</p><p class="subtitle">2021-06-27</p></a><a href="/blog/perlin-noise-terrain-generation" class="card flex-col flex-04 p-08"><p class="title">Perlin Noise Terrain Generation</p><p class="subtitle">2021-07-04</p></a><a href="/blog/game-of-life" class="card flex-col flex-04 p-08"><p class="title">Conway's Game of Life</p><p class="subtitle">2021-09-18</p></a></div></div>
     </div></div>        <div id="foot" class="toolbar flex-row flex-08">
+    <div class="flex-fill"></div>
     <nav class="flex-row flex-08">
         <a href="/cookies" class="p-08 py-0">Cookie Policy</a>    </nav>
     <div class="flex-fill"></div>
-    <a href="https://twitter.com/thecodingdodo" class="fa fa-twitter"></a>
-<a href="https://www.youtube.com/channel/UCLYv_FM6EbtTbfJpFuEzPbQ" class="fa fa-youtube"></a>
-<a href="mailto:dean.j.k.james@gmail.com" class="fa fa-envelope"></a></div>    </body>
+</div>    </body>
 </html>
 

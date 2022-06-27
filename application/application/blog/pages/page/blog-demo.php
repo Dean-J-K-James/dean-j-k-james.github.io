@@ -9,4 +9,6 @@
     <?php endforeach ?>
 
     <script type="module" src="<?= APPPATH . '/assets/contents/' . $data['slug'] . '/main.js' ?>"></script>
+<?php else: ?>
+    <img src="<?= APPPATH ?>/assets/contents/<?= $data['slug'] ?>/banner.png">
 <?php endif; ?>

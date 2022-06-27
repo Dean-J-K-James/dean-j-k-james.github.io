@@ -39,32 +39,59 @@
     <div class="flex-fill"></div>
     <a id="cookies-accept" class="p-08 py-0">Accept</a>
 </div>        <div id="menu" class="toolbar flex-row flex-08">
-    <a href="/" class="logo">The Coding Dodo</a>
+    <a href="/feed" class="logo">The Coding Dodo</a>
     <div class="flex-fill"></div>
     <nav class="flex-row flex-08">
-        <a href="/" class="p-08 py-0 active">Blog</a>    </nav>
+        <a href="/feed" class="p-08 py-0">Blog</a>    </nav>
     </div>        <div id="page" class="flex-16 two-column"><div id="cell-page" class="flex-col flex-16">
             <div class="cell flex-col flex-16 p-16 blog">
 <article class="flex-col flex-32">
-    <header class="flex-col flex-08">
+    <header class="flex-col flex-16">
+    <div class="flex-row flex-08">
+        <img src="/assets/img/avatar.png" style="width:32px;border-radius:02px;">
+        <div class="flex-col p-08 py-0">
+            <div class="flex-fill"></div>
+            <p class="title">TheCodingDodo</p>
+            <div class="flex-fill"></div>
+        </div>
+        <div class="flex-fill"></div>
+        <a href="https://twitter.com/thecodingdodo" class="fa fa-twitter"></a>
+        <a href="https://www.youtube.com/channel/UCLYv_FM6EbtTbfJpFuEzPbQ" class="fa fa-youtube"></a>
+        <a href="mailto:dean.j.k.james@gmail.com" class="fa fa-envelope"></a>
+    </div>
     <h1>Entity Component System</h1>
-    <p class="subtitle">Last Updated: 2021-06-20</p>
-</header><main class="flex-col flex-32">
-    <h2>What is Entity Component System?</h2>
+    <p class="subtitle">2021-06-20</p>
+    <p>Learn about the entity component system software pattern, and how it differs to the traditional object oriented approach.</p>
+</header>    <img src="/assets/contents/entity-component-system/banner.png">
+
+<h2>Table of Contents</h2>
+<ul>
+<li><a href="#What+is+Entity+Component+System%3F">What is Entity Component System?</a></li>
+<li><a href="#Example">Example</a><ul>
+<li><a href="#What+Would+this+Look+Like+in+OOP%3F">What Would this Look Like in OOP?</a></li>
+<li><a href="#What+Would+this+Look+Like+in+ECS%3F">What Would this Look Like in ECS?</a></li>
+<li><a href="#Entities">Entities</a></li>
+<li><a href="#Components">Components</a></li>
+<li><a href="#Systems">Systems</a></li>
+</ul>
+</li>
+</ul>
+<main class="article flex-col flex-32">
+    <h2 id="What+is+Entity+Component+System%3F" name="What+is+Entity+Component+System%3F">What is Entity Component System?</h2>
 <p>Entity Component System (ECS) is a software pattern commonly used in game development. It is designed to take full advantage of a computer’s hardware to maximize performance, whilst also providing the programmer with a structured, modular, and reusable environment.</p>
 <p><img src="/assets/contents/entity-component-system/figure1.png" alt="ECS Parts" /></p>
 <blockquote>
 <p><strong>Figure 1</strong> - ECS Parts</p>
 </blockquote>
 <p>ECS, as it's name suggests, comprises three parts: entities, components, and systems. Each of these three parts have their own purpose and responsibilities within an ECS framework, and interact with each other in their own ways.</p>
-<h2>Example</h2>
+<h2 id="Example" name="Example">Example</h2>
 <p>ECS is often used as an alternative to the traditional object oriented approach to software development. Although both ECS and OOP can be used alongside each other, let's have a look at an example where we use and compare both methods as alternatives. Consider a 2D platformer with the following features:</p>
 <ul>
 <li>A player controlled by a mouse and keyboard.</li>
 <li>A static tree.</li>
 <li>Two zombies controlled by AI.</li>
 </ul>
-<h3>What Would this Look Like in OOP?</h3>
+<h3 id="What+Would+this+Look+Like+in+OOP%3F" name="What+Would+this+Look+Like+in+OOP%3F">What Would this Look Like in OOP?</h3>
 <p>In object oriented programming, data and functionality are kept tightly encapsulated within classes, promoting inheritance like in the following diagram:</p>
 <p><img src="/assets/contents/entity-component-system/figure2.png" alt="Our Example Game Using OOP" /></p>
 <blockquote>
@@ -108,9 +135,9 @@
     public int xpDropped;
 }</code></pre>
 <p>Any data specific to a zombie, such as xp earned when killed, will be in the <code>Zombie</code> class. Object oriented programming promotes inheritence, which uses an "is-a" relationship between classes.</p>
-<h3>What Would this Look Like in ECS?</h3>
+<h3 id="What+Would+this+Look+Like+in+ECS%3F" name="What+Would+this+Look+Like+in+ECS%3F">What Would this Look Like in ECS?</h3>
 <p>Entity component systems take a slightly different approach to defining objects. Whereas OOP keeps data and logic together in classes, ECS seperates data into small, reusable components, and logic into small, reusable systems.</p>
-<h3>Entities</h3>
+<h3 id="Entities" name="Entities">Entities</h3>
 <p>An entity is an individual object in the world. Whereas in OOP, objects are instances of a class, in ECS, an entity is just a unique integer. The purpose of this integer is simply to distinguish between entities. The four entities in our game would be:</p>
 <ul>
 <li><code>entity = 0</code> represents the player.</li>
@@ -119,7 +146,7 @@
 <li><code>entity = 3</code> represents the second zombie.</li>
 </ul>
 <p>The entity itself contains no data or functionality; it is just an integer used for identification.</p>
-<h3>Components</h3>
+<h3 id="Components" name="Components">Components</h3>
 <p>All the data associated with an entity is seperated into small, generic, and reusable components. Below are some example components:</p>
 <ul>
 <li><code>Position</code></li>
@@ -147,7 +174,7 @@
 <li><code>entity = 3</code> would have the <code>Position</code>, <code>Render</code>, <code>Physics</code>, and <code>AI</code> components.</li>
 </ul>
 <p>By having primitive values, components can be stored and iterated over extremely efficiently by being contigous in memory.</p>
-<h3>Systems</h3>
+<h3 id="Systems" name="Systems">Systems</h3>
 <p>Systems bring the game to life. They operate on the components attached to an entity to produce changes in the world. Some example systems could be:</p>
 <ul>
 <li><code>RenderSystem</code> - Uses the <code>Position</code> and <code>Render</code> components.</li>
@@ -166,15 +193,14 @@
     </div>
 
 <div id="cell-side" class="flex-col flex-16">
-            <div class="cell flex-col flex-16 p-16 articles">
+            <div class="cell flex-col flex-08 p-16 articles">
 <div class="flex-col flex-04">
     <a href="/blog/entity-component-system" class="card flex-col flex-04 p-08 active"><p class="title">Entity Component System</p><p class="subtitle">2021-06-20</p></a></div></div>
     </div></div>        <div id="foot" class="toolbar flex-row flex-08">
+    <div class="flex-fill"></div>
     <nav class="flex-row flex-08">
         <a href="/cookies" class="p-08 py-0">Cookie Policy</a>    </nav>
     <div class="flex-fill"></div>
-    <a href="https://twitter.com/thecodingdodo" class="fa fa-twitter"></a>
-<a href="https://www.youtube.com/channel/UCLYv_FM6EbtTbfJpFuEzPbQ" class="fa fa-youtube"></a>
-<a href="mailto:dean.j.k.james@gmail.com" class="fa fa-envelope"></a></div>    </body>
+</div>    </body>
 </html>
 

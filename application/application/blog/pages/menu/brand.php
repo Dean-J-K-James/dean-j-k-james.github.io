@@ -1,1 +1,1 @@
-<?php HTML::menu_link('', 'Blog'); ?>
+<?php HTML::menu_link(HOMEPGE, 'Blog'); ?>

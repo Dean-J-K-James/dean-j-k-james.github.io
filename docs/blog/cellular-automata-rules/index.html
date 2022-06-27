@@ -25,11 +25,13 @@
 <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js" defer></script><!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-7K6R0WJX31"></script>
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
 
-  gtag('config', 'G-7K6R0WJX31');
+    gtag('config', 'G-7K6R0WJX31');
 </script><script src="/assets/js/cookies.js" defer></script><script src="/assets/js/highlight.min.js" defer></script><script src="/assets/js/highlight.js" defer></script>    </head>
     <body>
         <div id="cook" class="toolbar flex-row flex-08">
@@ -37,18 +39,46 @@
     <div class="flex-fill"></div>
     <a id="cookies-accept" class="p-08 py-0">Accept</a>
 </div>        <div id="menu" class="toolbar flex-row flex-08">
-    <a href="/" class="logo">The Coding Dodo</a>
+    <a href="/feed" class="logo">The Coding Dodo</a>
     <div class="flex-fill"></div>
     <nav class="flex-row flex-08">
-        <a href="/" class="p-08 py-0 active">Blog</a>    </nav>
+        <a href="/feed" class="p-08 py-0">Blog</a><a href="/product" class="p-08 py-0">Products</a>    </nav>
     </div>        <div id="page" class="flex-16 two-column"><div id="cell-page" class="flex-col flex-16">
             <div class="cell flex-col flex-16 p-16 blog">
 <article class="flex-col flex-32">
-    <header class="flex-col flex-08">
+    <header class="flex-col flex-16">
+    <div class="flex-row flex-08" href="/ajax/logout">
+        <img src="/assets/contents/avatar.png" style="width:32px;border-radius:02px;">
+        <div class="flex-col p-08 py-0">
+            <div class="flex-fill"></div>
+            <p class="title">TheCodingDodo</p>
+            <div class="flex-fill"></div>
+            <p class="subtitle">2022-04-02</p>
+            <div class="flex-fill"></div>
+        </div>
+        <div class="flex-fill"></div>
+        <a href="https://twitter.com/thecodingdodo" class="fa fa-twitter"></a>
+        <a href="https://www.youtube.com/channel/UCLYv_FM6EbtTbfJpFuEzPbQ" class="fa fa-youtube"></a>
+        <a href="mailto:dean.j.k.james@gmail.com" class="fa fa-envelope"></a>
+    </div>
     <h1>Cellular Automata Rules</h1>
-    <p class="subtitle">Last Updated: 2022-04-02</p>
+    <p>Explore the difference between totalistic, outer-totalistic and elementary cellular automata in one-dimensions, including how their rules are applied.</p>
 </header><main class="flex-col flex-32">
-    <h2>Types of Cellular Automata</h2>
+    <h2>Table of Contents</h2>
+    <ul>
+<li><a href="#Types+of+Cellular+Automata">Types of Cellular Automata</a><ul>
+<li><a href="#Elementary+Cellular+Automata">Elementary Cellular Automata</a></li>
+<li><a href="#Totalistic+Cellular+Automata">Totalistic Cellular Automata</a></li>
+<li><a href="#Outer-Totalistic+Cellular+Automata">Outer-Totalistic Cellular Automata</a></li>
+</ul>
+</li>
+<li><a href="#Applying+the+Rules">Applying the Rules</a><ul>
+<li><a href="#Applying+Elementary+Rules">Applying Elementary Rules</a></li>
+<li><a href="#Applying+Totalistic+Rules">Applying Totalistic Rules</a></li>
+<li><a href="#Applying+Outer-Totalistic+Rules">Applying Outer-Totalistic Rules</a></li>
+</ul>
+</li>
+</ul><h2 id="Types+of+Cellular+Automata" name="Types+of+Cellular+Automata">Types of Cellular Automata</h2>
 <p>All cellular automata have a set of rules that are used to create new generations. How these rules are applied depends on the type of CA. There are three main types of cellular automata: elementary, totalistic, and outer-totalistic.</p>
 <p>Although the ideas investigated in this article can be applied to more complex CA, we are only going to look at one-dimensional cellular automata with range <code>r = 1</code> and possible states <code>m = 2</code>. <em>Figure 1</em> shows all eight possible neighbourhood configurations for such a CA.</p>
 <p><img src="/assets/contents/cellular-automata-rules/figure1.png" alt="All Eight Elementary Neighbourhood Configurations" /></p>
@@ -56,7 +86,7 @@
 <p><strong>Figure 1</strong> - All Eight Elementary Neighbourhood Configurations</p>
 </blockquote>
 <p>Processing a cellular automata is quite simple: for each cell, provide it's neighbourhood as input, and as output, a single cell state will be produced.</p>
-<h3>Elementary Cellular Automata</h3>
+<h3 id="Elementary+Cellular+Automata" name="Elementary+Cellular+Automata">Elementary Cellular Automata</h3>
 <p>Let's start with the elementary rules. Elementary cellular automata use the state of each cell in a neighbourhood individually as input. For example, we could say that the input neighbourhood <code>{110}</code> produces an output state of 0. We could also say that the input neighbourhood <code>{011}</code> produces an output state of 1.</p>
 <p>In total, there are eight possible elementary inputs and outputs, shown in <em>Figure 2</em>.</p>
 <p><img src="/assets/contents/cellular-automata-rules/figure2.png" alt="All Eight Elementary Inputs and Outputs" /></p>
@@ -75,7 +105,7 @@
 <li>An input neighbourhood <code>{001}</code> will produce an output state of 1.</li>
 <li>An input neighbourhood <code>{000}</code> will produce an output state of 0.</li>
 </ul>
-<h3>Totalistic Cellular Automata</h3>
+<h3 id="Totalistic+Cellular+Automata" name="Totalistic+Cellular+Automata">Totalistic Cellular Automata</h3>
 <p>Totalistic cellular automata use the total state of a cell's neighbourhood as input for its rules. For example, we could say that the input neighbourhood <code>{010}</code>, which has a total neighbourhood state of <code>0 + 1 + 0 = 1</code>, produces an output state of 0. We could also say that the input neighbourhood <code>{110}</code>, which has a total neighbourhood state of <code>1 + 1 + 0 = 2</code>, produces an output state of 1. The actual neighbourhood configuration itself makes no difference when using totalistic CA, only the total state matters.</p>
 <p>In total, there are four possible totalistic inputs and outputs, shown in <em>Figure 3</em>.</p>
 <p><img src="/assets/contents/cellular-automata-rules/figure3.png" alt="All Four Totalistic Inputs and Outputs" /></p>
@@ -90,7 +120,7 @@
 <li>A total input neighbourhood state of 1 will produce an output state of 1.</li>
 <li>A total input neighbourhood state of 0 will produce an output state of 0.</li>
 </ul>
-<h3>Outer-Totalistic Cellular Automata</h3>
+<h3 id="Outer-Totalistic+Cellular+Automata" name="Outer-Totalistic+Cellular+Automata">Outer-Totalistic Cellular Automata</h3>
 <p>Outer-totalistic cellular automata use the total state of a cell's outer-neighbourhood, and the state of the cell itself, as input for it's rules. For example, we could say that the input outer-neighbourhood <code>{10}</code>, which has a total neighbourhood state of <code>1 + 0 = 1</code>, combined with a cell state of 1 produces an output state of 0. We could also say that the input outer-neighbourhood <code>{11}</code>, which has a total neighbourhood state of <code>1 + 1 = 2</code>, combined with a cell state of 0 produces an output state of 1. Like with totalistic CA, the configuration of the outer-neighbourhood makes no difference, only the total state matters.</p>
 <p>In total, there are six possible outer-totalistic inputs and outputs, shown in <em>Figure 4</em>.</p>
 <p><img src="/assets/contents/cellular-automata-rules/figure4.png" alt="All Four Outer-Totalistic Neighbourhood Inputs and Outputs" /></p>
@@ -107,7 +137,7 @@
 <li>A total input outer-neighbourhood state of 1 and input state of 0 will produce an output state of 0.</li>
 <li>A total input outer-neighbourhood state of 0 and input state of 0 will produce an output state of 0.</li>
 </ul>
-<h2>Applying the Rules</h2>
+<h2 id="Applying+the+Rules" name="Applying+the+Rules">Applying the Rules</h2>
 <p>Now that we have explored the differences between the three main types of cellular automata, let's have a go at evaluating some cells and applying the rules. To create a new generation, each cell in a grid needs to be evaluated. It doesn't matter which order this is done in, but for convenience, lets evaluate each cell in order from left to right. <em>Figure 5</em> shows an example cellular automata.</p>
 <p><img src="/assets/contents/cellular-automata-rules/figure5.png" alt="Example Cellular Automata" /></p>
 <blockquote>
@@ -119,7 +149,7 @@
 <li>Compare the neighbourhood to the provided ruleset.</li>
 <li>Calculate the output state and store it in the new grid at position <code>i</code>.</li>
 </ol>
-<h3>Applying Elementary Rules</h3>
+<h3 id="Applying+Elementary+Rules" name="Applying+Elementary+Rules">Applying Elementary Rules</h3>
 <p>First, let's try applying the elementary ruleset shown in <em>Figure 6</em> to the CA in <em>Figure 5</em>.</p>
 <p><img src="/assets/contents/cellular-automata-rules/figure6.png" alt="Example Elementary Ruleset" /></p>
 <blockquote>
@@ -146,7 +176,7 @@
 <p><strong>Figure 10</strong> - Evaluating Cell With Index <code>i = 3</code></p>
 </blockquote>
 <p>The rest of the grid will follow the same method.</p>
-<h3>Applying Totalistic Rules</h3>
+<h3 id="Applying+Totalistic+Rules" name="Applying+Totalistic+Rules">Applying Totalistic Rules</h3>
 <p>Next, let's try applying the totalistic ruleset shown in <em>Figure 11</em> to the CA in <em>Figure 5</em>.</p>
 <p><img src="/assets/contents/cellular-automata-rules/figure11.png" alt="Example Totalistic Ruleset" /></p>
 <blockquote>
@@ -173,7 +203,7 @@
 <p><strong>Figure 15</strong> - Evaluating Cell With Index <code>i = 3</code></p>
 </blockquote>
 <p>The rest of the grid will follow the same method.</p>
-<h3>Applying Outer-Totalistic Rules</h3>
+<h3 id="Applying+Outer-Totalistic+Rules" name="Applying+Outer-Totalistic+Rules">Applying Outer-Totalistic Rules</h3>
 <p>Finally, let's try applying the outer-totalistic ruleset shown in <em>Figure 16</em> to the CA in <em>Figure 5</em>.</p>
 <p><img src="/assets/contents/cellular-automata-rules/figure16.png" alt="Example Outer-Totalistic Ruleset" /></p>
 <blockquote>
@@ -203,15 +233,14 @@
     </div>
 
 <div id="cell-side" class="flex-col flex-16">
-            <div class="cell flex-col flex-16 p-16 articles">
+            <div class="cell flex-col flex-08 p-16 articles">
 <div class="flex-col flex-04">
     <a href="/blog/cellular-automata-introduction" class="card flex-col flex-04 p-08"><p class="title">Introduction to Cellular Automata</p><p class="subtitle">2021-09-11</p></a><a href="/blog/cellular-automata-neighbourhoods" class="card flex-col flex-04 p-08"><p class="title">Neighbourhoods in Cellular Automata</p><p class="subtitle">2022-04-02</p></a><a href="/blog/cellular-automata-rules" class="card flex-col flex-04 p-08 active"><p class="title">Cellular Automata Rules</p><p class="subtitle">2022-04-02</p></a></div></div>
     </div></div>        <div id="foot" class="toolbar flex-row flex-08">
+    <div class="flex-fill"></div>
     <nav class="flex-row flex-08">
         <a href="/cookies" class="p-08 py-0">Cookie Policy</a>    </nav>
     <div class="flex-fill"></div>
-    <a href="https://twitter.com/thecodingdodo" class="fa fa-twitter"></a>
-<a href="https://www.youtube.com/channel/UCLYv_FM6EbtTbfJpFuEzPbQ" class="fa fa-youtube"></a>
-<a href="mailto:dean.j.k.james@gmail.com" class="fa fa-envelope"></a></div>    </body>
+</div>    </body>
 </html>
 

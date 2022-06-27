@@ -16,14 +16,11 @@ $file = load_file('contents/' . (($form['name'] == 1) ? $name : $page) . '.json'
         <input type="hidden" name="ajax" value="<?= $form['ajax'] ?>">
         <input type="hidden" name="page" value="<?= $page ?>">
         <input type="hidden" name="name" value="<?= $name ?>">
-
         <?php
         $json = json_decode(str_replace('%NAME%', $name, file_get_contents($file)), true);
-
         FormGenerator::render($json, (($form['data'] == 1) ? $form['class']::selectDB($name) : null));
         ?>
-
-        <?php if ($form['ajax'] != NULL): ?>
+        <?php if ($form['ajax'] != null): ?>
             <a id="submit-button"><?= $form['button'] ?></a>
         <?php endif; ?>
     </form>

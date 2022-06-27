@@ -8,14 +8,14 @@
 <meta name="viewport"            content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="title"               content="Guide to Search Engine Optimisation (SEO)">
 <meta name="image"               content="https://thecodingdodo.com/assets/contents/guide-to-search-engine-optimisation/thumbnail.png">
-<meta name="description"         content="">
+<meta name="description"         content="Learn how to improve your website's search engine rank using these quick, simple techniques, including how to use meta tags, canonicalization, internal links, and proper use of headings.">
 <meta property="og:title"        content="Guide to Search Engine Optimisation (SEO)">
 <meta property="og:image"        content="https://thecodingdodo.com/assets/contents/guide-to-search-engine-optimisation/thumbnail.png">
-<meta property="og:description"  content="">
+<meta property="og:description"  content="Learn how to improve your website's search engine rank using these quick, simple techniques, including how to use meta tags, canonicalization, internal links, and proper use of headings.">
 <meta name="twitter:card"        content="summary">
 <meta name="twitter:title"       content="Guide to Search Engine Optimisation (SEO)">
 <meta name="twitter:image"       content="https://thecodingdodo.com/assets/contents/guide-to-search-engine-optimisation/thumbnail.png">
-<meta name="twitter:description" content="">
+<meta name="twitter:description" content="Learn how to improve your website's search engine rank using these quick, simple techniques, including how to use meta tags, canonicalization, internal links, and proper use of headings.">
 <meta name="robots"              content="index, follow">
 <link rel="canonical"            href="https://thecodingdodo.com/blog/guide-to-search-engine-optimisation">
 <link rel="icon"                 href="/assets/img/favicon.png" type="image/x-icon">
@@ -39,38 +39,86 @@
     <div class="flex-fill"></div>
     <a id="cookies-accept" class="p-08 py-0">Accept</a>
 </div>        <div id="menu" class="toolbar flex-row flex-08">
-    <a href="/" class="logo">The Coding Dodo</a>
+    <a href="/feed" class="logo">The Coding Dodo</a>
     <div class="flex-fill"></div>
     <nav class="flex-row flex-08">
-        <a href="/" class="p-08 py-0 active">Blog</a>    </nav>
+        <a href="/feed" class="p-08 py-0">Blog</a>    </nav>
     </div>        <div id="page" class="flex-16 two-column"><div id="cell-page" class="flex-col flex-16">
             <div class="cell flex-col flex-16 p-16 blog">
 <article class="flex-col flex-32">
-    <header class="flex-col flex-08">
+    <header class="flex-col flex-16">
+    <div class="flex-row flex-08">
+        <img src="/assets/img/avatar.png" style="width:32px;border-radius:02px;">
+        <div class="flex-col p-08 py-0">
+            <div class="flex-fill"></div>
+            <p class="title">TheCodingDodo</p>
+            <div class="flex-fill"></div>
+        </div>
+        <div class="flex-fill"></div>
+        <a href="https://twitter.com/thecodingdodo" class="fa fa-twitter"></a>
+        <a href="https://www.youtube.com/channel/UCLYv_FM6EbtTbfJpFuEzPbQ" class="fa fa-youtube"></a>
+        <a href="mailto:dean.j.k.james@gmail.com" class="fa fa-envelope"></a>
+    </div>
     <h1>Guide to Search Engine Optimisation (SEO)</h1>
-    <p class="subtitle">Last Updated: 2021-09-18</p>
-</header><main class="flex-col flex-32">
-    <h2>Introduction to Search Engine Optimisation</h2>
-<p>say seo changes constantly with the requirements not being fully known.</p>
-<h2>Page Title</h2>
+    <p class="subtitle">2022-06-21</p>
+    <p>Learn how to improve your website's search engine rank using these quick, simple techniques, including how to use meta tags, canonicalization, internal links, and proper use of headings.</p>
+</header>    <img src="/assets/contents/guide-to-search-engine-optimisation/banner.png">
+
+<h2>Table of Contents</h2>
+<ul>
+<li><a href="#Introduction+to+Search+Engine+Optimisation">Introduction to Search Engine Optimisation</a></li>
+<li><a href="#How+Do+Search+Engines+Index+a+Page%3F">How Do Search Engines Index a Page?</a></li>
+<li><a href="#On+Page+and+Off+Page+SEO">On Page and Off Page SEO</a></li>
+<li><a href="#Page+Title">Page Title</a></li>
+<li><a href="#Social+Media+Meta+Tags">Social Media Meta Tags</a></li>
+<li><a href="#Mobile+Friendly+Pages">Mobile Friendly Pages</a></li>
+<li><a href="#Headings">Headings</a></li>
+<li><a href="#Minify+CSS+and+JS+Files">Minify CSS and JS Files</a></li>
+<li><a href="#Internal+Linking">Internal Linking</a></li>
+<li><a href="#Image+Alt+Tags">Image Alt Tags</a></li>
+<li><a href="#Canonical+Link">Canonical Link</a></li>
+<li><a href="#Using+Dash+Instead+of+Underscore">Using Dash Instead of Underscore</a></li>
+</ul>
+<main class="article flex-col flex-32">
+    <h2 id="Introduction+to+Search+Engine+Optimisation" name="Introduction+to+Search+Engine+Optimisation">Introduction to Search Engine Optimisation</h2>
+<p>Search Engine Optimisation (SEO) is the process of improving your website's ability to receive traffic from a search engine. When a user searches for a word or phrase in a search engine like Google or Bing, a search engine results page (SERP) provides a list of links to webpages it thinks best represents the search query. The order that results appear in on a SERP is decided by a set of complex, and secret algorithms that only the search engine companies know. SEO involves numerous techniques that aim to increase the chances of a website having a better ranking.</p>
+<h2 id="How+Do+Search+Engines+Index+a+Page%3F" name="How+Do+Search+Engines+Index+a+Page%3F">How Do Search Engines Index a Page?</h2>
+<p>Before we even consider trying to optimise a website to increase it's rank, it first needs to get indexed. Only webpages that have been indexed appear in a search engine. If your website is not indexed, it will never appear, no matter how close the search term is to your page's content.</p>
+<p>To check if a website is indexed, go to Google, and search using the following format:</p>
+<pre><code>site:&lt;url&gt;</code></pre>
+<p>Replace <code>&lt;url&gt;</code> with your website's domain name. If there are no results, your website is not indexed. If there are results, then any page in the list is indexed.</p>
+<p>For example, if we search for <code>site:wikipedia.com</code>, we can see all the pages on wikipedia that are indexed. The results are shown in <em>Figure 1</em>.</p>
+<p><img src="/assets/contents/guide-to-search-engine-optimisation/figure1.png" alt="Wikipedia Indexing" /></p>
+<blockquote>
+<p><strong>Figure 1</strong> - Wikipedia Indexing</p>
+</blockquote>
+<p>To be indexed, a website must be analysed by a search engine crawler. When a crawler analyses a webpage, it gathers as much information about that webpage as it can, decides whether it should be indexed or not, and then chooses how important that webpage should be, determining how much priority to give it on the search engine results page.</p>
+<p>Once a page has been crawled, the crawler will likely explore a page that is linked on the current page, usually another page on the same website.</p>
+<h2 id="On+Page+and+Off+Page+SEO" name="On+Page+and+Off+Page+SEO">On Page and Off Page SEO</h2>
+<p>There are two main types of SEO strategy: on-page and off-page.</p>
+<ul>
+<li><strong>On-Page SEO</strong> is all the techniques that directly involve the website itself, including the code and contents of each webpage. Overall, this method aims to improve the quality of the website, so it not only is more compatible with search engines, but also a better experience for potential visitors.</li>
+<li><strong>Off-Page SEO</strong> is about improving a website's ability to get indexed and ranked highly using methods that do not directly involve the website itself. This includes the use of social media, and advertisement campaigns.</li>
+</ul>
+<p>This article is mainly about on-page SEO, including the use of meta tags, headings, and improving your website's overall user experience.</p>
+<h2 id="Page+Title" name="Page+Title">Page Title</h2>
 <p>Perhaps the easiest and most impactful way of improving your website's search engine ranking is to provide a title using the <code>&lt;title&gt;</code> tag.</p>
 <pre><code>&lt;title&gt;Example Title&lt;/title&gt;</code></pre>
-<p>Located in the <code>&lt;head&gt;</code> part of a webpage, the <code>&lt;title&gt;</code> tag informs search engines of what sort of information will be on the page. The title is also a likely candidate for the SERP, or search engine results page, where it could be used to identify the page result.</p>
-<p>For optimal search engine indexing, the title of a page should be a concise, meaningful string of up to 50 characters.</p>
-<h2>Social Media Meta Tags</h2>
-<p>Social media is a great place to advertise your website; but to improve the number of visitors, your links need to stand out. Consider the screenshot of a tweet in <em>Figure 1</em>:</p>
-<p><img src="/assets/contents/guide-to-search-engine-optimisation/figure1.png" alt="Basic Link on Twitter" /></p>
+<p>Located in the <code>&lt;head&gt;</code> part of a webpage, the <code>&lt;title&gt;</code> tag informs search engines of what sort of information will be on the page. It is also a likely candidate for the SERP, search engine results page, where it could be used to identify the page result. For optimal search engine indexing, the title of a page should be a concise, meaningful string of up to 50 characters.</p>
+<h2 id="Social+Media+Meta+Tags" name="Social+Media+Meta+Tags">Social Media Meta Tags</h2>
+<p>Social media is a great place to advertise your website; but to improve the number of visitors, your links need to stand out. Consider the screenshot of a tweet in <em>Figure 2</em>:</p>
+<p><img src="/assets/contents/guide-to-search-engine-optimisation/figure2.png" alt="Basic Link on Twitter" /></p>
 <blockquote>
-<p><strong>Figure 1</strong> - Basic Link on Twitter</p>
+<p><strong>Figure 2</strong> - Basic Link on Twitter</p>
 </blockquote>
 <p>Merely posting a link will result in a boring text-based URL. Most potential visitors will likely just skip over the link without even considering it. That is where social media meta tags become useful. Consider the following three meta tags:</p>
 <pre><code>&lt;meta property="og:title"       content="Title"&gt;
 &lt;meta property="og:image"       content="https://www.example.com/thumbnail.png"&gt;
 &lt;meta property="og:description" content="Description"&gt;</code></pre>
-<p>These tags form part of the open graph protocol (notice the "og" property) and provide pieces of information that can be used by social media sites to make your links more visually appealing. By placing these meta tags in the <code>&lt;head&gt;</code> section of a HTML document, your links will get formatted on social media, like in <em>Figure X</em>.</p>
-<p><img src="/assets/contents/guide-to-search-engine-optimisation/figure2.png" alt="Twitter Summary Card" /></p>
+<p>These tags form part of the open graph protocol (notice the "og" property) and provide pieces of information that can be used by social media sites to make your links more visually appealing. By placing these meta tags in the <code>&lt;head&gt;</code> section of a HTML document, your links will get formatted on social media, like in <em>Figure 3</em>.</p>
+<p><img src="/assets/contents/guide-to-search-engine-optimisation/figure3.png" alt="Twitter Summary Card" /></p>
 <blockquote>
-<p><strong>Figure 2</strong> - Twitter Summary Card</p>
+<p><strong>Figure 3</strong> - Twitter Summary Card</p>
 </blockquote>
 <p>Open graph protocol meta tags are the most popular, and will work on Facebook, Twitter, and LinkedIn. There are, however, some Twitter specific alternatives that should be considered.</p>
 <pre><code>&lt;meta name="twitter:card"        content="summary"&gt;
@@ -78,19 +126,79 @@
 &lt;meta name="twitter:image"       content="https://www.example.com/thumbnail.png"&gt;
 &lt;meta name="twitter:description" content="Description"&gt;</code></pre>
 <p>These meta tags allow you to further customise your Twitter links by specifying the type and size of card to use. If these tags cannot be found, Twitter will fall back onto the open graph protocol tags.</p>
-<p>More information can be found here: <a href="https://ogp.me/">Open Graph Protocol</a>.</p></main></article></div>
+<p>More information can be found here: <a href="https://ogp.me/">Open Graph Protocol</a>.</p>
+<h2 id="Mobile+Friendly+Pages" name="Mobile+Friendly+Pages">Mobile Friendly Pages</h2>
+<p>More and more users are accessing websites from mobile devices that have smaller screens and use touch as an input rather than the traditional mouse. Improving the mobile experience is essential for improving your website's search engine ranking.</p>
+<p>Some areas to consider:</p>
+<ul>
+<li>Does your page scale well to smaller screens?</li>
+<li>Are pages responsive to touch?</li>
+<li>Do they load fast?</li>
+</ul>
+<h2 id="Headings" name="Headings">Headings</h2>
+<p>Headings are used to render large, important pieces of text that identify sections on a page. In HTML, there are six heading tags available.</p>
+<pre><code>&lt;h1&gt;
+&lt;h2&gt;
+&lt;h3&gt;
+&lt;h4&gt;
+&lt;h5&gt;
+&lt;h6&gt;</code></pre>
+<p>Each one is used to provide headings of decreasing importance. Search engines use the information contained in heading tags to help identify what a page is about. Consider the <code>&lt;h1&gt;</code> tag; this should be the most important heading on the page, identfying what the content will be about. Typically, there should only ever be one <code>&lt;h1&gt;</code> tag on any web page at a time.</p>
+<h2 id="Minify+CSS+and+JS+Files" name="Minify+CSS+and+JS+Files">Minify CSS and JS Files</h2>
+<p>Search engines don't like it then it takes ages for your webpages to load. Not only does it provide the user with a worse experience, but it also takes up precious bandwidth, negatively affecting other services as well. Most websites have to load several assets, such as CSS stylesheets, and JavaScript files. These are an easy target for some quick optimisations.</p>
+<p>Minifying these files involves removing any unnecessary characters, such as extra spaces and new lines. Some example tools to minify these files are:</p>
+<ul>
+<li><a href="https://www.cleancss.com/css-minify/">Clean CSS</a></li>
+<li><a href="https://www.minifier.org/">Minifier</a></li>
+</ul>
+<p>Once your CSS and JS files have been minified, they take up less storage space. This means they also take less time to load over the internet.</p>
+<h2 id="Internal+Linking" name="Internal+Linking">Internal Linking</h2>
+<p>Internal linking refers to the links within your website pointing to other pages in your website. Good internal linking helps a crawler discover your website's pages, increasing their chances of getting indexed. It also helps user's navigate your website, increasing your site's popularity, and therefore priority when appearing in a search engine. If a page on your website is not linked anywhere, a search engine crawler will have no way of discovering that page.</p>
+<p>Typically, a page will consist of a few areas for links. One such area is a menu. A navigation menu, located at the top of a page, should link to all the main pages in your website, including your homepage. It could look something like this:</p>
+<pre><code>&lt;div id="menu"&gt;
+    &lt;a href="/home"&gt;Home&lt;/a&gt;
+    &lt;a href="/products"&gt;Products&lt;/a&gt;
+    &lt;a href="/contact-us"&gt;Contact Us&lt;/a&gt;
+&lt;/div&gt;</code></pre>
+<p>Generally, the rule is that any page on your website should be within three clicks of any other page.</p>
+<h2 id="Image+Alt+Tags" name="Image+Alt+Tags">Image Alt Tags</h2>
+<p>Almost every webpage will use images. It is important that you always use the <code>alt</code> tag on a HTML image to provide a text based description of what the image represents.</p>
+<pre><code>&lt;img src="image.png" alt="This is an alternate description for this image."&gt;</code></pre>
+<p>Image descriptions have a number of purposes. They help search engine crawlers understand what the image is about, they make the page more accessible by helping automatic screen readers inform the listener of what the image shows, and they help users know what the image is supposed to say in case it fails to load.</p>
+<h2 id="Canonical+Link" name="Canonical+Link">Canonical Link</h2>
+<p>Modern websites can contain alot of pages. Some of these pages tend to be very similar, or even the same. Having lots of pages that are essentially the same can cause issues with a search engine not knowing which one needs to be indexed.</p>
+<p>Consider the following links:</p>
+<pre><code>https://example.com
+https://example.com/index.php 
+https://www.example.com
+https://www.example.com/index.php
+http://example.com
+http://example.com/index.php
+http://www.example.com
+http://www.example.com/index.php</code></pre>
+<p>They all link to the exact same page.  When a search engine crawler comes across all of these links, how does it know which one you actually want to use? As far as it is concerned, they are all different pages. Search engines like unique content, so it isn't going to index all of them. That is where canonical links come in, defined with the following code:</p>
+<pre><code>&lt;link rel="canonical" href="https://example.com"&gt;</code></pre>
+<p>That code goes in the <code>&lt;head&gt;</code> section of your site, and tells a search engine which link it wants to use to represent the page. This means that no matter which link a crawler uses to get to this page, it knows that <code>https://example.com</code> is the real link you want it to use.</p>
+<h2 id="Using+Dash+Instead+of+Underscore" name="Using+Dash+Instead+of+Underscore">Using Dash Instead of Underscore</h2>
+<p>When creating a URL that uses multiple words, it is always better to seperate them with a dash, rather than an underscore or no seperator. Consider the following variations of this page's URL:</p>
+<pre><code>thecodingdodo.com/blog/guide-to-search-engine-optimisation
+thecodingdodo.com/blog/guide_to_search_engine_optimisation</code></pre>
+<p>There are a few reasons for this, including:</p>
+<ul>
+<li>Underscore characters can be hidden if the URL is underlined. This may cause the user to think the URL ends after the first word.</li>
+<li>Google used to treat underscores as part of a word, rather than a word seperator, causing it to index a page for the wrong words.</li>
+</ul></main></article></div>
     </div>
 
 <div id="cell-side" class="flex-col flex-16">
-            <div class="cell flex-col flex-16 p-16 articles">
+            <div class="cell flex-col flex-08 p-16 articles">
 <div class="flex-col flex-04">
-    <a href="/blog/guide-to-search-engine-optimisation" class="card flex-col flex-04 p-08 active"><p class="title">Guide to Search Engine Optimisation (SEO)</p><p class="subtitle">2021-09-18</p></a><a href="/blog/placing-script-tags-in-html" class="card flex-col flex-04 p-08"><p class="title">Placing Script Tags in HTML</p><p class="subtitle">2021-09-18</p></a><a href="/blog/using-markdown-in-php" class="card flex-col flex-04 p-08"><p class="title">Using Markdown in PHP</p><p class="subtitle">2021-09-18</p></a><a href="/blog/using-the-css-grid-system-to-structure-a-page" class="card flex-col flex-04 p-08"><p class="title">Using the CSS Grid System to Structure a Page</p><p class="subtitle">2021-09-18</p></a></div></div>
+    <a href="/blog/guide-to-search-engine-optimisation" class="card flex-col flex-04 p-08 active"><p class="title">Guide to Search Engine Optimisation (SEO)</p><p class="subtitle">2022-06-21</p></a><a href="/blog/placing-script-tags-in-html" class="card flex-col flex-04 p-08"><p class="title">Placing Script Tags in HTML</p><p class="subtitle">2021-09-18</p></a><a href="/blog/using-markdown-in-php" class="card flex-col flex-04 p-08"><p class="title">Using Markdown in PHP</p><p class="subtitle">2021-09-18</p></a><a href="/blog/using-the-css-grid-system-to-structure-a-page" class="card flex-col flex-04 p-08"><p class="title">Using the CSS Grid System to Structure a Page</p><p class="subtitle">2021-09-18</p></a></div></div>
     </div></div>        <div id="foot" class="toolbar flex-row flex-08">
+    <div class="flex-fill"></div>
     <nav class="flex-row flex-08">
         <a href="/cookies" class="p-08 py-0">Cookie Policy</a>    </nav>
     <div class="flex-fill"></div>
-    <a href="https://twitter.com/thecodingdodo" class="fa fa-twitter"></a>
-<a href="https://www.youtube.com/channel/UCLYv_FM6EbtTbfJpFuEzPbQ" class="fa fa-youtube"></a>
-<a href="mailto:dean.j.k.james@gmail.com" class="fa fa-envelope"></a></div>    </body>
+</div>    </body>
 </html>
 

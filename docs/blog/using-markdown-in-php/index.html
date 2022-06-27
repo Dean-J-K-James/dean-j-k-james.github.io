@@ -8,14 +8,14 @@
 <meta name="viewport"            content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="title"               content="Using Markdown in PHP">
 <meta name="image"               content="https://thecodingdodo.com/assets/contents/using-markdown-in-php/thumbnail.png">
-<meta name="description"         content="">
+<meta name="description"         content="Markdown is a great language for writing reports, blogs, and more without all the boilerplate code and syntax of HTML. In this tutorial, learn how to write in Markdown, and how to translate it into PHP.">
 <meta property="og:title"        content="Using Markdown in PHP">
 <meta property="og:image"        content="https://thecodingdodo.com/assets/contents/using-markdown-in-php/thumbnail.png">
-<meta property="og:description"  content="">
+<meta property="og:description"  content="Markdown is a great language for writing reports, blogs, and more without all the boilerplate code and syntax of HTML. In this tutorial, learn how to write in Markdown, and how to translate it into PHP.">
 <meta name="twitter:card"        content="summary">
 <meta name="twitter:title"       content="Using Markdown in PHP">
 <meta name="twitter:image"       content="https://thecodingdodo.com/assets/contents/using-markdown-in-php/thumbnail.png">
-<meta name="twitter:description" content="">
+<meta name="twitter:description" content="Markdown is a great language for writing reports, blogs, and more without all the boilerplate code and syntax of HTML. In this tutorial, learn how to write in Markdown, and how to translate it into PHP.">
 <meta name="robots"              content="index, follow">
 <link rel="canonical"            href="https://thecodingdodo.com/blog/using-markdown-in-php">
 <link rel="icon"                 href="/assets/img/favicon.png" type="image/x-icon">
@@ -25,11 +25,13 @@
 <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js" defer></script><!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-7K6R0WJX31"></script>
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
 
-  gtag('config', 'G-7K6R0WJX31');
+    gtag('config', 'G-7K6R0WJX31');
 </script><script src="/assets/js/cookies.js" defer></script><script src="/assets/js/highlight.min.js" defer></script><script src="/assets/js/highlight.js" defer></script>    </head>
     <body>
         <div id="cook" class="toolbar flex-row flex-08">
@@ -37,27 +39,55 @@
     <div class="flex-fill"></div>
     <a id="cookies-accept" class="p-08 py-0">Accept</a>
 </div>        <div id="menu" class="toolbar flex-row flex-08">
-    <a href="/" class="logo">The Coding Dodo</a>
+    <a href="/feed" class="logo">The Coding Dodo</a>
     <div class="flex-fill"></div>
     <nav class="flex-row flex-08">
-        <a href="/" class="p-08 py-0 active">Blog</a>    </nav>
+        <a href="/feed" class="p-08 py-0">Blog</a>    </nav>
     </div>        <div id="page" class="flex-16 two-column"><div id="cell-page" class="flex-col flex-16">
             <div class="cell flex-col flex-16 p-16 blog">
 <article class="flex-col flex-32">
-    <header class="flex-col flex-08">
+    <header class="flex-col flex-16">
+    <div class="flex-row flex-08">
+        <img src="/assets/img/avatar.png" style="width:32px;border-radius:02px;">
+        <div class="flex-col p-08 py-0">
+            <div class="flex-fill"></div>
+            <p class="title">TheCodingDodo</p>
+            <div class="flex-fill"></div>
+        </div>
+        <div class="flex-fill"></div>
+        <a href="https://twitter.com/thecodingdodo" class="fa fa-twitter"></a>
+        <a href="https://www.youtube.com/channel/UCLYv_FM6EbtTbfJpFuEzPbQ" class="fa fa-youtube"></a>
+        <a href="mailto:dean.j.k.james@gmail.com" class="fa fa-envelope"></a>
+    </div>
     <h1>Using Markdown in PHP</h1>
-    <p class="subtitle">Last Updated: 2021-09-18</p>
-</header><main class="flex-col flex-32">
-    <h2>Writing Articles in Markdown and PHP</h2>
+    <p class="subtitle">2021-09-18</p>
+    <p>Markdown is a great language for writing reports, blogs, and more without all the boilerplate code and syntax of HTML. In this tutorial, learn how to write in Markdown, and how to translate it into PHP.</p>
+</header>    <img src="/assets/contents/using-markdown-in-php/banner.png">
+
+<h2>Table of Contents</h2>
+<ul>
+<li><a href="#Writing+Articles+in+Markdown+and+PHP">Writing Articles in Markdown and PHP</a></li>
+<li><a href="#Using+Parsedown">Using Parsedown</a></li>
+<li><a href="#Headings">Headings</a></li>
+<li><a href="#Bullet+Points">Bullet Points</a></li>
+<li><a href="#Text+Formatting">Text Formatting</a></li>
+<li><a href="#Images">Images</a></li>
+<li><a href="#Links">Links</a></li>
+<li><a href="#Inline+Code">Inline Code</a></li>
+<li><a href="#Code+Blocks">Code Blocks</a></li>
+<li><a href="#Formatting+Software">Formatting Software</a></li>
+</ul>
+<main class="article flex-col flex-32">
+    <h2 id="Writing+Articles+in+Markdown+and+PHP" name="Writing+Articles+in+Markdown+and+PHP">Writing Articles in Markdown and PHP</h2>
 <p>When I first started writing this blog, the articles were written in HTML. Images were manually added with the <code>&lt;img&gt;</code> tags, paragraphs were written inside <code>&lt;p&gt;</code> tags, and headers all used the various <code>&lt;h&gt;</code> tags. At first, this was fine; articles were short, and mostly text based, meaning the number of HTML tags was kept low. However, as the articles started to include more complex structures like bullet points, code blocks, and links, the files became increasingly HTML focused rather than text focused. This impacted productivity, and increased the time it took to write articles.</p>
 <p>I decided to look into alternative ways of writing the articles. At first, I considered using a word processing application combined with a tool like <a href="https://wordhtml.com/">wordtohtml</a> to translate the text into HTML, but I found that to be annoying, especially since everytime I made a small change I had to re-translate the whole document.</p>
 <p>Eventually, I noticed that applications and websites like Discord and Trello all provided methods of formatting text. For example, in Trello, you can put text in between double asterisks <code>**</code> to make it bold; or use hashtags <code>#</code> to create headers. Having recently created a couple of GitHub repositories, I had also noticed that the <code>readme.md</code> files seemed to use similar methods for formatting. Files with the extension <code>.md</code> are called Markdown files, and I began looking at ways of using this. After a bit of research, I decided to try out Markdown, and found the library <a href="https://github.com/erusev/parsedown">Parsedown</a>.</p>
-<h2>Using Parsedown</h2>
+<h2 id="Using+Parsedown" name="Using+Parsedown">Using Parsedown</h2>
 <p>It turns out that Parsedown was perfect for translating markdown files into HTML code. Simply instantiate the <code>Parsedown</code> object, and then use <code>echo</code> on the <code>text</code> function, which requires a string in markdown format. For this website, all markdown files are found in the contents directory.</p>
 <pre><code>$Parsedown = new Parsedown();
 echo $Parsedown-&gt;text(file_get_contents('content/article.md'));</code></pre>
 <p>The HTML code generated by the Parsedown library is clean, and consistent, making it compatible with any existing <code>css</code> rules that I already had in place. For the purpose of explaining a bit more about why markdown is perfect for blogs, I will demonstrate some of the formatting used on this website.</p>
-<h2>Headings</h2>
+<h2 id="Headings" name="Headings">Headings</h2>
 <p>To create a heading, start a line with between one and six hashtags, followed by a space. The number of hashtags determines which of the six HTML header tags is used.</p>
 <pre><code># Heading 1
 ## Heading 2
@@ -72,7 +102,7 @@ echo $Parsedown-&gt;text(file_get_contents('content/article.md'));</code></pre>
 &lt;h4&gt;Heading 1&lt;/h4&gt;
 &lt;h5&gt;Heading 1&lt;/h5&gt;
 &lt;h6&gt;Heading 1&lt;/h6&gt;</code></pre>
-<h2>Bullet Points</h2>
+<h2 id="Bullet+Points" name="Bullet+Points">Bullet Points</h2>
 <p>To create a bullet pointed list, start each line with an asterisk or a dash followed by a space. You can also have child lists by indenting the asterisks or dashes.</p>
 <pre><code>- Content 1
 - Content 2
@@ -93,35 +123,35 @@ echo $Parsedown-&gt;text(file_get_contents('content/article.md'));</code></pre>
         &lt;/ul&gt;
     &lt;/li&gt;
 &lt;/ul&gt;</code></pre>
-<h2>Text Formatting</h2>
+<h2 id="Text+Formatting" name="Text+Formatting">Text Formatting</h2>
 <p>Any text that needs to be made italics or bold can be achieved by surrounding the words with one or two asterisks. To make a phrase italics, use one asterisk, and to make it bold, use two.</p>
 <pre><code>This *word* is in italics.
 This **word** is in bold.</code></pre>
 <p>When translated into HTML, the <code>&lt;em&gt;</code> and <code>&lt;strong&gt;</code> tags are used, like in the following HTML:</p>
 <pre><code>This &lt;em&gt;word&lt;/em&gt; is in italics.
 This &lt;strong&gt;word&lt;/strong&gt; is in bold.</code></pre>
-<h2>Images</h2>
+<h2 id="Images" name="Images">Images</h2>
 <p>Markdown also provides a convenient method for creatng images. The syntax consists of an exclamation point followed by two parts. The first part specifies the <code>alt</code> attribute of the image and is in between square brackets. The second part is between two normal brackets and specifies the path to the image.</p>
 <pre><code>![Image Alt 1](images/image1.png)
 ![Image Alt 2](images/image2.png)</code></pre>
 <p>This produces the following HTML code when translated:</p>
 <pre><code>&lt;img alt="Image Alt 1" src="images/image1.png"&gt;
 &lt;img alt="Image Alt 2" src="images/image2.png"&gt;</code></pre>
-<h2>Links</h2>
+<h2 id="Links" name="Links">Links</h2>
 <p>Links can be made in a similar way to images; just leave out the <code>!</code> character. The text that gets rendered in the browser is put in between the square brackets, and the link gets placed between the standard brackets.</p>
 <pre><code>A [link](https://www.google.com) to Google.
 A [link](https://www.youtube.com) to YouTube.</code></pre>
 <p>When translated into HTML, it produces:</p>
 <pre><code>A &lt;a href="https://www.google.com"&gt;link&lt;/a&gt; to Google.
 A &lt;a href="https://www.youtube.com"&gt;link&lt;/a&gt; to YouTube.</code></pre>
-<h2>Inline Code</h2>
+<h2 id="Inline+Code" name="Inline+Code">Inline Code</h2>
 <p>Since this blog is programming focused, alot of code and code blocks are used. Any inline code that uses the <code>&lt;code&gt;</code> tags is put between two backtick ` characters.</p>
 <pre><code>The variable `a` is an array.
 The variable `b` is a string.</code></pre>
 <p>This produces the HTML:</p>
 <pre><code>The variable &lt;code&gt;a&lt;/code&gt; is an array.
 The variable &lt;code&gt;b&lt;/code&gt; is a string.</code></pre>
-<h2>Code Blocks</h2>
+<h2 id="Code+Blocks" name="Code+Blocks">Code Blocks</h2>
 <p>Code blocks are similar to inline code, except instead of being part of a paragraph, they are kept seperate, and span multiple lines. Code blocks can be created in two ways. The first is to put three backticks on the lines before and after the code block. The second alternative method is to indent the code and leave out the backticks.</p>
 <pre><code>```
 console.log("Hello");
@@ -134,7 +164,7 @@ console.log("Goodbye");
         console.log("Goodbye");
     &lt;/code&gt;
 &lt;/pre&gt;</code></pre>
-<h2>Formatting Software</h2>
+<h2 id="Formatting+Software" name="Formatting+Software">Formatting Software</h2>
 <p>Fortunately, after a bit of practice, the syntax for writing markdown documents becomes quite intuitive. To help out, here are some formatters that help.</p>
 <ul>
 <li>I write all of my articles in Visual Studio Code with the extension <a href="https://marketplace.visualstudio.com/items?itemName=mervin.markdown-formatter">markdown-formatter</a>. This provides automatic formatting, and colour coding for the syntax.</li>
@@ -143,15 +173,14 @@ console.log("Goodbye");
     </div>
 
 <div id="cell-side" class="flex-col flex-16">
-            <div class="cell flex-col flex-16 p-16 articles">
+            <div class="cell flex-col flex-08 p-16 articles">
 <div class="flex-col flex-04">
-    <a href="/blog/guide-to-search-engine-optimisation" class="card flex-col flex-04 p-08"><p class="title">Guide to Search Engine Optimisation (SEO)</p><p class="subtitle">2021-09-18</p></a><a href="/blog/placing-script-tags-in-html" class="card flex-col flex-04 p-08"><p class="title">Placing Script Tags in HTML</p><p class="subtitle">2021-09-18</p></a><a href="/blog/using-markdown-in-php" class="card flex-col flex-04 p-08 active"><p class="title">Using Markdown in PHP</p><p class="subtitle">2021-09-18</p></a><a href="/blog/using-the-css-grid-system-to-structure-a-page" class="card flex-col flex-04 p-08"><p class="title">Using the CSS Grid System to Structure a Page</p><p class="subtitle">2021-09-18</p></a></div></div>
+    <a href="/blog/guide-to-search-engine-optimisation" class="card flex-col flex-04 p-08"><p class="title">Guide to Search Engine Optimisation (SEO)</p><p class="subtitle">2022-06-21</p></a><a href="/blog/placing-script-tags-in-html" class="card flex-col flex-04 p-08"><p class="title">Placing Script Tags in HTML</p><p class="subtitle">2021-09-18</p></a><a href="/blog/using-markdown-in-php" class="card flex-col flex-04 p-08 active"><p class="title">Using Markdown in PHP</p><p class="subtitle">2021-09-18</p></a><a href="/blog/using-the-css-grid-system-to-structure-a-page" class="card flex-col flex-04 p-08"><p class="title">Using the CSS Grid System to Structure a Page</p><p class="subtitle">2021-09-18</p></a></div></div>
     </div></div>        <div id="foot" class="toolbar flex-row flex-08">
+    <div class="flex-fill"></div>
     <nav class="flex-row flex-08">
         <a href="/cookies" class="p-08 py-0">Cookie Policy</a>    </nav>
     <div class="flex-fill"></div>
-    <a href="https://twitter.com/thecodingdodo" class="fa fa-twitter"></a>
-<a href="https://www.youtube.com/channel/UCLYv_FM6EbtTbfJpFuEzPbQ" class="fa fa-youtube"></a>
-<a href="mailto:dean.j.k.james@gmail.com" class="fa fa-envelope"></a></div>    </body>
+</div>    </body>
 </html>
 

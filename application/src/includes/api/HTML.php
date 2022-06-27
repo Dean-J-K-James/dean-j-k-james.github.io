@@ -38,10 +38,10 @@ class HTML
     public static function card_two_column($image, $name, $desc, $subtitle, $tags, $link)
     {
         echo ''
-        . '<div class="card flex-row flex-04">'
+        . '<div class="card flex-row flex-08">'
         . '<img src="' . $image . '" alt="' . $name . '" style="height:128px;">'
         . '<div class="flex-col flex-fill flex-08 p-08" style="height:112px;overflow:hidden;">'
-        . '<h3>' . $name . '</h3>';
+        . '<h4>' . $name . '</h4>';
 
         if ($subtitle !== null)
         {

@@ -8,14 +8,14 @@
 <meta name="viewport"            content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="title"               content="Placing Script Tags in HTML">
 <meta name="image"               content="https://thecodingdodo.com/assets/contents/placing-script-tags-in-html/thumbnail.png">
-<meta name="description"         content="">
+<meta name="description"         content="Websites with extra client-side functionality will likely load external JavaScript files using script tags. This tutorial explores these tags in more detail, including the async and defer keywords.">
 <meta property="og:title"        content="Placing Script Tags in HTML">
 <meta property="og:image"        content="https://thecodingdodo.com/assets/contents/placing-script-tags-in-html/thumbnail.png">
-<meta property="og:description"  content="">
+<meta property="og:description"  content="Websites with extra client-side functionality will likely load external JavaScript files using script tags. This tutorial explores these tags in more detail, including the async and defer keywords.">
 <meta name="twitter:card"        content="summary">
 <meta name="twitter:title"       content="Placing Script Tags in HTML">
 <meta name="twitter:image"       content="https://thecodingdodo.com/assets/contents/placing-script-tags-in-html/thumbnail.png">
-<meta name="twitter:description" content="">
+<meta name="twitter:description" content="Websites with extra client-side functionality will likely load external JavaScript files using script tags. This tutorial explores these tags in more detail, including the async and defer keywords.">
 <meta name="robots"              content="index, follow">
 <link rel="canonical"            href="https://thecodingdodo.com/blog/placing-script-tags-in-html">
 <link rel="icon"                 href="/assets/img/favicon.png" type="image/x-icon">
@@ -25,11 +25,13 @@
 <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js" defer></script><!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-7K6R0WJX31"></script>
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
 
-  gtag('config', 'G-7K6R0WJX31');
+    gtag('config', 'G-7K6R0WJX31');
 </script><script src="/assets/js/cookies.js" defer></script><script src="/assets/js/highlight.min.js" defer></script><script src="/assets/js/highlight.js" defer></script>    </head>
     <body>
         <div id="cook" class="toolbar flex-row flex-08">
@@ -37,21 +39,47 @@
     <div class="flex-fill"></div>
     <a id="cookies-accept" class="p-08 py-0">Accept</a>
 </div>        <div id="menu" class="toolbar flex-row flex-08">
-    <a href="/" class="logo">The Coding Dodo</a>
+    <a href="/feed" class="logo">The Coding Dodo</a>
     <div class="flex-fill"></div>
     <nav class="flex-row flex-08">
-        <a href="/" class="p-08 py-0 active">Blog</a>    </nav>
+        <a href="/feed" class="p-08 py-0">Blog</a>    </nav>
     </div>        <div id="page" class="flex-16 two-column"><div id="cell-page" class="flex-col flex-16">
             <div class="cell flex-col flex-16 p-16 blog">
 <article class="flex-col flex-32">
-    <header class="flex-col flex-08">
+    <header class="flex-col flex-16">
+    <div class="flex-row flex-08">
+        <img src="/assets/img/avatar.png" style="width:32px;border-radius:02px;">
+        <div class="flex-col p-08 py-0">
+            <div class="flex-fill"></div>
+            <p class="title">TheCodingDodo</p>
+            <div class="flex-fill"></div>
+        </div>
+        <div class="flex-fill"></div>
+        <a href="https://twitter.com/thecodingdodo" class="fa fa-twitter"></a>
+        <a href="https://www.youtube.com/channel/UCLYv_FM6EbtTbfJpFuEzPbQ" class="fa fa-youtube"></a>
+        <a href="mailto:dean.j.k.james@gmail.com" class="fa fa-envelope"></a>
+    </div>
     <h1>Placing Script Tags in HTML</h1>
-    <p class="subtitle">Last Updated: 2021-09-18</p>
-</header><main class="flex-col flex-32">
+    <p class="subtitle">2021-09-18</p>
+    <p>Websites with extra client-side functionality will likely load external JavaScript files using script tags. This tutorial explores these tags in more detail, including the async and defer keywords.</p>
+</header>    <img src="/assets/contents/placing-script-tags-in-html/banner.png">
+
+<h2>Table of Contents</h2>
+<ul>
+<li><a href="#Scripts+Tags">Scripts Tags</a></li>
+<li><a href="#Placing+Scripts+Between+Head+Tags">Placing Scripts Between Head Tags</a></li>
+<li><a href="#Placing+Scripts+Between+Body+Tags">Placing Scripts Between Body Tags</a></li>
+<li><a href="#Defer+and+Async">Defer and Async</a></li>
+<li><a href="#Defer">Defer</a></li>
+<li><a href="#Async">Async</a></li>
+<li><a href="#Comparison+Between+Defer+and+Async">Comparison Between Defer and Async</a></li>
+<li><a href="#Further+Reading">Further Reading</a></li>
+</ul>
+<main class="article flex-col flex-32">
     <!---------------------------------------------------------->
 <!-- Dean James - Pangean Flying Cactus - The Coding Dodo -->
 <!---------------------------------------------------------->
-<h2>Scripts Tags</h2>
+<h2 id="Scripts+Tags" name="Scripts+Tags">Scripts Tags</h2>
 <p>Script tags are used in HTML to provide additional functionality using JavaScript. With a few exceptions, JavaScript is client side, meaning your browser is responsible for executing it. A typical HTML document will look something like this.</p>
 <pre><code>&lt;html&gt;
     &lt;head&gt;
@@ -67,7 +95,7 @@
 <li>At the end of body, before the <code>&lt;/body&gt;</code> tag.</li>
 </ul>
 <p>Both of these solutions have their advantages, however, they also have significant disadvantages.</p>
-<h2>Placing Scripts Between Head Tags</h2>
+<h2 id="Placing+Scripts+Between+Head+Tags" name="Placing+Scripts+Between+Head+Tags">Placing Scripts Between Head Tags</h2>
 <p>Putting <code>&lt;script&gt;</code> tags in the <code>&lt;head&gt;</code> is most common. Usually, script tags load an external JavaScript file found at the URL or path specified in the <code>src</code> attribute.</p>
 <pre><code>&lt;html&gt;
     &lt;head&gt;
@@ -85,7 +113,7 @@
 });</code></pre>
 <p>What would be the problem if this code was included between the <code>&lt;head&gt;</code> tags?</p>
 <p>The problem is that any <code>&lt;script&gt;</code> tags within <code>&lt;head&gt;</code> will be loaded and executed before the <code>&lt;body&gt;</code> tags get loaded in. Since our element with id "button" is between the <code>&lt;body&gt;</code> tags, it wouldn't have loaded yet. Our jQuery selector will return no element, and so the event will not have been applied.</p>
-<h2>Placing Scripts Between Body Tags</h2>
+<h2 id="Placing+Scripts+Between+Body+Tags" name="Placing+Scripts+Between+Body+Tags">Placing Scripts Between Body Tags</h2>
 <p>A solution to this problem is to instead load any scripts after the body has been created. For this, we can put the <code>&lt;script&gt;</code> tags right at the end of the body.</p>
 <pre><code>&lt;html&gt;
     &lt;head&gt;
@@ -97,7 +125,7 @@
     &lt;/body&gt;
 &lt;/html&gt;</code></pre>
 <p>This gives each element on the page a chance to initialise first, before the script gets loaded and executed. If the onclick event were to be added here, it would work because the element with id "button" will have created before the script gets run. Loading scripts at the end of the body lets other elements load first.</p>
-<h2>Defer and Async</h2>
+<h2 id="Defer+and+Async" name="Defer+and+Async">Defer and Async</h2>
 <p>When a browser is parsing a HTML document, and finds a script tag, it stops rendering and parsing the document. It then requests the script file from the server, waits for it to download, immediately executes it, and only then continues parsing the rest of the document. This is inefficient and wasteful, because whilst the browser is waiting for the script tags to download, it doesn't do anything.</p>
 <p>Fortunately, there is a way to solve this problem; using the attributes <code>async</code> and <code>defer</code> . Either of these two attributes can be added to a script tag when placed in the head, like this:</p>
 <pre><code>&lt;html&gt;
@@ -122,7 +150,7 @@
 <li>As soon as a <code>&lt;script&gt;</code> tag with the <code>async</code> attribute is found, the browser requests this file. This is an synchronous request, meaning whilst the file downloads, the browser is paused and does nothing.</li>
 <li>When the <code>&lt;script&gt;</code> is fully downloaded, the browser executes it immediately.</li>
 </ul>
-<h2>Defer</h2>
+<h2 id="Defer" name="Defer">Defer</h2>
 <p>If the <code>defer</code> attribute is used, the scripts do not execute as soon as they have finished downloading. Instead, the execution gets deferred until the HTML document has finished being parsed completely. Scripts using <code>defer</code> will execute right at the end, and in the same order that the script tag for them was specified.</p>
 <p><img src="/assets/contents/placing-script-tags-in-html/figure5.png" alt="Diagram Key" /></p>
 <p><img src="/assets/contents/placing-script-tags-in-html/figure2.png" alt="Script Download and Execution When Using Defer" /></p>
@@ -136,7 +164,7 @@
 <li>When the <code>&lt;script&gt;</code> is fully downloaded, the browser continues parsing the HTMl as usual.</li>
 <li>As soon as the entire HTML document has finished being parsed, the <code>&lt;script&gt;</code> tags are executed in the same order that their downloads were started.</li>
 </ul>
-<h2>Async</h2>
+<h2 id="Async" name="Async">Async</h2>
 <p>If <code>async</code> was used, the script file will be executed as soon as it is downloaded. If multiple scripts are downloaded using async, each will be executed once it has finished downloading. If the download finishes whilst another script is being executed, the new script will execute immediately after. They will not necessarily execute in the same order as the download starts. If the first script to load using async is significantly larger than the second, it is possible that the second will finish downloading first and therefore will be executed first.</p>
 <p><img src="/assets/contents/placing-script-tags-in-html/figure5.png" alt="Diagram Key" /></p>
 <p><img src="/assets/contents/placing-script-tags-in-html/figure3.png" alt="Script Download and Execution When Using Async" /></p>
@@ -149,14 +177,14 @@
 <li>As soon as a <code>&lt;script&gt;</code> tag with the <code>async</code> attribute is found, the browser requests this file. This is an asynchronous request, meaning whilst the file downloads, the browser continues parsing the document.</li>
 <li>When the <code>&lt;script&gt;</code> is fully downloaded, the browser stops parsing the HTML, and begins executing the <code>&lt;script&gt;</code> immediately. If another script is currently being executed when a download finishes, then the browser will wait until that has finished.</li>
 </ul>
-<h2>Comparison Between Defer and Async</h2>
+<h2 id="Comparison+Between+Defer+and+Async" name="Comparison+Between+Defer+and+Async">Comparison Between Defer and Async</h2>
 <p>Both <code>async</code> and <code>defer</code> are similar in how they work. The main similarities and differences include:</p>
 <ul>
 <li>Both download files asynchronously, meaning they don't block the browser from parsing the HTML.</li>
 <li>In both cases, the browser stops parsing the HTML when it executes the the scripts.</li>
 <li>Scripts using <code>defer</code> will execute in the same order they are written, whereas scripts using <code>async</code> will execute in the order their downloads complete.</li>
 </ul>
-<h2>Further Reading</h2>
+<h2 id="Further+Reading" name="Further+Reading">Further Reading</h2>
 <ul>
 <li>The page: <a href="https://javascript.info/script-async-defer">Scripts: async, defer</a> explains the difference between the defer and async attributes.</li>
 <li>StackOverflow has lots of questions about the defer and async attributes. This <a href="https://stackoverflow.com/a/39711009">answer</a> has a good diagram showing the differences.</li>
@@ -164,15 +192,14 @@
     </div>
 
 <div id="cell-side" class="flex-col flex-16">
-            <div class="cell flex-col flex-16 p-16 articles">
+            <div class="cell flex-col flex-08 p-16 articles">
 <div class="flex-col flex-04">
-    <a href="/blog/guide-to-search-engine-optimisation" class="card flex-col flex-04 p-08"><p class="title">Guide to Search Engine Optimisation (SEO)</p><p class="subtitle">2021-09-18</p></a><a href="/blog/placing-script-tags-in-html" class="card flex-col flex-04 p-08 active"><p class="title">Placing Script Tags in HTML</p><p class="subtitle">2021-09-18</p></a><a href="/blog/using-markdown-in-php" class="card flex-col flex-04 p-08"><p class="title">Using Markdown in PHP</p><p class="subtitle">2021-09-18</p></a><a href="/blog/using-the-css-grid-system-to-structure-a-page" class="card flex-col flex-04 p-08"><p class="title">Using the CSS Grid System to Structure a Page</p><p class="subtitle">2021-09-18</p></a></div></div>
+    <a href="/blog/guide-to-search-engine-optimisation" class="card flex-col flex-04 p-08"><p class="title">Guide to Search Engine Optimisation (SEO)</p><p class="subtitle">2022-06-21</p></a><a href="/blog/placing-script-tags-in-html" class="card flex-col flex-04 p-08 active"><p class="title">Placing Script Tags in HTML</p><p class="subtitle">2021-09-18</p></a><a href="/blog/using-markdown-in-php" class="card flex-col flex-04 p-08"><p class="title">Using Markdown in PHP</p><p class="subtitle">2021-09-18</p></a><a href="/blog/using-the-css-grid-system-to-structure-a-page" class="card flex-col flex-04 p-08"><p class="title">Using the CSS Grid System to Structure a Page</p><p class="subtitle">2021-09-18</p></a></div></div>
     </div></div>        <div id="foot" class="toolbar flex-row flex-08">
+    <div class="flex-fill"></div>
     <nav class="flex-row flex-08">
         <a href="/cookies" class="p-08 py-0">Cookie Policy</a>    </nav>
     <div class="flex-fill"></div>
-    <a href="https://twitter.com/thecodingdodo" class="fa fa-twitter"></a>
-<a href="https://www.youtube.com/channel/UCLYv_FM6EbtTbfJpFuEzPbQ" class="fa fa-youtube"></a>
-<a href="mailto:dean.j.k.james@gmail.com" class="fa fa-envelope"></a></div>    </body>
+</div>    </body>
 </html>
 

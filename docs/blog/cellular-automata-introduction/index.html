@@ -39,18 +39,39 @@
     <div class="flex-fill"></div>
     <a id="cookies-accept" class="p-08 py-0">Accept</a>
 </div>        <div id="menu" class="toolbar flex-row flex-08">
-    <a href="/" class="logo">The Coding Dodo</a>
+    <a href="/feed" class="logo">The Coding Dodo</a>
     <div class="flex-fill"></div>
     <nav class="flex-row flex-08">
-        <a href="/" class="p-08 py-0 active">Blog</a>    </nav>
+        <a href="/feed" class="p-08 py-0">Blog</a><a href="/product" class="p-08 py-0">Products</a>    </nav>
     </div>        <div id="page" class="flex-16 two-column"><div id="cell-page" class="flex-col flex-16">
             <div class="cell flex-col flex-16 p-16 blog">
 <article class="flex-col flex-32">
-    <header class="flex-col flex-08">
+    <header class="flex-col flex-16">
+    <div class="flex-row flex-08">
+        <img src="/assets/contents/avatar.png" style="width:32px;border-radius:02px;">
+        <div class="flex-col p-08 py-0">
+            <div class="flex-fill"></div>
+            <p class="title">TheCodingDodo</p>
+            <div class="flex-fill"></div>
+        </div>
+        <div class="flex-fill"></div>
+        <a href="https://twitter.com/thecodingdodo" class="fa fa-twitter"></a>
+        <a href="https://www.youtube.com/channel/UCLYv_FM6EbtTbfJpFuEzPbQ" class="fa fa-youtube"></a>
+        <a href="mailto:dean.j.k.james@gmail.com" class="fa fa-envelope"></a>
+    </div>
     <h1>Introduction to Cellular Automata</h1>
-    <p class="subtitle">Last Updated: 2021-09-11</p>
-</header><main class="flex-col flex-32">
-    <h2>What are Cellular Automata?</h2>
+    <p class="subtitle">2021-09-11</p>
+    <p>Learn about cellular automata, including how they are structured, how they evolve according to a set of rules, and how they can be visualised in one-dimensions and two-dimensions.</p>
+</header>    <img src="/assets/contents/cellular-automata-introduction/banner.png">
+
+<h2>Table of Contents</h2>
+<ul>
+<li><a href="#What+are+Cellular+Automata%3F">What are Cellular Automata?</a></li>
+<li><a href="#Cell+States">Cell States</a></li>
+<li><a href="#Generations">Generations</a></li>
+</ul>
+<main class="article flex-col flex-32">
+    <h2 id="What+are+Cellular+Automata%3F" name="What+are+Cellular+Automata%3F">What are Cellular Automata?</h2>
 <p>A cellular automaton (plural: cellular automata), or CA, is an n-dimensional grid of cells, each in one of m possible states. This grid can be visualised, as shown by <em>Figure 1</em>. This example shows a 16x8 two-dimensional cellular automaton, where cells are coloured either black or white, each representing one of two states.</p>
 <p><img src="/assets/contents/cellular-automata-introduction/figure1.png" alt="Example Cellular Automata" /></p>
 <blockquote>
@@ -58,7 +79,7 @@
 </blockquote>
 <p>Cellular automata by themselves are just a static grid and don't do anything. However, when a set of rules are applied, cells change based on their state, and the states of their neighbours.</p>
 <p>Perhaps the most famous cellular automaton is Conway's Game of Life. The Game of Life is an outer-totalistic CA in a two-dimensional grid, uses a Moore neighbourhood, and has two possible states for each cell. More on what these features mean will be explained throughout this article.</p>
-<h2>Cell States</h2>
+<h2 id="Cell+States" name="Cell+States">Cell States</h2>
 <p>Cellular automata consist of cells, each in one of <code>m</code> possible states, where <code>m</code> is a finite integer. When visualised, cells can be coloured according to their state.</p>
 <p><img src="/assets/contents/cellular-automata-introduction/figure2.png" alt="One-Dimensional Cellular Automata" /></p>
 <blockquote>
@@ -67,7 +88,7 @@
 <p><em>Figure 2</em> shows a one-dimensional CA of size 11, with a value of <code>m = 3</code>, meaning each cell can be in one of three states. Cells in state 0 are coloured white, cells in state 1 are coloured grey, and cells in state 2 are coloured black.</p>
 <p>In memory, cells are usually represented by integers in a n-dimensional array, where <code>n</code> is the number of dimensions of the CA. Since the example in <em>Figure 2</em> is a one-dimensional CA, we use a one-dimensional array to store it's cell states. The array would look like this: <code>{20102210100}</code>.</p>
 <p>To make it easier to distinguish states, they are often given labels. For example, in a CA with two possible states, labels include: true and false, on and off, or live and dead.</p>
-<h2>Generations</h2>
+<h2 id="Generations" name="Generations">Generations</h2>
 <p>A single instance/ snapshot of a CA, with each cell having a state, is called a generation. <em>Figure 1</em> could be considered a single generation of a two-dimensional CA. Cellular automata become useful when a set of rules are applied to them. These rules cause the states of each cell to change, and when applied to every cell, will produce a new generation.</p>
 <p>Comparisons between consecutive generations allow programmers to evaluate and observe different patterns. For example, the four generations in <em>Figure 3</em> show the so-called "blinker" pattern found in Conway's Game of Life.</p>
 <p><img src="/assets/contents/cellular-automata-introduction/figure3.png" alt="Four Generations of a 3x3 CA" /></p>
@@ -80,15 +101,14 @@
     </div>
 
 <div id="cell-side" class="flex-col flex-16">
-            <div class="cell flex-col flex-16 p-16 articles">
+            <div class="cell flex-col flex-08 p-16 articles">
 <div class="flex-col flex-04">
     <a href="/blog/cellular-automata-introduction" class="card flex-col flex-04 p-08 active"><p class="title">Introduction to Cellular Automata</p><p class="subtitle">2021-09-11</p></a><a href="/blog/cellular-automata-neighbourhoods" class="card flex-col flex-04 p-08"><p class="title">Neighbourhoods in Cellular Automata</p><p class="subtitle">2022-04-02</p></a><a href="/blog/cellular-automata-rules" class="card flex-col flex-04 p-08"><p class="title">Cellular Automata Rules</p><p class="subtitle">2022-04-02</p></a></div></div>
     </div></div>        <div id="foot" class="toolbar flex-row flex-08">
+    <div class="flex-fill"></div>
     <nav class="flex-row flex-08">
         <a href="/cookies" class="p-08 py-0">Cookie Policy</a>    </nav>
     <div class="flex-fill"></div>
-    <a href="https://twitter.com/thecodingdodo" class="fa fa-twitter"></a>
-<a href="https://www.youtube.com/channel/UCLYv_FM6EbtTbfJpFuEzPbQ" class="fa fa-youtube"></a>
-<a href="mailto:dean.j.k.james@gmail.com" class="fa fa-envelope"></a></div>    </body>
+</div>    </body>
 </html>
 

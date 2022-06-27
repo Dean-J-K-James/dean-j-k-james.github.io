@@ -25,11 +25,13 @@
 <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js" defer></script><!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-7K6R0WJX31"></script>
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
 
-  gtag('config', 'G-7K6R0WJX31');
+    gtag('config', 'G-7K6R0WJX31');
 </script><script src="/assets/js/cookies.js" defer></script><script src="/assets/js/highlight.min.js" defer></script><script src="/assets/js/highlight.js" defer></script>    </head>
     <body>
         <div id="cook" class="toolbar flex-row flex-08">
@@ -37,21 +39,43 @@
     <div class="flex-fill"></div>
     <a id="cookies-accept" class="p-08 py-0">Accept</a>
 </div>        <div id="menu" class="toolbar flex-row flex-08">
-    <a href="/" class="logo">The Coding Dodo</a>
+    <a href="/feed" class="logo">The Coding Dodo</a>
     <div class="flex-fill"></div>
     <nav class="flex-row flex-08">
-        <a href="/" class="p-08 py-0 active">Blog</a>    </nav>
+        <a href="/feed" class="p-08 py-0">Blog</a>    </nav>
     </div>        <div id="page" class="flex-16 two-column"><div id="cell-page" class="flex-col flex-16">
             <div class="cell flex-col flex-16 p-16 blog">
 <article class="flex-col flex-32">
-    <header class="flex-col flex-08">
+    <header class="flex-col flex-16">
+    <div class="flex-row flex-08">
+        <img src="/assets/img/avatar.png" style="width:32px;border-radius:02px;">
+        <div class="flex-col p-08 py-0">
+            <div class="flex-fill"></div>
+            <p class="title">TheCodingDodo</p>
+            <div class="flex-fill"></div>
+        </div>
+        <div class="flex-fill"></div>
+        <a href="https://twitter.com/thecodingdodo" class="fa fa-twitter"></a>
+        <a href="https://www.youtube.com/channel/UCLYv_FM6EbtTbfJpFuEzPbQ" class="fa fa-youtube"></a>
+        <a href="mailto:dean.j.k.james@gmail.com" class="fa fa-envelope"></a>
+    </div>
     <h1>Using the CSS Grid System to Structure a Page</h1>
-    <p class="subtitle">Last Updated: 2021-09-18</p>
-</header><main class="flex-col flex-32">
+    <p class="subtitle">2021-09-18</p>
+    <p></p>
+</header>    <img src="/assets/contents/using-the-css-grid-system-to-structure-a-page/banner.png">
+
+<h2>Table of Contents</h2>
+<ul>
+<li><a href="#Using+HTML+and+CSS+to+Structure+a+Page">Using HTML and CSS to Structure a Page</a></li>
+<li><a href="#The+Grid+System">The Grid System</a></li>
+<li><a href="#Elements+of+the+Grid+System">Elements of the Grid System</a></li>
+<li><a href="#Grid+System+Container">Grid System Container</a></li>
+</ul>
+<main class="article flex-col flex-32">
     <!---------------------------------------------------------->
 <!-- Dean James - Pangean Flying Cactus - The Coding Dodo -->
 <!---------------------------------------------------------->
-<h2>Using HTML and CSS to Structure a Page</h2>
+<h2 id="Using+HTML+and+CSS+to+Structure+a+Page" name="Using+HTML+and+CSS+to+Structure+a+Page">Using HTML and CSS to Structure a Page</h2>
 <p>One of the great aspects of web development is there are always multiple ways of achieving the same goal. This is especially the case when it comes to structuring a page using HTML and CSS. Over the years, different techniques have been used for creating a page layout, and as requirements and tendencies have changed, new methods have been introduced. Most recently, there has been a shift towards pages that adapt to different screen sizes. A web page now needs to look good both on large desktop screens, and on small mobile displays.</p>
 <p><img src="/assets/contents/using-the-css-grid-system-to-structure-a-page/figure1.png" alt="Some Example Page Layouts" /></p>
 <blockquote>
@@ -63,7 +87,7 @@
 <li>Using a table. Tables are naturally suitable for structuring a page because of the rows and columns they automatically use. This method requires less code than absolute positioning, but still suffers from being difficult to adapt to a mobile view. A complex page that doesn't naturally divide into rows and columns can also become quite messy when using a table.</li>
 <li>A more modern approach to page structure is the flex system. The flex system is great for dynamically positioning cards and boxes on a single axis, but can be awkward for structuring an entire page.</li>
 </ul>
-<h2>The Grid System</h2>
+<h2 id="The+Grid+System" name="The+Grid+System">The Grid System</h2>
 <p>A more recent innovation in web development is the CSS grid system. This makes use of a new set of rules that provide an intuitive, efficient and easy to manage method of structuring pages that need to be accessible across a range of screen sizes.</p>
 <p>Consider the following HTML code:</p>
 <pre><code>&lt;body&gt;
@@ -78,7 +102,7 @@
 <p><strong>Figure 2</strong> - An example two column layout.</p>
 </blockquote>
 <p>Let us see how we can use the grid system to implement this structure.</p>
-<h2>Elements of the Grid System</h2>
+<h2 id="Elements+of+the+Grid+System" name="Elements+of+the+Grid+System">Elements of the Grid System</h2>
 <p>The CSS grid system structures elements based on their <code>grid-area</code> value. This acts as an identifier for each element, a bit like the <code>id</code> and <code>class</code> attributes in HTML. Every element that needs structuring must have this attribute with a unique value. Based on our page, the following CSS code shows this rule being used.</p>
 <pre><code>.menu {
     grid-area: menu;
@@ -96,7 +120,7 @@
     grid-area: foot;
 }</code></pre>
 <p>Note that for consistency, our <code>grid-area</code> values are the same as the class name. This is not required though (may even be considered bad practice).</p>
-<h2>Grid System Container</h2>
+<h2 id="Grid+System+Container" name="Grid+System+Container">Grid System Container</h2>
 <p>Now that we have added the <code>grid-area</code> attribute to each individual element of our website, we need to setup the container element. In our example page structure, each of the four elements that need structuring are children of the <code>body</code> element. Therefore, all of the grid system CSS rules that control our structure need to be assigned to the <code>body</code> .</p>
 <p>The following CSS rules are used for our design:</p>
 <pre><code>body {
@@ -155,15 +179,14 @@
     </div>
 
 <div id="cell-side" class="flex-col flex-16">
-            <div class="cell flex-col flex-16 p-16 articles">
+            <div class="cell flex-col flex-08 p-16 articles">
 <div class="flex-col flex-04">
-    <a href="/blog/guide-to-search-engine-optimisation" class="card flex-col flex-04 p-08"><p class="title">Guide to Search Engine Optimisation (SEO)</p><p class="subtitle">2021-09-18</p></a><a href="/blog/placing-script-tags-in-html" class="card flex-col flex-04 p-08"><p class="title">Placing Script Tags in HTML</p><p class="subtitle">2021-09-18</p></a><a href="/blog/using-markdown-in-php" class="card flex-col flex-04 p-08"><p class="title">Using Markdown in PHP</p><p class="subtitle">2021-09-18</p></a><a href="/blog/using-the-css-grid-system-to-structure-a-page" class="card flex-col flex-04 p-08 active"><p class="title">Using the CSS Grid System to Structure a Page</p><p class="subtitle">2021-09-18</p></a></div></div>
+    <a href="/blog/guide-to-search-engine-optimisation" class="card flex-col flex-04 p-08"><p class="title">Guide to Search Engine Optimisation (SEO)</p><p class="subtitle">2022-06-21</p></a><a href="/blog/placing-script-tags-in-html" class="card flex-col flex-04 p-08"><p class="title">Placing Script Tags in HTML</p><p class="subtitle">2021-09-18</p></a><a href="/blog/using-markdown-in-php" class="card flex-col flex-04 p-08"><p class="title">Using Markdown in PHP</p><p class="subtitle">2021-09-18</p></a><a href="/blog/using-the-css-grid-system-to-structure-a-page" class="card flex-col flex-04 p-08 active"><p class="title">Using the CSS Grid System to Structure a Page</p><p class="subtitle">2021-09-18</p></a></div></div>
     </div></div>        <div id="foot" class="toolbar flex-row flex-08">
+    <div class="flex-fill"></div>
     <nav class="flex-row flex-08">
         <a href="/cookies" class="p-08 py-0">Cookie Policy</a>    </nav>
     <div class="flex-fill"></div>
-    <a href="https://twitter.com/thecodingdodo" class="fa fa-twitter"></a>
-<a href="https://www.youtube.com/channel/UCLYv_FM6EbtTbfJpFuEzPbQ" class="fa fa-youtube"></a>
-<a href="mailto:dean.j.k.james@gmail.com" class="fa fa-envelope"></a></div>    </body>
+</div>    </body>
 </html>
 
