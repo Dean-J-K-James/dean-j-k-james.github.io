@@ -6,7 +6,7 @@ table {
 
 table td,
 table th {
-    border       : 1px solid $colour_border;
+    border       : 01px solid $colour_border;
     text-align   : left;
     padding      : 08px;
     overflow-wrap: break-word;
@@ -17,8 +17,8 @@ table th {
 }
 
 table tr:hover td {
-    background-color: $colour_primary;
-    color           : $colour_primary_text;
+    background-color: $colour_primary_accent;
+    color           : $colour_primary;
     cursor          : pointer;
 }
 

@@ -1,11 +1,23 @@
 <div id="cell-page" class="flex-col flex-16">
-    <?php foreach (json_decode($_SESSION['page']['page'], true) as $page) : ?>
-        <div class="cell flex-col flex-16 p-16 <?= $page ?>"><?php require 'pages/page/' . $page . '.php' ?></div>
-    <?php endforeach; ?>
+    <?php
+    foreach (json_decode($_SESSION['page']['page'], true) as $s)
+    {
+        $c = Section::selectDB($s)['class'];
+        $t = Section::selectDB($s)['tag'];
+
+        echo '<' . $t . ' class="cell ' . $s . ' ' . $c . '">'; require 'pages/page/' . $s . '.php'; echo '</' . $t . '>';
+    }
+    ?>
 </div>
 
 <div id="cell-side" class="flex-col flex-16">
-    <?php foreach (json_decode($_SESSION['page']['side'], true) as $side) : ?>
-        <div class="cell flex-col flex-08 p-16 <?= $side ?>"><?php require 'pages/side/' . $side . '.php' ?></div>
-    <?php endforeach; ?>
+    <?php
+    foreach (json_decode($_SESSION['page']['side'], true) as $s)
+    {
+        $c = Section::selectDB($s)['class'];
+        $t = Section::selectDB($s)['tag'];
+
+        echo '<' . $t . ' class="cell ' . $s . ' ' . $c . '">'; require 'pages/side/' . $s . '.php'; echo '</' . $t . '>';
+    }
+    ?>
 </div>

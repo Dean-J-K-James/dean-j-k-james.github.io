@@ -1,6 +1,5 @@
 .tag {
     background-color: $colour_primary;
-    border-radius   : 02px;
     color           : $colour_primary_text;
     font-size       : 12px;
     font-weight     : normal;
@@ -8,9 +7,9 @@
 }
 
 .tip {
-    background-color: $colour_primary;
-    border          : 01px solid $colour_primary_text;
-    color           : $colour_primary_text;
+    background-color: $colour_primary_accent;
+    border-left     : 08px solid $colour_primary;
+    color           : $colour_primary;
     font-size       : 13px;
     font-weight     : bold;
     text-align      : justify;

@@ -1,14 +1,17 @@
-.card:hover,
-.card.active {
+.card:hover {
     background-color: $colour_accent;
 }
 
+.card.active {
+    background-color: $colour_primary_accent;
+}
+
 .card.active .title {
-    color: $colour_link_hover;
+    color: $colour_primary;
 }
 
 .card p {
     text-overflow: ellipsis;
     overflow     : hidden;
     white-space  : nowrap;
-} 
+}

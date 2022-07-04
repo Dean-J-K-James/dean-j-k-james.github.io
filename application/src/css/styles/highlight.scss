@@ -26,8 +26,9 @@ code.hljs {
 }
 
 pre.diff code {
-    display: block;
-    padding: 00px;
+    border-radius: 00px;
+    display      : block;
+    padding      : 00px;
 }
 
 pre.diff code.old {

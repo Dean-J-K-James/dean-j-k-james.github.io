@@ -4,5 +4,4 @@
     <nav class="flex-row flex-08">
         <?php require_once 'pages/menu/brand.php' ?>
     </nav>
-    <?php require_once 'pages/menu/profile.php' ?>
 </div>

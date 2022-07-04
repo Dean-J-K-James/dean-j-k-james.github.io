@@ -1,17 +1,16 @@
 #foot {
     background-color: $colour_foot;
-    border-top      : 01px solid $colour_border;
+    border-radius   : 00px;
     grid-area       : foot;
     padding-top     : 32px;
     padding-bottom  : 32px;
 }
 
 #foot * {
-    color: $colour_foot_text;
+    color: $colour_primary;
 }
 
 #foot a.active,
 #foot a:hover {
-    background-color: $colour_foot_accent;
-    color           : $colour_foot_text;
+    background-color: $colour_primary_accent;
 }

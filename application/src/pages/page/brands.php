@@ -1,9 +1,3 @@
-<div class="flex-row flex-04">
-    <a href="<?= create_link("") ?>" class="tag">Filter A</a>
-    <div class="tag">Filter B</div>
-    <div class="tag">Filter C</div>
-</div>
-
 <div class="album-2 flex-08">
     <?php
     foreach (Brand::selectAllDB() as $b)

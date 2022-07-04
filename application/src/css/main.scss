@@ -1,47 +1,41 @@
 
 //Variable
-$colour_menu         : rgb(066, 121, 106) !default;
-$colour_menu_accent  : rgb(116, 171, 156) !default;
-$colour_menu_text    : rgb(241, 241, 241) !default;
+$colour_menu          : rgb(066, 121, 106) !default;
+$colour_menu_accent   : rgb(116, 171, 156) !default;
+$colour_menu_text     : rgb(241, 241, 241) !default;
 
-$colour_cook         : rgb(051, 051, 051) !default;
-$colour_cook_accent  : rgb(081, 081, 081) !default;
-$colour_cook_text    : rgb(241, 241, 241) !default;
+$colour_cook          : rgb(051, 051, 051) !default;
+$colour_cook_accent   : rgb(081, 081, 081) !default;
+$colour_cook_text     : rgb(241, 241, 241) !default;
 
-$colour_foot         : rgb(255, 255, 255) !default;
-$colour_foot_accent  : rgb(241, 241, 241) !default;
-$colour_foot_text    : rgb(081, 081, 081) !default;
+$colour_body          : rgb(241, 241, 241) !default;
+$colour_foot          : rgb(255, 255, 255) !default;  
 
-$colour_body         : rgb(246, 246, 246) !default;
+$colour_cell          : rgb(255, 255, 255) !default;
+$colour_cell_border   : rgb(231, 231, 231) !default;
+$colour_accent        : rgb(241, 241, 241) !default;
+$colour_border        : rgb(231, 231, 231) !default;
 
-$colour_cell         : rgb(255, 255, 255) !default;
-$colour_cell_border  : rgb(231, 231, 231) !default;
-$colour_accent       : rgb(241, 241, 241) !default;
-$colour_text         : rgb(051, 051, 051) !default;
-$colour_border       : rgb(231, 231, 231) !default;
+$colour_code          : rgb(241, 241, 241) !default;
+$colour_var           : rgb(221, 231, 251) !default;
+$colour_var_text      : rgb(096, 156, 236) !default;
 
-$colour_code         : rgb(236, 236, 236) !default;
-$colour_var          : rgb(236, 236, 236) !default;
-$colour_var_text     : rgb(066, 121, 206) !default;
+$colour_h1            : rgb(056, 116, 196) !default;
+$colour_h2            : rgb(056, 116, 196) !default;
+$colour_h3            : rgb(056, 116, 196) !default;
+$colour_h4            : rgb(096, 156, 236) !default;
+$colour_p             : rgb(101, 101, 101) !default;
+$colour_subtitle      : rgb(121, 121, 121) !default;
 
-$colour_side_link    : rgb(081, 081, 081) !default;
-$colour_subtitle     : rgb(121, 121, 121) !default;
-$colour_h1           : rgb(056, 116, 196) !default;
-$colour_h2           : rgb(056, 116, 196) !default;
-$colour_h3           : rgb(056, 116, 196) !default;
-$colour_h4           : rgb(096, 156, 236) !default;
-$colour_p            : rgb(101, 101, 101) !default;
-
-$colour_link         : rgb(056, 116, 196) !default;
-$colour_link_hover   : rgb(096, 156, 236) !default;
-
-$colour_primary      : rgb(221, 231, 251) !default;
-$colour_primary_text : rgb(096, 156, 236) !default;
+$colour_primary       : rgb(096, 156, 236) !default;
+$colour_primary_accent: rgb(221, 231, 251) !default;
+$colour_primary_text  : rgb(251, 251, 251) !default;
 
 //Internal
 @import 'external/solarized-light';
 @import 'styles/album';
 @import 'styles/application';
+@import 'styles/article';
 @import 'styles/canvas';
 @import 'styles/cards';
 @import 'styles/cells';

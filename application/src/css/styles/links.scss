@@ -1,10 +1,20 @@
 a {
-    color          : $colour_link;
+    color          : $colour_var_text;
     text-decoration: none;
     padding        : 00px;
 }
 
 a:hover {
-    color: $colour_link_hover;
+    color: $colour_var;
 }
 
+.article a {
+    background-color: $colour_var;
+    font-weight     : bold;
+    text-decoration : underline;
+    padding         : 02px 04px;
+}
+
+.article a:hover {
+    background-color: $colour_var_text;
+}
