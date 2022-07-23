@@ -40,7 +40,7 @@ class HTML
         echo ''
         . '<div class="card flex-row flex-08">'
         . '<img src="' . $image . '" alt="' . $name . '" style="height:128px;">'
-        . '<div class="flex-col flex-fill flex-08 p-08" style="height:112px;overflow:hidden;">'
+        . '<div class="flex-col flex-fill flex-08 p-08" style="height:112px;overflow:hidden;justify-content: center;">'
         . '<h4>' . $name . '</h4>';
 
         if ($subtitle !== null)

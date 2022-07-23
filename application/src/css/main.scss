@@ -27,9 +27,11 @@ $colour_h4            : rgb(096, 156, 236) !default;
 $colour_p             : rgb(101, 101, 101) !default;
 $colour_subtitle      : rgb(121, 121, 121) !default;
 
-$colour_primary       : rgb(096, 156, 236) !default;
+$colour_primary       : rgb(056, 116, 196) !default;
 $colour_primary_accent: rgb(221, 231, 251) !default;
 $colour_primary_text  : rgb(251, 251, 251) !default;
+
+$colour_tag_blue      : rgb(096, 156, 236) !default;
 
 //Internal
 @import 'external/solarized-light';
