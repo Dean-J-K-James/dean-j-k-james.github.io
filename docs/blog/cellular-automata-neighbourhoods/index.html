@@ -1,19 +1,18 @@
-
 <!doctype html>
 
 <html lang="en">
     <head>
-        <title>Neighbourhoods in Cellular Automata</title>
+        <title>Cellular Automata Neighbourhoods</title>
 <meta charset="utf-8">
 <meta name="viewport"            content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="title"               content="Neighbourhoods in Cellular Automata">
+<meta name="title"               content="Cellular Automata Neighbourhoods">
 <meta name="image"               content="https://thecodingdodo.com/assets/contents/cellular-automata-neighbourhoods/thumbnail.png">
 <meta name="description"         content="Find out how neighbourhoods are calculated in one-dimensional and two-dimensional cellular automata, including the von Neumann and Moore neighbourhoods.">
-<meta property="og:title"        content="Neighbourhoods in Cellular Automata">
+<meta property="og:title"        content="Cellular Automata Neighbourhoods">
 <meta property="og:image"        content="https://thecodingdodo.com/assets/contents/cellular-automata-neighbourhoods/thumbnail.png">
 <meta property="og:description"  content="Find out how neighbourhoods are calculated in one-dimensional and two-dimensional cellular automata, including the von Neumann and Moore neighbourhoods.">
 <meta name="twitter:card"        content="summary">
-<meta name="twitter:title"       content="Neighbourhoods in Cellular Automata">
+<meta name="twitter:title"       content="Cellular Automata Neighbourhoods">
 <meta name="twitter:image"       content="https://thecodingdodo.com/assets/contents/cellular-automata-neighbourhoods/thumbnail.png">
 <meta name="twitter:description" content="Find out how neighbourhoods are calculated in one-dimensional and two-dimensional cellular automata, including the von Neumann and Moore neighbourhoods.">
 <meta name="robots"              content="index, follow">
@@ -22,7 +21,7 @@
 <link rel="stylesheet"           href="/assets/css/main.css">
 <link rel="stylesheet"           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" defer></script>
-<script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js" defer></script><!-- Global site tag (gtag.js) - Google Analytics -->
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js" defer></script><script type="module" src="/assets/js/cookies.js"></script><script type="module" src="/assets/js/highlight.js"></script><!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-7K6R0WJX31"></script>
 <script>
     window.dataLayer = window.dataLayer || [];
@@ -32,19 +31,20 @@
     gtag('js', new Date());
 
     gtag('config', 'G-7K6R0WJX31');
-</script><script src="/assets/js/cookies.js" defer></script><script src="/assets/js/highlight.min.js" defer></script><script src="/assets/js/highlight.js" defer></script>    </head>
+</script>    </head>
     <body>
         <div id="cook" class="toolbar flex-row flex-08">
     <span>This website uses cookies for tracking. By continuing to use this website, you agree to our use of cookies. Visit our cookie policy page to learn more.</span>
     <div class="flex-fill"></div>
     <a id="cookies-accept" class="p-08 py-0">Accept</a>
-</div>        <div id="menu" class="toolbar flex-row flex-08">
-    <a href="/feed" class="logo">The Coding Dodo</a>
+</div>
+        <div id="menu" class="toolbar flex-row flex-08">
+    <a href="/feed" class="logo">TheCodingDodo</a>
     <div class="flex-fill"></div>
     <nav class="flex-row flex-08">
         <a href="/feed" class="p-08 py-0">Blog</a>    </nav>
-</div>        <div id="page" class="flex-16 two-column"><div id="cell-page" class="flex-col flex-16">
-    <div class="cell profile flex-col flex-16 p-16"><div class="flex-row flex-08">
+</div>
+        <div id="page" class="flex-16 two-column"><div id="cell-page" class="flex-col flex-16"><div class="cell flex-col flex-16 p-16"><div class="flex-row flex-08">
     <img src="/assets/img/avatar.png" style="width:32px;border-radius:02px;">
     <div class="flex-col p-08 py-0">
         <div class="flex-fill"></div>
@@ -55,9 +55,9 @@
     <a href="https://twitter.com/thecodingdodo" class="fa fa-twitter"></a>
     <a href="https://www.youtube.com/channel/UCLYv_FM6EbtTbfJpFuEzPbQ" class="fa fa-youtube"></a>
     <a href="mailto:dean.j.k.james@gmail.com" class="fa fa-envelope"></a>
-</div></div><article class="cell blog flex-col flex-32 p-16"><header class="flex-col flex-16">
-    <h1>Neighbourhoods in Cellular Automata</h1>
-    <p class="subtitle">Last Updated: <strong>2022-04-02</strong></p>
+</div></div><article class="cell flex-col flex-32 p-16"><header class="flex-col flex-16">
+    <h1>Cellular Automata Neighbourhoods</h1>
+    <p class="subtitle">Last Updated: <strong>2021-09-18</strong></p>
 </header>
 
 <p>Find out how neighbourhoods are calculated in one-dimensional and two-dimensional cellular automata, including the von Neumann and Moore neighbourhoods.</p>
@@ -156,14 +156,14 @@
 <h2 id="Further+Reading" name="Further+Reading">Further Reading</h2>
 <ul>
 <li>LifeWiki has a page for each type of two-dimensional neighbourhood: <a href="https://conwaylife.com/wiki/Von_Neumann_neighbourhood">von Neumann Neighbourhood</a> and <a href="https://conwaylife.com/wiki/Moore_neighbourhood">Moore Neighbourhood</a>.</li>
-</ul></main></article></div>
-
-<div id="cell-side" class="flex-col flex-16">
-    <div class="cell articles flex-col flex-04 p-16"><a href="/blog/cellular-automata-introduction" class="card flex-col flex-04 p-08"><p class="title">Introduction to Cellular Automata</p><p class="subtitle">2021-09-11</p></a><a href="/blog/cellular-automata-neighbourhoods" class="card flex-col flex-04 p-08 active"><p class="title">Neighbourhoods in Cellular Automata</p><p class="subtitle">2022-04-02</p></a><a href="/blog/cellular-automata-rules" class="card flex-col flex-04 p-08"><p class="title">Cellular Automata Rules</p><p class="subtitle">2022-04-02</p></a></div></div></div>        <div id="foot" class="toolbar flex-row flex-08">
+</ul></main>
+</article></div>
+<div id="cell-side" class="flex-col flex-16"><div class="cell flex-col flex-04 p-16"><a href="/blog/cellular-automata-introduction" class="card flex-col flex-04 p-08"><p class="title">Introduction to Cellular Automata</p><p class="subtitle">2021-09-11</p></a><a href="/blog/cellular-automata-neighbourhoods" class="card flex-col flex-04 p-08 active"><p class="title">Cellular Automata Neighbourhoods</p><p class="subtitle">2021-09-18</p></a><a href="/blog/cellular-automata-rules" class="card flex-col flex-04 p-08"><p class="title">Cellular Automata Rules</p><p class="subtitle">2021-09-25</p></a></div></div></div>        <div id="foot" class="toolbar flex-row flex-08">
     <div class="flex-fill"></div>
     <nav class="flex-row flex-08">
         <a href="/cookies" class="p-08 py-0">Cookie Policy</a>    </nav>
     <div class="flex-fill"></div>
-</div>    </body>
+</div>
+    </body>
 </html>
 

@@ -1,4 +1,3 @@
-
 <!doctype html>
 
 <html lang="en">
@@ -22,7 +21,7 @@
 <link rel="stylesheet"           href="/assets/css/main.css">
 <link rel="stylesheet"           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" defer></script>
-<script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js" defer></script><!-- Global site tag (gtag.js) - Google Analytics -->
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js" defer></script><script type="module" src="/assets/js/cookies.js"></script><script type="module" src="/assets/js/highlight.js"></script><script type="module" src="/assets/js/noise.js"></script><script type="module" src="/assets/js/perlin-noise-terrain-generation.js"></script><!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-7K6R0WJX31"></script>
 <script>
     window.dataLayer = window.dataLayer || [];
@@ -32,19 +31,20 @@
     gtag('js', new Date());
 
     gtag('config', 'G-7K6R0WJX31');
-</script><script src="/assets/js/cookies.js" defer></script><script src="/assets/js/highlight.min.js" defer></script><script src="/assets/js/highlight.js" defer></script>    </head>
+</script>    </head>
     <body>
         <div id="cook" class="toolbar flex-row flex-08">
     <span>This website uses cookies for tracking. By continuing to use this website, you agree to our use of cookies. Visit our cookie policy page to learn more.</span>
     <div class="flex-fill"></div>
     <a id="cookies-accept" class="p-08 py-0">Accept</a>
-</div>        <div id="menu" class="toolbar flex-row flex-08">
-    <a href="/feed" class="logo">The Coding Dodo</a>
+</div>
+        <div id="menu" class="toolbar flex-row flex-08">
+    <a href="/feed" class="logo">TheCodingDodo</a>
     <div class="flex-fill"></div>
     <nav class="flex-row flex-08">
         <a href="/feed" class="p-08 py-0">Blog</a>    </nav>
-</div>        <div id="page" class="flex-16 two-column"><div id="cell-page" class="flex-col flex-16">
-    <div class="cell profile flex-col flex-16 p-16"><div class="flex-row flex-08">
+</div>
+        <div id="page" class="flex-16 two-column"><div id="cell-page" class="flex-col flex-16"><div class="cell flex-col flex-16 p-16"><div class="flex-row flex-08">
     <img src="/assets/img/avatar.png" style="width:32px;border-radius:02px;">
     <div class="flex-col p-08 py-0">
         <div class="flex-fill"></div>
@@ -55,20 +55,16 @@
     <a href="https://twitter.com/thecodingdodo" class="fa fa-twitter"></a>
     <a href="https://www.youtube.com/channel/UCLYv_FM6EbtTbfJpFuEzPbQ" class="fa fa-youtube"></a>
     <a href="mailto:dean.j.k.james@gmail.com" class="fa fa-envelope"></a>
-</div></div><article class="cell blog flex-col flex-32 p-16"><header class="flex-col flex-16">
+</div></div><article class="cell flex-col flex-32 p-16"><header class="flex-col flex-16">
     <h1>Perlin Noise Terrain Generation</h1>
-    <p class="subtitle">Last Updated: <strong>2021-07-04</strong></p>
+    <p class="subtitle">Last Updated: <strong>2021-09-11</strong></p>
 </header>
 
 <p>Explore how to generate 2D height maps using both static and Perlin noise. Then use these to create infinite, continental terrain on a 2d tilemap.</p>
     <canvas id="application-container"></canvas>
     <blockquote>
-        <p><strong>Demo</strong> - Click the demo to restart the animation. Click <a href="/assets/contents/perlin-noise-terrain-generation/main.js">here</a> to see the code.</p>
+        <p><strong>Demo</strong> - Click the demo to restart the animation. Click <a href="/assets/js/perlin-noise-terrain-generation.js">here</a> to see the code.</p>
     </blockquote>
-
-            <script src="/assets/js/noise.js" defer></script>
-    
-    <script type="module" src="/assets/contents/perlin-noise-terrain-generation/main.js"></script>
 
 <h2>Table of Contents</h2>
 <ul>
@@ -232,14 +228,14 @@ function clamp(min, max, v) {
 <ul>
 <li>This YouTube playlist for Generating <a href="https://youtu.be/wbpMiKiSKm8">Procedural Terrain</a> in Unity is detailed and visualised well.</li>
 <li>An article explaining <a href="https://www.redblobgames.com/maps/terrain-from-noise/">Terrain From Noise</a>, and some of the theory behind it.</li>
-</ul></main></article></div>
-
-<div id="cell-side" class="flex-col flex-16">
-    <div class="cell articles flex-col flex-04 p-16"><a href="/blog/random-walk-dungeon-generation" class="card flex-col flex-04 p-08"><p class="title">Random Walk Dungeon Generation</p><p class="subtitle">2021-06-20</p></a><a href="/blog/depth-first-search-maze" class="card flex-col flex-04 p-08"><p class="title">Depth First Search Maze</p><p class="subtitle">2021-06-27</p></a><a href="/blog/perlin-noise-terrain-generation" class="card flex-col flex-04 p-08 active"><p class="title">Perlin Noise Terrain Generation</p><p class="subtitle">2021-07-04</p></a><a href="/blog/game-of-life" class="card flex-col flex-04 p-08"><p class="title">Conway's Game of Life</p><p class="subtitle">2021-09-18</p></a></div></div></div>        <div id="foot" class="toolbar flex-row flex-08">
+</ul></main>
+</article></div>
+<div id="cell-side" class="flex-col flex-16"><div class="cell flex-col flex-04 p-16"><a href="/blog/depth-first-search-maze" class="card flex-col flex-04 p-08"><p class="title">Depth First Search Maze</p><p class="subtitle">2021-03-05</p></a><a href="/blog/game-of-life" class="card flex-col flex-04 p-08"><p class="title">Game of Life</p><p class="subtitle">2021-05-14</p></a><a href="/blog/perlin-noise-terrain-generation" class="card flex-col flex-04 p-08 active"><p class="title">Perlin Noise Terrain Generation</p><p class="subtitle">2021-09-11</p></a><a href="/blog/random-walk-dungeon-generation" class="card flex-col flex-04 p-08"><p class="title">Random Walk Dungeon Generation</p><p class="subtitle">2021-09-11</p></a></div></div></div>        <div id="foot" class="toolbar flex-row flex-08">
     <div class="flex-fill"></div>
     <nav class="flex-row flex-08">
         <a href="/cookies" class="p-08 py-0">Cookie Policy</a>    </nav>
     <div class="flex-fill"></div>
-</div>    </body>
+</div>
+    </body>
 </html>
 
